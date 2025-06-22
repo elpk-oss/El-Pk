@@ -58,6 +58,39 @@
       scale: 1.07;
       box-shadow: 0 2px 16px #27ff27cc;
     }
+    .invite-bot-btn {
+      background: linear-gradient(90deg, #5865f2 60%, #27ff27 250%);
+      color: #fff;
+      border: 2px solid #5865f2;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 14px;
+      padding: 13px 18px;
+      margin-top: 12px;
+      margin-bottom: 15px;
+      min-width: 180px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #5865f288;
+      transition: background 0.17s, color 0.17s, scale 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      justify-content: center;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .invite-bot-btn:hover {
+      background: linear-gradient(90deg, #27ff27 60%, #5865f2 250%);
+      color: #23272a;
+      scale: 1.06;
+      border-color: #27ff27;
+    }
+    .invite-bot-icon {
+      font-size: 1.3rem;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
     main {
       padding: 36px;
       margin-left: 160px;
@@ -246,6 +279,9 @@
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
     <button onclick="mostrarSeccion('contacto')">Contacto</button>
     <button onclick="abrirTerminal()">Terminal</button>
+    <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
+      <span class="invite-bot-icon">🤖</span> Invitar mi bot
+    </a>
   </aside>
   <main>
     <header>
