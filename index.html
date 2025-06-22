@@ -6,104 +6,213 @@
   <title>Soy El Pk</title>
   <style>
     body {
-      background-color: #121212;
+      background: radial-gradient(circle at 25% 10%, #00ffd590 0%, #121212 100%);
       color: #e0e0e0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      transition: background-color 0.8s ease;
+      transition: background 0.8s ease;
+      min-height: 100vh;
     }
     #bienvenida {
-      background: #00ffd5;
+      background: linear-gradient(90deg, #00ffd5 0%, #00c3ff 100%);
       color: #121212;
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-weight: bold;
-      font-size: 1.2rem;
-      box-shadow: 0 2px 10px #00ffd580;
+      font-size: 1.25rem;
+      box-shadow: 0 2px 14px #00ffd580;
+      letter-spacing: 1px;
+      border-radius: 0 0 15px 15px;
+      text-shadow: 1px 1px 0px #fff9, 2px 2px 0px #00ffd522;
+      user-select: none;
     }
+
     aside {
       position: fixed;
-      top: 60px;
+      top: 70px;
       left: 10px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
       z-index: 1000;
     }
     aside button {
-      background: #1f1f1f;
+      background: linear-gradient(90deg, #1f1f1f 60%, #00ffd5 120%);
       border: 2px solid #00ffd5;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 5px;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
+      box-shadow: 0 1px 6px #00ffd533;
+      transition: all 0.25s;
+      outline: none;
     }
     aside button:hover {
-      background: #00ffd5;
+      background: linear-gradient(90deg, #00ffd5 70%, #1f1f1f 140%);
       color: #121212;
+      letter-spacing: 1.5px;
+      scale: 1.07;
     }
+
     main {
-      padding: 30px;
-      margin-left: 120px;
-      max-width: 800px;
+      padding: 38px;
+      margin-left: 140px;
+      max-width: 900px;
     }
     header h1 {
       color: #00ffd5;
-      font-size: 2.5rem;
+      font-size: 2.7rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px #00ffd522;
     }
+
     .seccion {
       display: none;
       opacity: 0;
       transition: opacity 0.5s ease;
+      margin-top: 12px;
     }
     .seccion.activa {
       display: block;
       opacity: 1;
+      animation: fadeInUp 0.6s;
     }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
     ul li {
-      background-color: #1f1f1f;
-      padding: 10px;
-      margin: 10px 0;
+      background: linear-gradient(90deg, #1f1f1f 80%, #00ffd5 250%);
+      padding: 12px;
+      margin: 12px 0;
       border-left: 4px solid #00ffd5;
-      border-radius: 4px;
+      border-radius: 6px;
+      font-size: 1.06rem;
+      box-shadow: 0 2px 8px #00ffd522;
     }
-    .minijuego-container {
-      margin-top: 20px;
-      padding: 20px;
-      background: #191919;
-      border-radius: 8px;
-      max-width: 400px;
+    a { color: #00ffd5; text-decoration: underline dotted; }
+    a:hover { color: #00c3ff; }
+
+    /* Minijuegos y secretos */
+    .minijuego-container, .secreto-container {
+      margin-top: 24px;
+      padding: 22px;
+      background: linear-gradient(120deg,#191919 80%,#00ffd5 320%);
+      border-radius: 11px;
+      max-width: 480px;
+      box-shadow: 0 2px 18px #00ffd522;
+      margin-bottom: 28px;
     }
+
     .secreto {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 20px;
       background: #1a1a40;
       border-radius: 8px;
       color: #00ffd5;
       font-weight: bold;
+      box-shadow: 0 1px 12px #00ffd522;
       display: none;
     }
     .btn-secreto {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 18px;
       background: #00ffd5;
       color: #191919;
       border: none;
-      padding: 8px 16px;
-      border-radius: 5px;
+      padding: 10px 22px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.2s;
+      font-size: 1.1rem;
+      box-shadow: 0 1px 12px #00ffd522;
+      letter-spacing: 1px;
+      transition: background 0.2s;
     }
     .btn-secreto:hover {
       background: #00bfa3;
       color: #fff;
+      scale: 1.08;
+    }
+    .oculto {
+      display: none !important;
+    }
+    /* Minijuego clicker secreto */
+    .clicker-btn {
+      padding: 20px 44px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg,#00ffd5,#00c3ff 90%);
+      color: #191919;
+      border: none;
+      border-radius: 20px;
+      margin: 22px auto 12px;
+      display: block;
+      box-shadow: 0 2px 16px #00ffd522;
+      cursor: pointer;
+      transition: scale 0.1s;
+    }
+    .clicker-btn:active {
+      scale: 1.09;
+      background: linear-gradient(90deg,#00c3ff,#00ffd5 90%);
+    }
+    .clicker-contador {
+      font-size: 1.5rem;
+      color: #00ffd5;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+    /* Trivia animación */
+    .trivia-correcto { color: #00ff73; font-weight: bold;}
+    .trivia-incorrecto { color: #ff3355; font-weight: bold;}
+    /* Dados decorado */
+    .dado-res { font-size:2.2rem; color:#00ffd5;}
+    .dado-anim { animation: girarDado 0.5s;}
+    @keyframes girarDado {
+      0% {transform: rotateY(0deg);}
+      80% {transform: rotateY(360deg);}
+      100% {transform: rotateY(0deg);}
+    }
+    /* Easter Egg */
+    .easter-egg {
+      background: linear-gradient(90deg,#00ffd5 60%,#00c3ff 100%);
+      color: #191919;
+      font-size: 1.2rem;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 12px #00ffd522;
+      margin: 18px 0 0 0;
+      display: none;
+      animation: fadeInUp 1s;
+    }
+    /* Detalle visual */
+    .detalle-oculto {
+      color: #00ffd5;
+      background: #191919;
+      border-radius: 7px;
+      padding: 2px 8px;
+      font-size: 0.98rem;
+      box-shadow: 0 0 10px #00ffd544;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .detalle-oculto:hover {
+      background: #00ffd5;
+      color: #191919;
     }
   </style>
 </head>
 <body>
   <div id="bienvenida"></div>
+  <!-- Menú lateral -->
   <aside>
     <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
@@ -114,16 +223,21 @@
   <main>
     <header>
       <h1>Hola, soy El Pk 👾</h1>
-      <p>Developer, creador de bots, amante de Minecraft y de los proyectos locos.</p>
+      <p>Developer, creador de bots, amante de Minecraft, Discord y los proyectos locos <span class="detalle-oculto" onclick="mostrarEasterEgg()">👀</span></p>
     </header>
+    <div class="easter-egg" id="easterEgg">¡Descubriste un Easter Egg! <br> ¿Sabías que si escribes <span style="background:#191919;color:#00ffd5;padding:1px 6px;border-radius:4px;">"/elpk"</span> en Discord, invocas la suerte en tu próximo minijuego?</div>
     <section id="sobreMi" class="seccion activa">
       <h2>🧠 Sobre Mí</h2>
       <p>Soy un desarrollador uruguayo apasionado por crear bots de Discord, páginas web y sistemas originales. Me gusta experimentar con HTML, CSS, JS y más tecnologías.</p>
+      <p><span class="detalle-oculto" onclick="mostrarDetalle('detalle1')">¿Sabías esto?</span></p>
+      <div class="easter-egg" id="detalle1" style="display:none;">Mi primer bot de Discord fue baneado por hacer demasiados chistes malos 🤖😂</div>
     </section>
     <section id="proyectos" class="seccion">
       <h2>💼 Proyectos Públicos</h2>
       <ul>
         <li><strong>KaBot</strong> – Un bot de Discord completo con sistema de juegos, administración y más.</li>
+        <li><strong>Minecraft Stats Page</strong> – Estadísticas en vivo de servidores Minecraft (¡con sorpresas ocultas si exploras bien!).</li>
+        <li><strong>TriviaGeek</strong> – Un bot de preguntas geek para Discord.</li>
       </ul>
     </section>
     <section id="contacto" class="seccion">
@@ -135,25 +249,61 @@
         <li>YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a></li>
         <li>Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
+      <span class="detalle-oculto" onclick="mostrarDetalle('detalle2')">¿Un dato geek?</span>
+      <div class="easter-egg" id="detalle2" style="display:none;">El primer mensaje en Discord fue "¿Funcionará esto?" en 2015.</div>
     </section>
     <!-- Minijuegos -->
     <section id="minijuegos" class="seccion">
       <h2>🎮 Minijuegos</h2>
+      <!-- Juego 1 -->
       <div class="minijuego-container" id="adivinaNumero">
-        <h3>Adivina el Número</h3>
+        <h3>🔢 Adivina el Número</h3>
         <p>Estoy pensando en un número entre 1 y 20. ¿Puedes adivinarlo?</p>
         <input type="number" id="input-numero" min="1" max="20" placeholder="Tu número..." />
         <button onclick="jugarAdivinaNumero()">Adivinar</button>
         <div id="resultado-minijuego" style="margin-top:10px;"></div>
         <button onclick="reiniciarAdivinaNumero()" style="margin-top:10px;">Reiniciar Juego</button>
       </div>
+      <!-- Juego 2 -->
+      <div class="minijuego-container" id="ppt">
+        <h3>✊ Piedra, Papel o Tijera</h3>
+        <p>Desafía a la máquina:</p>
+        <button onclick="pptJugar('piedra')">🪨 Piedra</button>
+        <button onclick="pptJugar('papel')">📄 Papel</button>
+        <button onclick="pptJugar('tijera')">✂️ Tijera</button>
+        <div id="ppt-resultado" style="margin-top:10px;"></div>
+      </div>
+      <!-- Juego 3 -->
+      <div class="minijuego-container" id="trivia">
+        <h3>🤓 Trivia Geek</h3>
+        <div id="trivia-pregunta"></div>
+        <div id="trivia-opciones"></div>
+        <div id="trivia-resultado" style="margin-top:10px;"></div>
+        <button onclick="siguienteTrivia()" id="trivia-siguiente" style="display:none;margin-top:10px;">Otra Pregunta</button>
+      </div>
+      <!-- Juego 4 -->
+      <div class="minijuego-container" id="dados">
+        <h3>🎲 Dado de la Suerte</h3>
+        <p>Tira el dado y ve si sacas un 6 para ganar:</p>
+        <button onclick="tirarDado()">Tirar Dado</button>
+        <div id="dado-resultado" style="margin-top:10px;"></div>
+      </div>
+      <!-- Juego 5: Clicker secreto -->
+      <div class="minijuego-container oculto" id="clicker-secreto">
+        <h3>🖱️ Clicker Secreto</h3>
+        <button class="clicker-btn" onclick="sumarClick()">¡Click aquí!</button>
+        <div class="clicker-contador" id="clicks">Clicks: 0</div>
+        <div id="clicker-mensaje" style="margin-top:10px;"></div>
+      </div>
     </section>
     <!-- Secretos -->
     <section id="secretos" class="seccion">
-      <h2>🕵️ Secretos</h2>
+      <h2>🕵️ Secretos y Easter Eggs</h2>
       <p>¿Te gustan los easter eggs? Prueba presionar el botón secreto varias veces...</p>
       <button class="btn-secreto" onclick="tocarSecreto()">Botón Secreto</button>
       <div id="mensaje-secreto" class="secreto"></div>
+      <span class="detalle-oculto" onclick="mostrarDetalle('detalle3')">¿Otro secreto?</span>
+      <div class="easter-egg" id="detalle3" style="display:none;">Prueba encontrar el clicker oculto en los minijuegos...<br><span style='font-size:1.5rem;'>👾</span></div>
     </section>
     <footer>
       <p>© 2025 El Pk. Todos los derechos reservados.</p>
@@ -175,16 +325,26 @@
 
     // Cambia de secciones y color de fondo
     function mostrarSeccion(id) {
-      const colores = ["#121212", "#1f1f1f", "#0d1b2a", "#1a1a40", "#191919"];
-      document.body.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+      const colores = [
+        "radial-gradient(circle at 25% 10%, #00ffd590 0%, #121212 100%)",
+        "radial-gradient(circle at 90% 40%, #00ffd5bb 0%, #191919 100%)",
+        "radial-gradient(circle at 60% 30%, #00c3ff99 0%, #1a1a40 100%)",
+        "radial-gradient(circle at 70% 80%, #00ffd5b0 0%, #191919 100%)",
+        "radial-gradient(circle at 60% 80%, #191919 0%, #00ffd566 100%)"
+      ];
+      document.body.style.background = colores[Math.floor(Math.random() * colores.length)];
       const secciones = document.querySelectorAll('.seccion');
-      secciones.forEach(seccion => {
-        seccion.classList.remove('activa');
-      });
+      secciones.forEach(seccion => seccion.classList.remove('activa'));
       const seccionActiva = document.getElementById(id);
-      if (seccionActiva) {
-        seccionActiva.classList.add('activa');
-      }
+      if (seccionActiva) seccionActiva.classList.add('activa');
+    }
+
+    // Easter Egg visual
+    function mostrarEasterEgg() {
+      document.getElementById("easterEgg").style.display = "block";
+    }
+    function mostrarDetalle(id) {
+      document.getElementById(id).style.display = "block";
     }
 
     // Minijuego: Adivina el número
@@ -202,6 +362,8 @@
       if (valor === numeroSecreto) {
         resultado.innerHTML = `🎉 ¡Correcto! El número era ${numeroSecreto}.<br>Intentos: ${intentos}`;
         input.disabled = true;
+        // desbloquear clicker secreto
+        document.getElementById("clicker-secreto").classList.remove("oculto");
       } else if (valor < numeroSecreto) {
         resultado.textContent = "El número es más grande.";
       } else {
@@ -216,18 +378,140 @@
       document.getElementById("resultado-minijuego").textContent = '';
     }
 
-    // Secretos/Easter Egg
+    // Minijuego: Piedra Papel Tijera
+    function pptJugar(eleccionUsuario) {
+      const opciones = ["piedra", "papel", "tijera"];
+      const emojis = {
+        piedra: "🪨",
+        papel: "📄",
+        tijera: "✂️"
+      };
+      const eleccionBot = opciones[Math.floor(Math.random() * 3)];
+      let resultado;
+      if (eleccionUsuario === eleccionBot) {
+        resultado = "Empate 🤝";
+      } else if (
+        (eleccionUsuario === "piedra" && eleccionBot === "tijera") ||
+        (eleccionUsuario === "papel" && eleccionBot === "piedra") ||
+        (eleccionUsuario === "tijera" && eleccionBot === "papel")
+      ) {
+        resultado = "¡Ganaste! 😎";
+      } else {
+        resultado = "Perdiste, prueba de nuevo 👾";
+      }
+      document.getElementById("ppt-resultado").innerHTML = `<b>Tú:</b> ${emojis[eleccionUsuario]} <b>Bot:</b> ${emojis[eleccionBot]}<br>${resultado}`;
+    }
+
+    // Minijuego: Trivia Geek
+    const trivia = [
+      {
+        pregunta: "¿En qué año se lanzó Discord?",
+        opciones: ["2013", "2015", "2016", "2011"],
+        correcta: 1
+      },
+      {
+        pregunta: "¿Cuál es el nombre del primer mob de Minecraft?",
+        opciones: ["Creeper", "Zombie", "Steve", "Pig"],
+        correcta: 3
+      },
+      {
+        pregunta: "¿Qué lenguaje se usa para los bots de Discord más comunes?",
+        opciones: ["Python", "JavaScript", "Ruby", "PHP"],
+        correcta: 1
+      },
+      {
+        pregunta: "¿Cuál es el nombre del dragón en el End en Minecraft?",
+        opciones: ["Ender Dragon", "Nether Dragon", "Sky Dragon", "Dark Dragon"],
+        correcta: 0
+      },
+      {
+        pregunta: "¿Quién fundó Discord?",
+        opciones: ["Jason Citron", "Bill Gates", "Elon Musk", "Mark Zuckerberg"],
+        correcta: 0
+      }
+    ];
+    let triviaIndice = 0;
+    function mostrarTrivia() {
+      triviaIndice = Math.floor(Math.random() * trivia.length);
+      const q = trivia[triviaIndice];
+      document.getElementById("trivia-pregunta").innerHTML = `<b>${q.pregunta}</b>`;
+      let opcionesHtml = '';
+      q.opciones.forEach((op, i) => {
+        opcionesHtml += `<button onclick="responderTrivia(${i})">${op}</button> `;
+      });
+      document.getElementById("trivia-opciones").innerHTML = opcionesHtml;
+      document.getElementById("trivia-resultado").textContent = '';
+      document.getElementById("trivia-siguiente").style.display = 'none';
+    }
+    function responderTrivia(opcion) {
+      const q = trivia[triviaIndice];
+      if (opcion === q.correcta) {
+        document.getElementById("trivia-resultado").innerHTML = "<span class='trivia-correcto'>¡Correcto!</span>";
+        // Bonus: desbloquea secreto si responde bien dos veces seguidas
+        if (typeof window.triviaStreak === "undefined") window.triviaStreak = 0;
+        window.triviaStreak++;
+        if (window.triviaStreak === 2) {
+          mostrarDetalle('detalle3');
+        }
+      } else {
+        document.getElementById("trivia-resultado").innerHTML = `<span class='trivia-incorrecto'>Incorrecto, la respuesta era "${q.opciones[q.correcta]}"</span>`;
+        window.triviaStreak = 0;
+      }
+      document.getElementById("trivia-siguiente").style.display = '';
+    }
+    function siguienteTrivia() {
+      mostrarTrivia();
+    }
+    mostrarTrivia();
+
+    // Minijuego: Dados
+    function tirarDado() {
+      const res = Math.floor(Math.random() * 6) + 1;
+      const dadoDiv = document.getElementById("dado-resultado");
+      dadoDiv.innerHTML = `<span class="dado-res dado-anim">${res}</span>`;
+      setTimeout(() => dadoDiv.querySelector('.dado-res').classList.remove('dado-anim'), 600);
+      if (res === 6) {
+        dadoDiv.innerHTML += "<br>🎉 ¡Suerte máxima!";
+      }
+    }
+
+    // Clicker secreto
+    let clicks = 0;
+    function sumarClick() {
+      clicks++;
+      document.getElementById("clicks").textContent = "Clicks: " + clicks;
+      if (clicks === 42) {
+        document.getElementById("clicker-mensaje").innerHTML = "¡Descubriste el secreto del universo y todo lo demás! 🚀<br>#Discord #Gaming";
+      }
+    }
+
+    // Secretos/Easter Egg botón secreto
     let contadorSecreto = 0;
     function tocarSecreto() {
       contadorSecreto++;
       const mensaje = document.getElementById("mensaje-secreto");
-      if (contadorSecreto === 5) {
+      if (contadorSecreto === 3) {
         mensaje.style.display = 'block';
-        mensaje.innerHTML = "¡Felicitaciones! Has desbloqueado el secreto:<br><br>🎮 <b>¡Eres un verdadero gamer y fan de Discord!</b> <br> ¿Sabías que los mejores bots y juegos nacen de ideas locas como esta? <br> <span style='color:#fff;'>#ElPk #Discord #Gaming</span>";
+        mensaje.innerHTML = "¡Bien! Pero sigue presionando...";
+      } else if (contadorSecreto === 5) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = "¡Felicitaciones! Has desbloqueado el secreto:<br><br>🎮 <b>¡Eres un verdadero gamer y fan de Discord!</b> <br> ¿Sabías que los mejores bots y juegos nacen de ideas locas como esta?<br> <span style='color:#fff;'>#ElPk #Discord #Gaming</span>";
       } else if (contadorSecreto > 5) {
         mensaje.innerHTML = "¡Ya descubriste el secreto! Comparte esto con tus amigos gamers en Discord 😎";
       }
     }
+
+    // Habilidad extra: Easter eggs ocultos con teclado
+    window.addEventListener('keydown', function(e) {
+      // Si el usuario escribe "elpk" aparece el clicker secreto
+      window._egg = (window._egg || '');
+      window._egg += e.key.toLowerCase();
+      if (window._egg.length > 6) window._egg = window._egg.slice(-6);
+      if (window._egg.endsWith('elpk')) {
+        document.getElementById("clicker-secreto").classList.remove("oculto");
+        document.getElementById("clicker-mensaje").innerHTML = "¡Desbloqueaste el minijuego clicker secreto! 🚀";
+      }
+    });
   </script>
 </body>
 </html>
