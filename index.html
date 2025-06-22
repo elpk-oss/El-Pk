@@ -17,99 +17,101 @@
     #bienvenida {
       background: #08340a;
       color: #77ff77;
-      padding: 7px 10px;
+      padding: 12px 22px;
       font-weight: bold;
-      font-size: 1.08rem;
-      letter-spacing: 1px;
+      font-size: 1.22rem;
+      letter-spacing: 1.2px;
       border-bottom: 2px solid #27ff27;
-      text-shadow: 0 0 4px #39ff1470;
+      text-shadow: 0 0 6px #39ff1470;
       user-select: none;
-      box-shadow: 0 2px 8px #39ff1480;
+      box-shadow: 0 2px 10px #39ff1480;
     }
     aside {
       position: fixed;
-      top: 54px;
-      left: 2px;
+      top: 65px;
+      left: 10px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 18px;
       z-index: 1000;
     }
     aside button {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
-      border: 1.5px solid #27ff27;
+      border: 2.5px solid #27ff27;
       color: #77ff77;
-      padding: 27px 36px;
-      border-radius: 6px;
-      font-size: 0.92rem;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 1.25rem;
       font-family: inherit;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 1px 4px #39ff1470;
-      transition: all 0.14s;
+      box-shadow: 0 2px 10px #39ff1470;
+      transition: all 0.18s;
       outline: none;
-      letter-spacing: 0.3px;
+      letter-spacing: 1.2px;
       text-align: left;
-      min-width: 90px;
+      min-width: 150px;
     }
     aside button:hover {
       background: #27ff27;
       color: #111d13;
-      scale: 1.03;
-      box-shadow: 0 2px 8px #27ff27cc;
+      scale: 1.07;
+      box-shadow: 0 2px 16px #27ff27cc;
     }
     main {
-      padding: 15px;
-      margin-left: 90px;
+      padding: 36px;
+      margin-left: 160px;
       max-width: 900px;
       min-height: 70vh;
     }
     h1 {
       color: #27ff27;
-      font-size: 1.7rem;
-      margin-bottom: 8px;
-      text-shadow: 0 0 7px #27ff2777;
-      letter-spacing: 1.1px;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px #27ff2777;
+      letter-spacing: 2px;
     }
     h2 {
       color: #39ff14;
       margin-top: 0;
-      letter-spacing: 0.7px;
-      text-shadow: 0 0 4px #39ff1477;
-      font-size: 1rem;
+      letter-spacing: 1.3px;
+      text-shadow: 0 0 6px #39ff1477;
+      font-size: 1.55rem;
+      margin-bottom: 10px;
     }
     .seccion {
       display: none;
       opacity: 0;
-      transition: opacity 0.28s;
-      margin-top: 7px;
+      transition: opacity 0.5s;
+      margin-top: 22px;
     }
     .seccion.activa {
       display: block;
       opacity: 1;
-      animation: fadeInHack 0.23s;
+      animation: fadeInHack 0.5s;
     }
     @keyframes fadeInHack {
-      from { opacity: 0; filter: blur(7px);}
+      from { opacity: 0; filter: blur(12px);}
       to { opacity: 1; filter: blur(0);}
     }
     ul li {
       background: #111d13;
-      border-left: 2px solid #27ff27;
-      padding: 5px;
-      margin: 5px 0;
-      border-radius: 4px;
-      font-size: 0.93rem;
-      box-shadow: 0 1px 3px #27ff271a;
+      border-left: 4px solid #27ff27;
+      padding: 15px;
+      margin: 13px 0;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 7px #27ff271a;
     }
     a {
       color: #39ff14;
       text-decoration: underline;
-      transition: color 0.18s;
+      transition: color 0.2s;
+      font-size: 1.08rem;
     }
     a:hover {
       color: #aaffaa;
-      text-shadow: 0 0 3px #27ff2799;
+      text-shadow: 0 0 8px #27ff2799;
     }
     /* Terminal overlay */
     #terminalOverlay {
@@ -120,82 +122,81 @@
       z-index: 4000;
       justify-content: center;
       align-items: center;
-      animation: fadeIn 0.25s;
+      animation: fadeIn 0.5s;
     }
     @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
     .terminal {
-      width: 96vw;
-      max-width: 440px;
-      height: 230px;
+      width: 98vw;
+      max-width: 700px;
+      height: 410px;
       background: #062108;
-      border: 1.5px solid #27ff27;
-      border-radius: 7px;
-      box-shadow: 0 0 10px #27ff2777;
-      padding: 8px 7px 6px 7px;
+      border: 2px solid #27ff27;
+      border-radius: 13px;
+      box-shadow: 0 0 22px #27ff2777;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      font-size: 0.91rem;
-      animation: terminalOpen 0.24s;
+      font-size: 1.17rem;
+      animation: terminalOpen 0.5s;
     }
     @keyframes terminalOpen {
-      from {transform: scale(0.96) translateY(18px);}
+      from {transform: scale(0.95) translateY(40px);}
       to {transform: scale(1) translateY(0);}
     }
     .terminal-header {
       color: #27ff27;
       font-weight: bold;
-      font-size: 0.92rem;
-      padding-bottom: 3px;
-      letter-spacing: 0.7px;
+      font-size: 1.20rem;
+      padding-bottom: 10px;
+      letter-spacing: 1.3px;
+      text-shadow: 0 0 8px #39ff1499;
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 1px;
     }
     .terminal-close {
       color: #27ff27;
       background: transparent;
       border: none;
-      font-size: 1rem;
+      font-size: 1.45rem;
       cursor: pointer;
       font-weight: bold;
-      transition: color 0.13s;
-      padding: 0 2px;
+      transition: color 0.2s;
     }
     .terminal-close:hover { color: #ff3939;}
     .terminal-body {
       background: #061a07;
       flex: 1;
-      border-radius: 4px;
-      padding: 5px 6px;
+      border-radius: 8px;
+      padding: 16px;
       overflow-y: auto;
       color: #aaffaa;
-      font-size: 0.9rem;
-      margin-bottom: 3px;
-      box-shadow: 0 0 3px #27ff2733 inset;
+      font-size: 1.13rem;
+      margin-bottom: 8px;
+      box-shadow: 0 0 9px #27ff2733 inset;
     }
     .terminal-input-line {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.86rem;
+      gap: 12px;
+      font-size: 1.05rem;
     }
     .prompt {
       color: #39ff14;
       font-weight: bold;
-      letter-spacing: 0.7px;
-      text-shadow: 0 0 1px #39ff14;
-      font-size: 0.99rem;
+      letter-spacing: 1.1px;
+      text-shadow: 0 0 2px #39ff14;
+      font-size: 1.15rem;
     }
     .terminal input[type="text"] {
       background: #0b280e;
       color: #aaffaa;
       border: none;
-      padding: 2px 4px;
-      border-radius: 2px;
-      font-size: 0.9rem;
-      width: 63%;
+      padding: 7px 11px;
+      border-radius: 6px;
+      font-size: 1.12rem;
+      width: 72%;
       outline: none;
       font-family: inherit;
-      box-shadow: 0 0 2px #27ff271a;
+      box-shadow: 0 0 6px #27ff271a;
     }
     .terminal input[type="text"]:focus {
       background: #112f16;
@@ -206,34 +207,34 @@
     }
     .terminal-res {
       color: #aaffaa;
-      margin-left: 11px;
-      margin-bottom: 2px;
-      font-size: 0.9rem;
+      margin-left: 28px;
+      margin-bottom: 5px;
+      font-size: 1.08rem;
       white-space: pre-line;
     }
     .terminal-hint {
       color: #1aff8a;
-      font-size: 0.8rem;
-      margin: 3px 0 0 3px;
+      font-size: 1rem;
+      margin: 10px 0 0 10px;
       opacity: 0.7;
       font-style: italic;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.5px;
     }
     .terminal-blink {
       animation: blink 1s steps(2, start) infinite;
     }
     @keyframes blink { to {visibility: hidden;} }
     footer {
-      margin-top: 25px;
+      margin-top: 55px;
       text-align: center;
-      font-size: 0.87rem;
+      font-size: 1.09rem;
       color: #27ff27cc;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 2px #27ff2722;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px #27ff2722;
     }
-    @media (max-width: 700px) {
-      main { margin-left: 5px; padding: 6px; }
-      aside { position: static; flex-direction: row; gap: 4px; margin-bottom: 9px; }
+    @media (max-width: 800px) {
+      main { margin-left: 7px; padding: 9px; }
+      aside { position: static; flex-direction: row; gap: 10px; margin-bottom: 15px; }
       #terminalOverlay .terminal { max-width: 97vw; }
     }
   </style>
@@ -248,7 +249,7 @@
   </aside>
   <main>
     <header>
-      <h1>Soy El Pk <span style="font-size:1.05rem;">👾</span></h1>
+      <h1>Soy El Pk <span style="font-size:1.55rem;">👾</span></h1>
       <p>
         Desarrollador uruguayo. Apasionado por los bots de Discord, el desarrollo web y los proyectos creativos.<br>
         Me encanta experimentar con <span style="color:#1aff8a;">HTML</span>, <span style="color:#1aff8a;">CSS</span>, <span style="color:#1aff8a;">JavaScript</span> y hacer cosas útiles para la comunidad gamer y techie.
@@ -398,7 +399,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
 
     function abrirTerminal() {
       document.getElementById("terminalOverlay").style.display = "flex";
-      setTimeout(() => document.getElementById("terminalInput").focus(), 160);
+      setTimeout(() => document.getElementById("terminalInput").focus(), 180);
     }
     function cerrarTerminal() {
       document.getElementById("terminalOverlay").style.display = "none";
@@ -467,7 +468,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       if (index < textoBienvenida.length) {
         div.innerHTML = textoBienvenida.substring(0, index+1) + '<span class="terminal-blink">|</span>';
         index++;
-        setTimeout(escribir, 32);
+        setTimeout(escribir, 45);
       } else {
         div.innerHTML = textoBienvenida;
       }
