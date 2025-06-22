@@ -13,7 +13,6 @@
       padding: 0;
       transition: background-color 0.8s ease;
     }
-
     #bienvenida {
       background: #00ffd5;
       color: #121212;
@@ -22,7 +21,6 @@
       font-size: 1.2rem;
       box-shadow: 0 2px 10px #00ffd580;
     }
-
     aside {
       position: fixed;
       top: 60px;
@@ -32,7 +30,6 @@
       gap: 10px;
       z-index: 1000;
     }
-
     aside button {
       background: #1f1f1f;
       border: 2px solid #00ffd5;
@@ -42,34 +39,28 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     aside button:hover {
       background: #00ffd5;
       color: #121212;
     }
-
     main {
       padding: 30px;
       margin-left: 120px;
       max-width: 800px;
     }
-
     header h1 {
       color: #00ffd5;
       font-size: 2.5rem;
     }
-
     .seccion {
       display: none;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
-
     .seccion.activa {
       display: block;
       opacity: 1;
     }
-
     ul li {
       background-color: #1f1f1f;
       padding: 10px;
@@ -77,35 +68,64 @@
       border-left: 4px solid #00ffd5;
       border-radius: 4px;
     }
+    .minijuego-container {
+      margin-top: 20px;
+      padding: 20px;
+      background: #191919;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+    .secreto {
+      margin-top: 20px;
+      padding: 20px;
+      background: #1a1a40;
+      border-radius: 8px;
+      color: #00ffd5;
+      font-weight: bold;
+      display: none;
+    }
+    .btn-secreto {
+      display: inline-block;
+      margin-top: 15px;
+      background: #00ffd5;
+      color: #191919;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .btn-secreto:hover {
+      background: #00bfa3;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
   <div id="bienvenida"></div>
-
   <aside>
     <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
     <button onclick="mostrarSeccion('contacto')">Contacto</button>
+    <button onclick="mostrarSeccion('minijuegos')">Minijuegos</button>
+    <button onclick="mostrarSeccion('secretos')">Secretos</button>
   </aside>
-
   <main>
     <header>
       <h1>Hola, soy El Pk 👾</h1>
       <p>Developer, creador de bots, amante de Minecraft y de los proyectos locos.</p>
     </header>
-
     <section id="sobreMi" class="seccion activa">
       <h2>🧠 Sobre Mí</h2>
       <p>Soy un desarrollador uruguayo apasionado por crear bots de Discord, páginas web y sistemas originales. Me gusta experimentar con HTML, CSS, JS y más tecnologías.</p>
     </section>
-
     <section id="proyectos" class="seccion">
       <h2>💼 Proyectos Públicos</h2>
       <ul>
         <li><strong>KaBot</strong> – Un bot de Discord completo con sistema de juegos, administración y más.</li>
       </ul>
     </section>
-
     <section id="contacto" class="seccion">
       <h2>📩 Contacto</h2>
       <p>¿Querés hablarme o ver más de lo que hago? ¡Estas son mis redes!</p>
@@ -113,30 +133,34 @@
         <li>Discord: <code>@el_pk1</code></li>
         <li>Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
         <li>YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a></li>
+        <li>Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
     </section>
-
+    <!-- Minijuegos -->
+    <section id="minijuegos" class="seccion">
+      <h2>🎮 Minijuegos</h2>
+      <div class="minijuego-container" id="adivinaNumero">
+        <h3>Adivina el Número</h3>
+        <p>Estoy pensando en un número entre 1 y 20. ¿Puedes adivinarlo?</p>
+        <input type="number" id="input-numero" min="1" max="20" placeholder="Tu número..." />
+        <button onclick="jugarAdivinaNumero()">Adivinar</button>
+        <div id="resultado-minijuego" style="margin-top:10px;"></div>
+        <button onclick="reiniciarAdivinaNumero()" style="margin-top:10px;">Reiniciar Juego</button>
+      </div>
+    </section>
+    <!-- Secretos -->
+    <section id="secretos" class="seccion">
+      <h2>🕵️ Secretos</h2>
+      <p>¿Te gustan los easter eggs? Prueba presionar el botón secreto varias veces...</p>
+      <button class="btn-secreto" onclick="tocarSecreto()">Botón Secreto</button>
+      <div id="mensaje-secreto" class="secreto"></div>
+    </section>
     <footer>
       <p>© 2025 El Pk. Todos los derechos reservados.</p>
     </footer>
   </main>
-
   <script>
-    function mostrarSeccion(id) {
-      const colores = ["#121212", "#1f1f1f", "#0d1b2a", "#1a1a40", "#191919"];
-      document.body.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-
-      const secciones = document.querySelectorAll('.seccion');
-      secciones.forEach(seccion => {
-        seccion.classList.remove('activa');
-      });
-
-      const seccionActiva = document.getElementById(id);
-      if (seccionActiva) {
-        seccionActiva.classList.add('activa');
-      }
-    }
-
+    // Animación bienvenida
     const textoBienvenida = "Bienvenido a mi mundo loco y funcional 😎";
     let index = 0;
     const div = document.getElementById("bienvenida");
@@ -148,6 +172,62 @@
       }
     }
     escribir();
+
+    // Cambia de secciones y color de fondo
+    function mostrarSeccion(id) {
+      const colores = ["#121212", "#1f1f1f", "#0d1b2a", "#1a1a40", "#191919"];
+      document.body.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(seccion => {
+        seccion.classList.remove('activa');
+      });
+      const seccionActiva = document.getElementById(id);
+      if (seccionActiva) {
+        seccionActiva.classList.add('activa');
+      }
+    }
+
+    // Minijuego: Adivina el número
+    let numeroSecreto = Math.floor(Math.random() * 20) + 1;
+    let intentos = 0;
+    function jugarAdivinaNumero() {
+      const input = document.getElementById("input-numero");
+      const resultado = document.getElementById("resultado-minijuego");
+      const valor = parseInt(input.value, 10);
+      if (isNaN(valor) || valor < 1 || valor > 20) {
+        resultado.textContent = "Por favor, ingresa un número entre 1 y 20.";
+        return;
+      }
+      intentos++;
+      if (valor === numeroSecreto) {
+        resultado.innerHTML = `🎉 ¡Correcto! El número era ${numeroSecreto}.<br>Intentos: ${intentos}`;
+        input.disabled = true;
+      } else if (valor < numeroSecreto) {
+        resultado.textContent = "El número es más grande.";
+      } else {
+        resultado.textContent = "El número es más pequeño.";
+      }
+    }
+    function reiniciarAdivinaNumero() {
+      numeroSecreto = Math.floor(Math.random() * 20) + 1;
+      intentos = 0;
+      document.getElementById("input-numero").value = '';
+      document.getElementById("input-numero").disabled = false;
+      document.getElementById("resultado-minijuego").textContent = '';
+    }
+
+    // Secretos/Easter Egg
+    let contadorSecreto = 0;
+    function tocarSecreto() {
+      contadorSecreto++;
+      const mensaje = document.getElementById("mensaje-secreto");
+      if (contadorSecreto === 5) {
+        mensaje.style.display = 'block';
+        mensaje.innerHTML = "¡Felicitaciones! Has desbloqueado el secreto:<br><br>🎮 <b>¡Eres un verdadero gamer y fan de Discord!</b> <br> ¿Sabías que los mejores bots y juegos nacen de ideas locas como esta? <br> <span style='color:#fff;'>#ElPk #Discord #Gaming</span>";
+      } else if (contadorSecreto > 5) {
+        mensaje.innerHTML = "¡Ya descubriste el secreto! Comparte esto con tus amigos gamers en Discord 😎";
+      }
+    }
   </script>
 </body>
 </html>
