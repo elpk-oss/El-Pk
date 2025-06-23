@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soy El Pk</title>
+  <title>El Pk - Developer</title>
   <style>
     body {
       background: #111d13;
@@ -355,16 +355,16 @@
       <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
     </div>
   </div>
-  <!-- IA Modal (ahora es un chat con respuestas predefinidas, sin backend ni IA real) -->
+  <!-- IA Modal (dice IA, pero es respuestas predefinidas) -->
   <div id="iaOverlay">
     <div class="terminal">
       <div class="terminal-header">
-        <span>Chat con Bot</span>
+        <span>IA de El Pk</span>
         <button class="terminal-close" onclick="cerrarIA()" title="Cerrar">×</button>
       </div>
       <div class="terminal-body" id="iaBody" style="overflow-y:auto;">
         <ul id="iaChatMsgList">
-          <li class="iaChatMsg bot"><strong>Bot:</strong> ¡Hola! Soy el bot de El Pk. Escribe <b>help</b> o <b>ayuda</b> para ver qué puedo responder.</li>
+          <li class="iaChatMsg bot"><strong>IA:</strong> ¡Hola! Soy la IA de El Pk. Escribe <b>help</b> o <b>ayuda</b> para ver todo lo que sé responder.</li>
         </ul>
       </div>
       <form id="iaChatForm" onsubmit="return enviarMensajeIA(event)">
@@ -373,7 +373,7 @@
           <input type="text" id="iaInput" autocomplete="off" />
         </div>
       </form>
-      <div class="terminal-hint">¡Prueba saludos, chistes, ayuda, hora, y más!</div>
+      <div class="terminal-hint">¡Prueba saludos, chistes, datos random, curiosidades, juegos y más!</div>
     </div>
   </div>
   <footer>
@@ -548,7 +548,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       const ul = document.getElementById("iaChatMsgList");
       const li = document.createElement("li");
       li.className = "iaChatMsg " + role;
-      li.innerHTML = `<strong>${role === 'user' ? "Tú" : "Bot"}:</strong> ${text}`;
+      li.innerHTML = `<strong>${role === 'user' ? "Tú" : "IA"}:</strong> ${text}`;
       ul.appendChild(li);
       scrollIA();
     }
@@ -557,75 +557,212 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       body.scrollTop = body.scrollHeight;
     }
 
-    // Respuestas predefinidas
+    // RESPUESTAS IA
     function responderBot(msg) {
       const texto = msg.trim().toLowerCase();
-      // saludos
-      if (["hola", "buenas", "hello", "hey"].includes(texto)) {
+
+      // Saludos y variante
+      if (["hola", "buenas", "hello", "hey", "holi", "qué tal", "que tal", "saludos", "buen día", "buenas tardes", "buenas noches"].includes(texto)) {
         const saludos = [
           "¡Hola! ¿Cómo te va?",
           "¡Buenas! ¿En qué puedo ayudarte?",
           "¡Hey! ¿Qué tal?",
-          "¡Hola humano! ¿Listo para preguntar algo?"
+          "¡Hola humano! ¿Listo para preguntar algo?",
+          "¡Bienvenido! ¿Qué necesitas saber?",
+          "Saludos! ¿Te ayudo en algo?",
+          "¡Hola crack! 😎",
+          "¡Buenas tardes! Espero que estés genial."
         ];
         return saludos[Math.floor(Math.random()*saludos.length)];
       }
-      // ayuda
-      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer"].includes(texto)) {
+
+      // Ayuda y comandos
+      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer", "menu", "opciones", "lista"].includes(texto)) {
         return `<b>Puedo responder:</b><br>
-- "Hola": saludo<br>
+- "Hola", "Buenas", "Hey", etc.: saludo<br>
 - "Chiste": te cuento un chiste<br>
 - "Hora" o "Fecha": te digo la hora/fecha<br>
-- "¿Quién eres?": te cuento quién soy<br>
-- "Color favorito", "Sentido de la vida": respuestas random<br>
-- "Adiós": me despido<br>
-¡Prueba a escribir alguno!`;
+- "¿Quién eres?", "¿Eres real?", "¿Eres humano?", "¿Quién te creó?": info sobre mí<br>
+- "Color favorito", "Sentido de la vida", "Dato random", "Curiosidad": respuestas random<br>
+- "Adiós", "Chao", "Bye": me despido<br>
+- "¿Cuál es el mejor lenguaje?", "¿Minecraft?", "¿Peñarol?": respuestas divertidas<br>
+- "Juego", "adivinanza", "reto": juegos simples<br>
+- "Motívame", "frase", "consejo": te mando frases<br>
+- "Redes", "discord", "youtube", "contacto": mis datos<br>
+¡Pruébame!`;
       }
-      // despedida
-      if (["adiós", "adios", "bye", "nos vemos", "hasta luego"].includes(texto)) {
+
+      // Despedidas
+      if (["adiós", "adios", "bye", "nos vemos", "hasta luego", "chau", "chao", "me voy"].includes(texto)) {
         const despedidas = [
           "¡Adiós! Que tengas un gran día.",
           "¡Hasta la próxima!",
           "Nos vemos, ¡suerte!",
-          "¡Chau! No dejes de codear."
+          "¡Chau! No dejes de codear.",
+          "¡Bye bye! Vuelve pronto.",
+          "¡Cuidate! 👋"
         ];
         return despedidas[Math.floor(Math.random()*despedidas.length)];
       }
-      // chiste
-      if (texto.includes("chiste")) {
+
+      // Chistes
+      if (texto.includes("chiste") || texto.includes("cuentame un chiste") || texto.includes("cuéntame un chiste")) {
         const chistes = [
           "¿Por qué los programadores confunden Halloween y Navidad? Porque OCT 31 == DEC 25.",
           "¿Qué le dice un bit a otro? Nos vemos en el bus.",
           "¿Por qué la computadora fue al médico? Porque tenía un virus.",
-          "¿Cómo se llama un pez que hace código? ¡Un pez-coder!"
+          "¿Cómo se llama un pez que hace código? ¡Un pez-coder!",
+          "¿Por qué el café se fue al archivo? Porque estaba Java.",
+          "¿En qué se parece un programador a un mago? En que ambos usan scripts.",
+          "¿Por qué el código estaba triste? Porque tenía muchos bugs.",
+          "¿Qué lenguaje usan los gatos? Meow.js"
         ];
         return chistes[Math.floor(Math.random()*chistes.length)];
       }
-      // hora y fecha
-      if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día")) {
+
+      // Hora y fecha
+      if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día") || texto.includes("que hora es") || texto.includes("qué hora es")) {
         const ahora = new Date();
         return `Ahora es ${ahora.toLocaleTimeString()} del día ${ahora.toLocaleDateString()}.`;
       }
-      // quién eres
-      if (texto.includes("quién eres") || texto.includes("quien eres") || texto.includes("tu nombre")) {
-        return "Soy el bot de El Pk, tu asistente programado. ¡Listo para responder cosas simples!";
+
+      // Quién eres, identidad, creador, IA
+      if (
+        texto.includes("quién eres") || texto.includes("quien eres") ||
+        texto.includes("tu nombre") || texto.includes("eres real") ||
+        texto.includes("eres humano") || texto.includes("qué eres") ||
+        texto.includes("que eres") || texto.includes("quién te creó") ||
+        texto.includes("quien te creo") || texto.includes("te creó") ||
+        texto.includes("te creo") || texto.includes("eres una ia") ||
+        texto.includes("eres bot")
+      ) {
+        const variantes = [
+          "Soy la IA de El Pk, programada para responderte y hacerte sonreír.",
+          "No soy humano, pero me esfuerzo por ser buena onda 😄.",
+          "Me creó El Pk, el mejor developer uruguayo.",
+          "¡Soy una IA... o eso creo! 🤖",
+          "Me programó El Pk. ¡Pregúntame lo que quieras!"
+        ];
+        return variantes[Math.floor(Math.random()*variantes.length)];
       }
-      // color favorito
-      if (texto.includes("color favorito")) {
+
+      // Color favorito
+      if (texto.includes("color favorito") || texto.includes("color que te gusta")) {
         const colores = [
           "¡Me gusta el verde PK, obvio!",
           "Creo que el azul digital es genial.",
           "El negro terminal, como mi fondo.",
-          "¡Todos los colores de la consola!"
+          "¡Todos los colores de la consola!",
+          "El amarillo y negro de Peñarol 😏"
         ];
         return colores[Math.floor(Math.random()*colores.length)];
       }
-      // sentido vida
-      if (texto.includes("sentido de la vida")) {
-        return "42. Obvio.";
+
+      // Sentido vida
+      if (texto.includes("sentido de la vida") || texto.includes("significado de la vida")) {
+        const vidas = [
+          "42. ¡Obvio! (Referencia geek)",
+          "Aprender, compartir y disfrutar el código.",
+          "¡Jugar Minecraft y tomar mate!",
+          "El sentido es preguntar y descubrir.",
+          "Vivir, reír, programar."
+        ];
+        return vidas[Math.floor(Math.random()*vidas.length)];
       }
-      // respuesta por defecto
-      return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver lo que sé responder.";
+
+      // Dato random o curiosidad
+      if (texto.includes("dato random") || texto.includes("curiosidad") || texto.includes("sorprendeme")) {
+        const datos = [
+          "¿Sabías que el primer bug informático fue una polilla?",
+          "La palabra 'robot' viene del checo 'robota', que significa 'trabajo forzado'.",
+          "El primer emoji fue creado en 1999 en Japón.",
+          "Cada minuto se suben más de 500 horas de video a Youtube.",
+          "El código fuente de Apollo 11 fue compartido en GitHub.",
+          "Hay más combinaciones posibles de partidas de ajedrez que átomos en el universo.",
+          "El 111111111 x 111111111 = 12345678987654321"
+        ];
+        return datos[Math.floor(Math.random()*datos.length)];
+      }
+
+      // Juegos
+      if (texto.includes("juego") || texto.includes("adivinanza") || texto.includes("reto")) {
+        const juegos = [
+          "Adivina: ¿Qué es algo que cuanto más le quitas, más grande se vuelve? (Respuesta: El agujero)",
+          "Desafío: Escribe una línea de código que imprima 'Hola Mundo' en tu lenguaje favorito.",
+          "Reto rápido: ¿Cuánto es 7 x 8?",
+          "¡Adivina un número del 1 al 5! (Es 3 😅)",
+          "¿Sabías que puedes jugar al Dinosaurio en Chrome sin internet?"
+        ];
+        return juegos[Math.floor(Math.random()*juegos.length)];
+      }
+
+      // Frases, motivaciones
+      if (texto.includes("motívame") || texto.includes("motivame") || texto.includes("frase") || texto.includes("consejo") || texto.includes("motiva")) {
+        const frases = [
+          "El mejor momento para comenzar era ayer. El segundo mejor, es ahora.",
+          "No te rindas, el próximo intento puede ser el que funcione.",
+          "Los bugs son solo oportunidades para aprender.",
+          "El código perfecto no existe... ¡pero puedes acercarte!",
+          "Hazlo con pasión o mejor no lo hagas."
+        ];
+        return frases[Math.floor(Math.random()*frases.length)];
+      }
+
+      // Redes sociales, contacto, discord, youtube
+      if (texto.includes("redes") || texto.includes("discord") || texto.includes("youtube") || texto.includes("contacto") || texto.includes("correo") || texto.includes("email")) {
+        return `Aquí tienes mis redes:<br>
+- Discord: <code>@el_pk1</code> <br>
+- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a><br>
+- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a><br>
+- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>`;
+      }
+
+      // Lenguajes de programación
+      if (texto.includes("mejor lenguaje") || texto.includes("lenguaje favorito") || texto.includes("programar en")) {
+        const lenguajes = [
+          "¡JavaScript es el rey del web! Pero Python también es top.",
+          "Mi favorito es JavaScript, pero respeto a todos los lenguajes.",
+          "¡El mejor lenguaje es el que te divierte programar!",
+          "¿Sabías que hasta Minecraft se puede programar?"
+        ];
+        return lenguajes[Math.floor(Math.random()*lenguajes.length)];
+      }
+
+      // Peñarol y fútbol
+      if (texto.includes("peñarol") || texto.includes("fútbol") || texto.includes("futbol")) {
+        const peñarol = [
+          "¡Arriba Peñarol! 🔥🟡⚫",
+          "El decano del fútbol uruguayo. ¡Vamos manya!",
+          "Peñarol: pasión, garra y gloria.",
+          "¿Hincha de Peñarol? ¡Entonces sos de los buenos!"
+        ];
+        return peñarol[Math.floor(Math.random()*peñarol.length)];
+      }
+
+      // Minecraft
+      if (texto.includes("minecraft")) {
+        const minecraft = [
+          "¡Minecraft es vida! ¿Survival o creativo?",
+          "¿Sabías que puedes programar comandos en Minecraft?",
+          "¿Te gusta construir o explorar?",
+          "Diamantes y Creepers, la combinación perfecta."
+        ];
+        return minecraft[Math.floor(Math.random()*minecraft.length)];
+      }
+
+      // Respuestas sí/no humor
+      if (texto.startsWith("eres real") || texto.startsWith("eres una ia") || texto.startsWith("eres humano")) {
+        const siNo = [
+          "Soy una IA... pero tengo sentimientos (o casi).",
+          "No soy humano, pero intento ser simpática.",
+          "Solo soy código y respuestas.",
+          "En el fondo, soy solo unos y ceros."
+        ];
+        return siNo[Math.floor(Math.random()*siNo.length)];
+      }
+
+      // Respuesta por defecto
+      return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver todo lo que sé responder. ¡Pruébame con saludos, preguntas, chistes, retos, datos random y más!";
     }
 
     // Animación bienvenida
