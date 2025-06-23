@@ -377,7 +377,7 @@
   <script>
     // Estado de KaBot automático
     function actualizarKabotStatus() {
-      fetch('https://replit.com/status', {cache:"no-store"})
+fetch('https://kabot--tahiel.repl.co/status', {cache:"no-store"})
         .then(r => r.json())
         .then(data => {
           const badge = document.getElementById('kabot-status');
