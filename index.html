@@ -34,8 +34,7 @@
       flex-direction: column;
       gap: 16px;
       z-index: 1000;
-      height: calc(100vh - 70px);
-      justify-content: flex-start;
+      width: 240px; /* Fijar ancho para los botones y reservar espacio en main */
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
@@ -52,10 +51,12 @@
       outline: none;
       letter-spacing: 1px;
       text-align: left;
-      min-width: 160px;
+      min-width: 180px;
+      width: 100%;
       display: flex;
       align-items: center;
       gap: 10px;
+      box-sizing: border-box;
     }
     .sidebar button:hover, .invite-bot-btn:hover {
       background: #27ff27;
@@ -76,6 +77,8 @@
       text-decoration: none;
       margin-top: 2px;
       margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .invite-bot-btn:hover {
       background: linear-gradient(90deg, #27ff27 60%, #5865f2 250%);
@@ -88,7 +91,7 @@
     }
     main {
       padding: 25px;
-      margin-left: 220px; /* Más espacio para la sidebar y mayor separación del texto */
+      margin-left: 260px; /* Igual o mayor que el ancho de la sidebar + gap */
       max-width: 900px;
       min-height: 70vh;
       transition: margin-left 0.2s;
@@ -264,7 +267,7 @@
     }
     @media (max-width: 900px) {
       main { margin-left: 7px; padding: 9px; }
-      .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto;}
+      .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
       #terminalOverlay .terminal { max-width: 97vw; }
     }
   </style>
