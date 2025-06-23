@@ -271,6 +271,12 @@
       .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
       #terminalOverlay .terminal, #iaOverlay .terminal { max-width: 97vw; }
     }
+    /* Chat IA estilo */
+    #iaChatMsgList { margin:0; padding:0; list-style:none; }
+    .iaChatMsg { margin-bottom:10px; }
+    .iaChatMsg.user { text-align:right; color:#1aff8a; }
+    .iaChatMsg.bot { text-align:left; color:#aaffaa; }
+    .iaChatMsg strong { color:#39ff14;}
   </style>
 </head>
 <body>
@@ -349,23 +355,25 @@
       <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
     </div>
   </div>
-  <!-- IA Modal -->
+  <!-- IA Modal (ahora es un chat con respuestas predefinidas, sin backend ni IA real) -->
   <div id="iaOverlay">
     <div class="terminal">
       <div class="terminal-header">
-        <span>Chat con IA</span>
+        <span>Chat con Bot</span>
         <button class="terminal-close" onclick="cerrarIA()" title="Cerrar">×</button>
       </div>
-      <div class="terminal-body" id="iaBody">
-        <div class="terminal-res">Hola 👋, ¡soy la IA de El Pk! ¿En qué puedo ayudarte?</div>
+      <div class="terminal-body" id="iaBody" style="overflow-y:auto;">
+        <ul id="iaChatMsgList">
+          <li class="iaChatMsg bot"><strong>Bot:</strong> ¡Hola! Soy el bot de El Pk. Escribe <b>help</b> o <b>ayuda</b> para ver qué puedo responder.</li>
+        </ul>
       </div>
-      <form onsubmit="return enviarMensajeIA(event)">
+      <form id="iaChatForm" onsubmit="return enviarMensajeIA(event)">
         <div class="terminal-input-line">
           <span class="prompt">Tú:</span>
           <input type="text" id="iaInput" autocomplete="off" />
         </div>
       </form>
-      <div class="terminal-hint">¡Prueba preguntarme lo que quieras! (IA real, segura)</div>
+      <div class="terminal-hint">¡Prueba saludos, chistes, ayuda, hora, y más!</div>
     </div>
   </div>
   <footer>
@@ -514,7 +522,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       }
     });
 
-    // IA Chat seguro: llama al backend, no expone tu API KEY
+    // --- IA CHAT BOT RESPUESTAS HARDCODEADAS ---
     function abrirIA() {
       document.getElementById("iaOverlay").style.display = "flex";
       setTimeout(() => document.getElementById("iaInput").focus(), 180);
@@ -528,36 +536,96 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       const input = document.getElementById("iaInput");
       const msg = input.value.trim();
       if (!msg) return false;
-      mostrarEnIA(`<span class="prompt">Tú:</span> <span class="terminal-cmd">${msg}</span>`);
+      agregarMsgBotChat('user', msg);
       input.value = "";
-      // Llama al backend seguro
-      fetch("http://localhost:3000/api/ia", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: msg })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if(data.respuesta){
-          mostrarEnIA(`<div class="terminal-res">🤖 ${data.respuesta}</div>`);
-        }else{
-          mostrarEnIA(`<div class="terminal-res">❌ Error: ${data.error || "Sin respuesta de la IA"}</div>`);
-        }
-        scrollIA();
-      }).catch(err => {
-        mostrarEnIA(`<div class="terminal-res">❌ Error: ${err.message}</div>`);
-        scrollIA();
-      });
+      setTimeout(() => {
+        agregarMsgBotChat('bot', responderBot(msg));
+      }, 300);
       scrollIA();
       return false;
     }
-    function mostrarEnIA(html) {
-      const body = document.getElementById("iaBody");
-      body.insertAdjacentHTML("beforeend", `<div>${html}</div>`);
+    function agregarMsgBotChat(role, text) {
+      const ul = document.getElementById("iaChatMsgList");
+      const li = document.createElement("li");
+      li.className = "iaChatMsg " + role;
+      li.innerHTML = `<strong>${role === 'user' ? "Tú" : "Bot"}:</strong> ${text}`;
+      ul.appendChild(li);
+      scrollIA();
     }
     function scrollIA() {
       const body = document.getElementById("iaBody");
       body.scrollTop = body.scrollHeight;
+    }
+
+    // Respuestas predefinidas
+    function responderBot(msg) {
+      const texto = msg.trim().toLowerCase();
+      // saludos
+      if (["hola", "buenas", "hello", "hey"].includes(texto)) {
+        const saludos = [
+          "¡Hola! ¿Cómo te va?",
+          "¡Buenas! ¿En qué puedo ayudarte?",
+          "¡Hey! ¿Qué tal?",
+          "¡Hola humano! ¿Listo para preguntar algo?"
+        ];
+        return saludos[Math.floor(Math.random()*saludos.length)];
+      }
+      // ayuda
+      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer"].includes(texto)) {
+        return `<b>Puedo responder:</b><br>
+- "Hola": saludo<br>
+- "Chiste": te cuento un chiste<br>
+- "Hora" o "Fecha": te digo la hora/fecha<br>
+- "¿Quién eres?": te cuento quién soy<br>
+- "Color favorito", "Sentido de la vida": respuestas random<br>
+- "Adiós": me despido<br>
+¡Prueba a escribir alguno!`;
+      }
+      // despedida
+      if (["adiós", "adios", "bye", "nos vemos", "hasta luego"].includes(texto)) {
+        const despedidas = [
+          "¡Adiós! Que tengas un gran día.",
+          "¡Hasta la próxima!",
+          "Nos vemos, ¡suerte!",
+          "¡Chau! No dejes de codear."
+        ];
+        return despedidas[Math.floor(Math.random()*despedidas.length)];
+      }
+      // chiste
+      if (texto.includes("chiste")) {
+        const chistes = [
+          "¿Por qué los programadores confunden Halloween y Navidad? Porque OCT 31 == DEC 25.",
+          "¿Qué le dice un bit a otro? Nos vemos en el bus.",
+          "¿Por qué la computadora fue al médico? Porque tenía un virus.",
+          "¿Cómo se llama un pez que hace código? ¡Un pez-coder!"
+        ];
+        return chistes[Math.floor(Math.random()*chistes.length)];
+      }
+      // hora y fecha
+      if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día")) {
+        const ahora = new Date();
+        return `Ahora es ${ahora.toLocaleTimeString()} del día ${ahora.toLocaleDateString()}.`;
+      }
+      // quién eres
+      if (texto.includes("quién eres") || texto.includes("quien eres") || texto.includes("tu nombre")) {
+        return "Soy el bot de El Pk, tu asistente programado. ¡Listo para responder cosas simples!";
+      }
+      // color favorito
+      if (texto.includes("color favorito")) {
+        const colores = [
+          "¡Me gusta el verde PK, obvio!",
+          "Creo que el azul digital es genial.",
+          "El negro terminal, como mi fondo.",
+          "¡Todos los colores de la consola!"
+        ];
+        return colores[Math.floor(Math.random()*colores.length)];
+      }
+      // sentido vida
+      if (texto.includes("sentido de la vida")) {
+        return "42. Obvio.";
+      }
+      // respuesta por defecto
+      return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver lo que sé responder.";
     }
 
     // Animación bienvenida
