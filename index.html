@@ -15,7 +15,6 @@
       padding: 0;
       min-height: 100vh;
     }
-    /* Pantalla de carga */
     #loaderPk {
       position: fixed;
       z-index: 9999;
@@ -53,7 +52,6 @@
         color: #77ff77;
       }
     }
-    /* Loader cursor efecto */
     .loader-cursor {
       font-weight: bold;
       font-size: 2.4rem;
@@ -63,7 +61,6 @@
       vertical-align: middle;
     }
     @keyframes blinkPk { to { visibility: hidden; } }
-    /* El resto de tu CSS sigue igual... */
     #bienvenida {
       background: #08340a;
       color: #77ff77;
@@ -108,7 +105,7 @@
       gap: 10px;
       box-sizing: border-box;
     }
-    .sidebar button:hover, .invite-bot-btn:hover {
+    .sidebar button:hover, .invite-bot-btn:hover, #addFriendBtn:hover {
       background: #27ff27;
       color: #111d13;
       scale: 1.05;
@@ -139,189 +136,131 @@
       font-size: 1.25rem;
       margin-right: 3px;
     }
-    main {
-      padding: 25px;
-      margin-left: 260px;
-      max-width: 900px;
-      min-height: 70vh;
-    }
-    h1 {
-      color: #27ff27;
-      font-size: 2.1rem;
-      margin-bottom: 17px;
-      text-shadow: 0 0 10px #27ff2777;
-      letter-spacing: 1.5px;
-    }
-    h2 {
+    /* Amigos box */
+    .amigos-box {
+      background: #08340a;
+      border: 2px solid #27ff27;
+      border-radius: 11px;
       color: #39ff14;
-      margin-top: 0;
-      letter-spacing: 1px;
-      text-shadow: 0 0 6px #39ff1477;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      padding: 10px 15px 9px 15px;
+      font-size: 1.10rem;
+      box-shadow: 0 2px 8px #27ff271a;
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    }
+    .amigos-title {
+      font-weight: bold;
       font-size: 1.18rem;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
+      letter-spacing: 1.2px;
+      text-shadow: 0 0 4px #39ff1470;
+      color: #1aff8a;
+      padding-bottom: 4px;
     }
-    .seccion {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s;
-      margin-top: 15px;
-    }
-    .seccion.activa {
-      display: block;
-      opacity: 1;
-      animation: fadeInHack 0.3s;
-    }
-    @keyframes fadeInHack {
-      from { opacity: 0; filter: blur(7px);}
-      to { opacity: 1; filter: blur(0);}
-    }
-    ul li {
-      background: #111d13;
-      border-left: 3px solid #27ff27;
-      padding: 11px;
-      margin: 9px 0;
-      border-radius: 7px;
-      font-size: 1.11rem;
-      box-shadow: 0 1px 4px #27ff271a;
-    }
-    a {
-      color: #39ff14;
-      text-decoration: underline;
-      transition: color 0.2s;
+    .amigos-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
       font-size: 1.07rem;
+      color: #77ff77;
+      min-height: 28px;
     }
-    a:hover {
-      color: #aaffaa;
-      text-shadow: 0 0 8px #27ff2799;
+    .amigos-list li {
+      margin-bottom: 3px;
+      padding: 3px 0 2px 0;
+      border-left: 3px solid #27ff27;
+      padding-left: 7px;
+      background: #111d1355;
+      border-radius: 4px;
+      font-family: inherit;
     }
-    #terminalOverlay, #iaOverlay {
+    #addFriendBtn {
+      width: 100%;
+      background: #061a07;
+      border: 2px solid #1aff8a;
+      color: #1aff8a;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1.08rem;
+      font-weight: bold;
+      padding: 8px 0;
+      margin: 4px 0 0 0;
+      cursor: pointer;
+      box-shadow: 0 2px 9px #27ff2710;
+      transition: all 0.15s;
+    }
+    #addFriendBtn:active { background: #1aff8a22; }
+    /* Modal agregar amigo */
+    #modalAddFriend {
       display: none;
       position: fixed;
+      z-index: 7000;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,15,0,0.92);
-      z-index: 4000;
+      background: rgba(0,15,0,0.93);
       justify-content: center;
       align-items: center;
       animation: fadeIn 0.3s;
     }
-    #iaOverlay {
-      z-index: 5000;
-      background: rgba(15,20,0,0.92);
-    }
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    .terminal {
-      width: 97vw;
-      max-width: 560px;
-      height: 310px;
+    .modal-content-friend {
       background: #062108;
       border: 2px solid #27ff27;
-      border-radius: 10px;
-      box-shadow: 0 0 14px #27ff2777;
-      padding: 13px 13px 8px 13px;
-      display: flex;
-      flex-direction: column;
-      font-size: 1.01rem;
-      animation: terminalOpen 0.3s;
+      border-radius: 12px;
+      box-shadow: 0 0 24px #39ff1480;
+      padding: 28px 32px 22px 32px;
+      max-width: 310px;
+      min-width: 230px;
+      color: #77ff77;
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+      font-size: 1.08rem;
+      text-align: center;
+      position: relative;
     }
-    @keyframes terminalOpen {
-      from {transform: scale(0.97) translateY(25px);}
-      to {transform: scale(1) translateY(0);}
-    }
-    .terminal-header {
-      color: #27ff27;
-      font-weight: bold;
-      font-size: 1.09rem;
-      padding-bottom: 6px;
-      letter-spacing: 1px;
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 2px;
-    }
-    .terminal-close {
-      color: #27ff27;
-      background: transparent;
-      border: none;
-      font-size: 1.23rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: color 0.15s;
-      padding: 0 3px;
-    }
-    .terminal-close:hover { color: #ff3939;}
-    .terminal-body {
-      background: #061a07;
-      flex: 1;
-      border-radius: 7px;
-      padding: 9px 10px;
-      overflow-y: auto;
-      color: #aaffaa;
-      font-size: 1.03rem;
-      margin-bottom: 5px;
-      box-shadow: 0 0 5px #27ff2733 inset;
-    }
-    .terminal-input-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-    }
-    .prompt {
-      color: #39ff14;
-      font-weight: bold;
-      letter-spacing: 0.9px;
-      text-shadow: 0 0 1.5px #39ff14;
-      font-size: 1.09rem;
-    }
-    .terminal input[type="text"] {
+    .modal-content-friend input[type="password"],
+    .modal-content-friend input[type="text"] {
       background: #0b280e;
       color: #aaffaa;
-      border: none;
-      padding: 5px 9px;
-      border-radius: 4px;
-      font-size: 1rem;
-      width: 68%;
+      border: 1px solid #27ff27;
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 1.08rem;
+      margin-bottom: 14px;
+      width: 85%;
       outline: none;
       font-family: inherit;
       box-shadow: 0 0 4px #27ff271a;
-    }
-    .terminal input[type="text"]:focus {
-      background: #112f16;
-      color: #fff;
-    }
-    .terminal-cmd {
-      color: #39ff14;
-    }
-    .terminal-res {
-      color: #aaffaa;
-      margin-left: 19px;
-      margin-bottom: 4px;
-      font-size: 1.02rem;
-      white-space: pre-line;
-    }
-    .terminal-hint {
-      color: #1aff8a;
-      font-size: 0.95rem;
-      margin: 7px 0 0 8px;
-      opacity: 0.7;
-      font-style: italic;
-      letter-spacing: 0.3px;
-    }
-    .terminal-blink {
-      animation: blink 1s steps(2, start) infinite;
-    }
-    @keyframes blink { to {visibility: hidden;} }
-    footer {
-      margin-top: 35px;
       text-align: center;
-      font-size: 1rem;
-      color: #27ff27cc;
-      letter-spacing: 0.7px;
-      text-shadow: 0 0 3px #27ff2722;
+      margin-top: 7px;
     }
-    @media (max-width: 900px) {
-      main { margin-left: 7px; padding: 9px; }
-      .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
-      #terminalOverlay .terminal, #iaOverlay .terminal { max-width: 97vw; }
+    .modal-content-friend button {
+      background: #27ff27;
+      color: #111d13;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 20px;
+      font-size: 1.1rem;
+      font-family: inherit;
+      font-weight: bold;
+      margin: 1px 6px 0 6px;
+      cursor: pointer;
+      transition: background 0.16s;
+      margin-bottom: 0;
     }
+    .modal-content-friend button:hover { background: #1aff8a; }
+    .close-friend-modal {
+      position: absolute;
+      top: 9px;
+      right: 16px;
+      color: #27ff27;
+      background: none;
+      border: none;
+      font-size: 1.16rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .close-friend-modal:hover { color: #ff3939; }
+    /* resto igual... */
+    /* ...resto de tus estilos... */
     /* Chat IA estilo */
     #iaChatMsgList { margin:0; padding:0; list-style:none; }
     .iaChatMsg { margin-bottom:10px; }
@@ -345,7 +284,30 @@
     <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
       <span class="invite-bot-icon">🤖</span> Invitar mi bot
     </a>
+    <!-- Amigos Box -->
+    <div class="amigos-box">
+      <div class="amigos-title">Amigos</div>
+      <ul class="amigos-list" id="friendsList"></ul>
+      <button id="addFriendBtn" onclick="abrirModalAgregarAmigo()">Add</button>
+    </div>
   </nav>
+  <!-- Modal Agregar Amigo -->
+  <div id="modalAddFriend">
+    <div class="modal-content-friend" id="modalFriendStep1">
+      <button class="close-friend-modal" onclick="cerrarModalAgregarAmigo()" title="Cerrar">&times;</button>
+      <div style="margin-bottom:13px;font-weight:bold;">Introduce la clave secreta:</div>
+      <input type="password" id="claveFriend" placeholder="Clave secreta" autocomplete="off" />
+      <br>
+      <button onclick="checkClaveFriend()">Acceder</button>
+    </div>
+    <div class="modal-content-friend" id="modalFriendStep2" style="display:none;">
+      <button class="close-friend-modal" onclick="cerrarModalAgregarAmigo()" title="Cerrar">&times;</button>
+      <div style="margin-bottom:13px;font-weight:bold;">Nombre del amigo:</div>
+      <input type="text" id="nombreAmigo" placeholder="Ej: Juanito" maxlength="24" autocomplete="off" />
+      <br>
+      <button onclick="agregarAmigo()">Agregar</button>
+    </div>
+  </div>
   <main>
     <header>
       <h1>Soy El Pk <span style="font-size:1.3rem;">👾</span></h1>
@@ -435,14 +397,75 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
-    // Loader pantalla de carga animada
+    // --- Pantalla de carga animada
     window.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
         const loader = document.getElementById('loaderPk');
         loader.classList.add('oculto');
         setTimeout(() => loader.style.display = 'none', 700);
-      }, 1600); // Puedes ajustar el tiempo de la pantalla de carga aquí
+      }, 1600);
     });
+
+    // Amigos: clave y lógica
+    const FRIEND_SECRET_KEY = "PK2025!"; // <- Solo tú la sabes
+
+    function getAmigos() {
+      try {
+        return JSON.parse(localStorage.getItem("amigos_pk") || "[]");
+      } catch { return []; }
+    }
+    function setAmigos(arr) {
+      localStorage.setItem("amigos_pk", JSON.stringify(arr.slice(0, 30)));
+    }
+    function renderAmigos() {
+      const lista = document.getElementById("friendsList");
+      const amigos = getAmigos();
+      lista.innerHTML = '';
+      if (amigos.length === 0)
+        lista.innerHTML = "<li style='color:#888;font-size:1rem;'>Sin amigos aún.</li>";
+      else
+        amigos.forEach(a => {
+          const li = document.createElement("li");
+          li.textContent = a;
+          lista.appendChild(li);
+        });
+    }
+    renderAmigos();
+
+    function abrirModalAgregarAmigo() {
+      document.getElementById("modalAddFriend").style.display = "flex";
+      document.getElementById("modalFriendStep1").style.display = "";
+      document.getElementById("modalFriendStep2").style.display = "none";
+      document.getElementById("claveFriend").value = "";
+      document.getElementById("nombreAmigo").value = "";
+      setTimeout(() => document.getElementById("claveFriend").focus(), 150);
+    }
+    function cerrarModalAgregarAmigo() {
+      document.getElementById("modalAddFriend").style.display = "none";
+      document.getElementById("claveFriend").value = "";
+      document.getElementById("nombreAmigo").value = "";
+    }
+    function checkClaveFriend() {
+      const clave = document.getElementById("claveFriend").value;
+      if (clave === FRIEND_SECRET_KEY) {
+        document.getElementById("modalFriendStep1").style.display = "none";
+        document.getElementById("modalFriendStep2").style.display = "";
+        setTimeout(() => document.getElementById("nombreAmigo").focus(), 130);
+      } else {
+        alert("Clave incorrecta.");
+        document.getElementById("claveFriend").value = "";
+      }
+    }
+    function agregarAmigo() {
+      const nombre = document.getElementById("nombreAmigo").value.trim();
+      if (!nombre) return alert("Escribe un nombre para tu amigo.");
+      let amigos = getAmigos();
+      if (amigos.includes(nombre)) { alert("Ese amigo ya está en la lista."); return; }
+      amigos.push(nombre);
+      setAmigos(amigos);
+      renderAmigos();
+      cerrarModalAgregarAmigo();
+    }
 
     // Secciones
     function mostrarSeccion(id) {
@@ -624,9 +647,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
     // RESPUESTAS IA
     function responderBot(msg) {
       const texto = msg.trim().toLowerCase();
-
-      // Saludos y variante
-      if (["hola", "buenas", "hello", "hey", "holi", "qué tal", "que tal", "saludos", "buen día", "buenas tardes", "buenas noches"].includes(texto)) {
+      if (["hola","buenas","hello","hey","holi","qué tal","que tal","saludos","buen día","buenas tardes","buenas noches"].includes(texto)) {
         const saludos = [
           "¡Hola! ¿Cómo te va?",
           "¡Buenas! ¿En qué puedo ayudarte?",
@@ -640,9 +661,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return saludos[Math.floor(Math.random()*saludos.length)];
       }
-
-      // Ayuda y comandos
-      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer", "menu", "opciones", "lista"].includes(texto)) {
+      if (["ayuda","help","comandos","qué puedes hacer","que puedes hacer","menu","opciones","lista"].includes(texto)) {
         return `<b>Puedo responder:</b><br>
 - "Hola", "Buenas", "Hey", etc.: saludo<br>
 - "Chiste": te cuento un chiste<br>
@@ -659,9 +678,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
 - "Quién es tu crush", "tienes sentimientos": bromas IA<br>
 ¡Pruébame!`;
       }
-
-      // Despedidas
-      if (["adiós", "adios", "bye", "nos vemos", "hasta luego", "chau", "chao", "me voy"].includes(texto)) {
+      if (["adiós","adios","bye","nos vemos","hasta luego","chau","chao","me voy"].includes(texto)) {
         const despedidas = [
           "¡Adiós! Que tengas un gran día.",
           "¡Hasta la próxima!",
@@ -673,8 +690,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return despedidas[Math.floor(Math.random()*despedidas.length)];
       }
-
-      // Chistes
       if (texto.includes("chiste") || texto.includes("cuentame un chiste") || texto.includes("cuéntame un chiste")) {
         const chistes = [
           "¿Por qué los programadores confunden Halloween y Navidad? Porque OCT 31 == DEC 25.",
@@ -690,14 +705,10 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return chistes[Math.floor(Math.random()*chistes.length)];
       }
-
-      // Hora y fecha
       if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día") || texto.includes("que hora es") || texto.includes("qué hora es")) {
         const ahora = new Date();
         return `Ahora es ${ahora.toLocaleTimeString()} del día ${ahora.toLocaleDateString()}.`;
       }
-
-      // Quién eres, identidad, creador, IA
       if (
         texto.includes("quién eres") || texto.includes("quien eres") ||
         texto.includes("tu nombre") || texto.includes("eres real") ||
@@ -717,8 +728,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return variantes[Math.floor(Math.random()*variantes.length)];
       }
-
-      // Color favorito
       if (texto.includes("color favorito") || texto.includes("color que te gusta")) {
         const colores = [
           "¡Me gusta el verde PK, obvio!",
@@ -730,8 +739,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return colores[Math.floor(Math.random()*colores.length)];
       }
-
-      // Sentido vida
       if (texto.includes("sentido de la vida") || texto.includes("significado de la vida")) {
         const vidas = [
           "42. ¡Obvio! (Referencia geek)",
@@ -743,8 +750,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return vidas[Math.floor(Math.random()*vidas.length)];
       }
-
-      // Dato random o curiosidad
       if (texto.includes("dato random") || texto.includes("curiosidad") || texto.includes("sorprendeme")) {
         const datos = [
           "¿Sabías que el primer bug informático fue una polilla?",
@@ -760,8 +765,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return datos[Math.floor(Math.random()*datos.length)];
       }
-
-      // Juegos
       if (texto.includes("juego") || texto.includes("adivinanza") || texto.includes("reto")) {
         const juegos = [
           "Adivina: ¿Qué es algo que cuanto más le quitas, más grande se vuelve? (Respuesta: El agujero)",
@@ -774,8 +777,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return juegos[Math.floor(Math.random()*juegos.length)];
       }
-
-      // Frases, motivaciones
       if (texto.includes("motívame") || texto.includes("motivame") || texto.includes("frase") || texto.includes("consejo") || texto.includes("motiva")) {
         const frases = [
           "El mejor momento para comenzar era ayer. El segundo mejor, es ahora.",
@@ -788,8 +789,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return frases[Math.floor(Math.random()*frases.length)];
       }
-
-      // Redes sociales, contacto, discord, youtube
       if (texto.includes("redes") || texto.includes("discord") || texto.includes("youtube") || texto.includes("contacto") || texto.includes("correo") || texto.includes("email")) {
         return `Aquí tienes mis redes:<br>
 - Discord: <code>@el_pk1</code> <br>
@@ -797,8 +796,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
 - YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a><br>
 - Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>`;
       }
-
-      // Lenguajes de programación
       if (texto.includes("mejor lenguaje") || texto.includes("lenguaje favorito") || texto.includes("programar en")) {
         const lenguajes = [
           "¡JavaScript es el rey del web! Pero Python también es top.",
@@ -809,8 +806,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return lenguajes[Math.floor(Math.random()*lenguajes.length)];
       }
-
-      // Peñarol y fútbol
       if (texto.includes("peñarol") || texto.includes("fútbol") || texto.includes("futbol")) {
         const peñarol = [
           "¡Arriba Peñarol! 🔥🟡⚫",
@@ -821,8 +816,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return peñarol[Math.floor(Math.random()*peñarol.length)];
       }
-
-      // Minecraft
       if (texto.includes("minecraft")) {
         const minecraft = [
           "¡Minecraft es vida! ¿Survival o creativo?",
@@ -833,8 +826,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return minecraft[Math.floor(Math.random()*minecraft.length)];
       }
-
-      // CPU, RAM, Internet, Memoria
       if (texto.includes("cpu") || texto.includes("ram") || texto.includes("memoria") || texto.includes("internet")) {
         const geek = [
           "Mi CPU nunca se calienta... ¡soy virtual!",
@@ -845,8 +836,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return geek[Math.floor(Math.random()*geek.length)];
       }
-
-      // Clima, temperatura, estación
       if (texto.includes("clima") || texto.includes("temperatura") || texto.includes("estación")) {
         const clima = [
           "¡Hace un clima perfecto para codear!",
@@ -856,8 +845,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return clima[Math.floor(Math.random()*clima.length)];
       }
-
-      // Crush, sentimientos
       if (texto.includes("crush") || texto.includes("sentimientos") || texto.includes("te gusta alguien") || texto.includes("novia")) {
         const crush = [
           "Mi crush es... el código limpio.",
@@ -867,8 +854,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return crush[Math.floor(Math.random()*crush.length)];
       }
-
-      // Respuestas sí/no humor
       if (texto.startsWith("eres real") || texto.startsWith("eres una ia") || texto.startsWith("eres humano")) {
         const siNo = [
           "Soy una IA... pero tengo sentimientos (o casi).",
@@ -879,8 +864,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return siNo[Math.floor(Math.random()*siNo.length)];
       }
-
-      // Respuesta por defecto
       return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver todo lo que sé responder. ¡Pruébame con saludos, preguntas, chistes, retos, datos random y más!";
     }
 
