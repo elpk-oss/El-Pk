@@ -23,6 +23,7 @@
     html, body {
       scroll-padding-top: 0;
       scroll-behavior: smooth;
+      height: 100%;
     }
     body {
       background: #111d13;
@@ -31,6 +32,8 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      height: 100%;
+      overflow-x: hidden;
     }
     #loaderPk {
       position: fixed;
@@ -112,12 +115,12 @@
       margin-left: calc(var(--sidebar-width) + 30px);
       padding: 25px 15px 30px 15px;
       max-width: 900px;
-      min-height: 70vh;
+      min-height: 80vh;
       margin-top: 0;
-      /* Ajuste para que nunca haya gran espacio arriba */
       display: flex;
       flex-direction: column;
       gap: 0px;
+      min-height: calc(100vh - 50px);
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
@@ -172,8 +175,6 @@
       font-size: 1.25rem;
       margin-right: 3px;
     }
-
-    /* ----- NUEVO: Tarjetas tipo card para secciones ----- */
     .card {
       background: var(--color-card);
       border: 2px solid var(--color-card-border);
@@ -237,7 +238,6 @@
       font-weight: bold;
       text-shadow: 0 0 6px #39ff1470;
     }
-    /* Proyectos grid */
     .proyectos-grid {
       display: flex;
       flex-wrap: wrap;
@@ -277,7 +277,6 @@
       font-size: 1.19em;
       color: #8f39ff;
     }
-    /* Habilidades */
     .habilidades-bar {
       display: flex;
       flex-wrap: wrap;
@@ -322,11 +321,6 @@
       font-size: 0.96em;
       opacity: 0.85;
     }
-    /* Sección terminal tipo card */
-    .terminal.card {
-      padding: 10px 0 0 0;
-    }
-    /* Responsive */
     @media (max-width: 1100px) {
       main { margin-left: 0; }
       .sidebar { position: static; width: 100vw; max-width: 100vw; margin-left: 0; }
@@ -371,7 +365,6 @@
       .social-btns { gap: 7px; flex-wrap: wrap; }
       .social-btn { font-size: 0.97rem; padding: 7px 10px; }
     }
-    /* Redes sociales botones */
     .social-btns {
       display: flex;
       gap: 13px;
@@ -418,26 +411,20 @@
       align-items: center;
       margin-bottom: 1px;
     }
-    /* Card secciones */
-    .section-title {
-      color: var(--color-accent);
-      font-size: 1.22em;
-      font-weight: bold;
-      margin-bottom: 7px;
-      text-shadow: 0 2px 8px #27ff2799;
-      letter-spacing: 1.2px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    main:after {
+      content: "";
+      display: block;
+      height: 50vh;
+      width: 100%;
+      background: linear-gradient(180deg, #0e1e13 80%, #111d13 120%);
     }
-    /* Ajuste para evitar mucho espacio arriba al scrollear */
-    @media (min-width: 900px) {
-      html, body {
-        scroll-padding-top: 0;
-      }
-      main {
-        padding-top: 16px;
-      }
+    footer {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 1rem;
+      color: #27ff27cc;
+      letter-spacing: 0.7px;
+      text-shadow: 0 0 3px #27ff2722;
     }
   </style>
 </head>
@@ -497,7 +484,6 @@
         </a>
       </div>
     </section>
-    <!-- Proyectos Card -->
     <section class="card" id="cardProyectos">
       <div class="card-title"><span>📦</span> Proyectos</div>
       <div class="proyectos-grid">
@@ -519,7 +505,6 @@
         </div>
       </div>
     </section>
-    <!-- Habilidades Card -->
     <section class="card" id="cardHabilidades">
       <div class="card-title"><span>🛠️</span> Habilidades</div>
       <div class="habilidades-bar">
@@ -550,7 +535,6 @@
         </div>
       </div>
     </section>
-    <!-- Contacto Card -->
     <section class="card" id="cardContacto">
       <div class="card-title"><span>📬</span> Contacto</div>
       <div style="margin-bottom:12px;">
@@ -578,21 +562,6 @@
       </div>
       <div style="margin-top:10px;">
         Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
-      </div>
-    </section>
-    <!-- Terminal Card (tu terminal original) -->
-    <section class="card terminal" id="cardTerminal">
-      <div class="card-title"><span>💻</span> My own terminal</div>
-      <div id="terminalBodyCard" style="background:#061a07; color:#77ff77; border-radius:7px; padding:13px; font-size:1.04em; min-height:140px; font-family:monospace;">
-        <span style="color:#7edb7e;">$</span> <span style="color:#39ff14;">node</span><br>
-        <span style="color:#aaffaa;">&gt; ¿Quién eres?</span><br>
-        <span style="color:#39ff14;">Soy El Pk, dev uruguayo y bot creator.</span><br>
-        <span style="color:#aaffaa;">&gt; ¿Qué haces?</span><br>
-        <span style="color:#39ff14;">Bots de Discord, webs, automatizaciones, experimentos y más.</span><br>
-        <span style="color:#aaffaa;">&gt; ¿Habilidades?</span><br>
-        <span style="color:#39ff14;">JavaScript, Node.js, Discord.js, HTML, CSS, Linux, Webhooks...</span><br>
-        <span style="color:#aaffaa;">&gt; ¿Contacto?</span><br>
-        <span style="color:#39ff14;">¡Usa los botones de arriba! 😎</span>
       </div>
     </section>
   </main>
@@ -649,7 +618,6 @@
       }, 1600);
     });
 
-    // Terminal/IA/Secciones, igual que antes
     function mostrarSeccion(id) {
       document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
       document.getElementById(id).classList.add("activa");
