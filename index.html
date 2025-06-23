@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soy El Pk</title>
+  <title>El Pk - Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -96,12 +96,12 @@
       position: relative;
       z-index: 1001;
     }
+    /* --- FIX: Sidebar alineada con el texto (centrada visualmente) --- */
     .sidebar {
-      position: sticky;
-      top: 0;
-      left: 0;
-      margin-left: 10px;
-      max-height: 100vh;
+      position: fixed;
+      top: 44px; /* <--- así se alinea con el texto principal */
+      left: 10px;
+      max-height: calc(100vh - 44px);
       overflow-y: auto;
       z-index: 1000;
       width: var(--sidebar-width);
@@ -110,10 +110,11 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      align-items: flex-start;
     }
     main {
-      margin-left: calc(var(--sidebar-width) + 30px);
-      padding: 25px 15px 30px 15px;
+      margin-left: calc(var(--sidebar-width) + 40px);
+      padding: 35px 15px 30px 15px;
       max-width: 900px;
       min-height: 80vh;
       margin-top: 0;
@@ -122,6 +123,7 @@
       gap: 0px;
       min-height: calc(100vh - 50px);
     }
+    /* --- FIN FIX --- */
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
       border: 2px solid #27ff27;
@@ -175,257 +177,149 @@
       font-size: 1.25rem;
       margin-right: 3px;
     }
-    .card {
-      background: var(--color-card);
-      border: 2px solid var(--color-card-border);
-      border-radius: 13px;
-      box-shadow: 0 2px 16px #27ff271a;
-      margin-bottom: 22px;
-      padding: 17px 18px 14px 18px;
-      position: relative;
-      overflow: hidden;
-    }
-    .card-title {
-      color: var(--color-card-title);
-      font-weight: bold;
-      font-size: 1.23rem;
-      margin-bottom: 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-shadow: 0 0 8px #27ff2799;
-    }
-    .card-profile {
-      display: flex;
-      flex-direction: row;
-      gap: 19px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    .foto-perfil {
-      width: 105px;
-      height: 105px;
-      border-radius: 17px;
-      border: 2.5px solid #39ff14;
-      object-fit: cover;
-      box-shadow: 0 0 22px #1aff8a70;
-      margin-right: 2px;
-      background: #000;
-      transition: box-shadow 0.22s;
-    }
-    .foto-perfil:hover {
-      box-shadow: 0 0 35px #39ff14b8;
-    }
-    .card-profile-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .badge-profile {
-      display: inline-block;
-      background: #1aff8a30;
-      color: #1aff8a;
-      font-size: 0.99rem;
-      border-radius: 7px;
-      padding: 2px 11px;
-      margin-bottom: 7px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    .desc-highlight {
-      color: #39ff14;
-      font-weight: bold;
-      text-shadow: 0 0 6px #39ff1470;
-    }
-    .proyectos-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 13px;
-    }
-    .proyecto-card {
-      background: #121f14;
-      border: 2px solid #8f39ff;
-      border-radius: 8px;
-      padding: 11px 13px 9px 13px;
-      min-width: 210px;
-      max-width: 270px;
-      flex: 1 1 220px;
-      color: #ccbbff;
-      box-shadow: 0 0 11px #8f39ff38;
-      margin-bottom: 7px;
-      position: relative;
-    }
-    .proyecto-card .proyecto-title {
-      color: #d689ff;
-      font-weight: bold;
-      font-size: 1.09rem;
-      margin-bottom: 7px;
-      letter-spacing: 0.7px;
-    }
-    .proyecto-card .proyecto-desc {
-      font-size: 0.99rem;
-      color: #a5ffda;
-      margin-bottom: 3px;
-      margin-top: 2px;
-    }
-    .proyecto-badge {
-      position: absolute;
-      top: 8px;
-      right: 13px;
-      font-size: 1.19em;
-      color: #8f39ff;
-    }
-    .habilidades-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 11px;
-      margin-bottom: 5px;
-    }
-    .habilidad-card {
-      background: var(--color-hability);
-      border: 2px solid var(--color-hability-border);
-      border-radius: 10px;
-      padding: 8px 15px 7px 15px;
-      min-width: 110px;
-      text-align: center;
-      flex: 1 1 110px;
-      color: var(--color-hability-title);
-      box-shadow: 0 1px 6px #27ff2722;
-      margin-bottom: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: box-shadow 0.16s;
-      font-size: 1.02rem;
-    }
-    .habilidad-card:hover {
-      box-shadow: 0 0 14px #1aff8acc;
-    }
-    .habilidad-icon {
-      font-size: 1.5em;
-      margin-bottom: 4px;
-      color: var(--color-hability-icon);
-      filter: drop-shadow(0 0 4px #1aff8a55);
-    }
-    .habilidad-title {
-      font-weight: bold;
-      color: var(--color-hability-title);
-      font-size: 1.05em;
-      margin-bottom: 2px;
-    }
-    .habilidad-desc {
-      color: var(--color-hability-desc);
-      font-size: 0.96em;
-      opacity: 0.85;
-    }
-    @media (max-width: 1100px) {
-      main { margin-left: 0; }
-      .sidebar { position: static; width: 100vw; max-width: 100vw; margin-left: 0; }
-    }
-    @media (max-width: 900px) {
-      :root { --sidebar-width: 100vw; }
-      main { margin-left: 0; padding: 9px; }
-      .sidebar {
-        position: static;
-        flex-direction: row;
-        gap: 7px;
-        margin-bottom: 15px;
-        height: auto;
-        width: 100vw;
-        max-width: 100vw;
-        max-height: unset;
-        background: none;
-        overflow-x: auto;
-        overflow-y: visible;
-      }
-      .sidebar button, .invite-bot-btn {
-        min-width: 110px;
-        font-size: 1rem;
-        padding: 10px 12px;
-        justify-content: center;
-        text-align: center;
-      }
-      .card-profile { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 650px) {
-      main { padding: 6px; }
-      h1 { font-size: 1.17rem; }
-      .sidebar { gap: 5px; }
-      .sidebar button, .invite-bot-btn {
-        font-size: 0.95rem;
-        padding: 8px 7px;
-      }
-      .card-profile { gap: 8px; }
-      .proyectos-grid { flex-direction: column; gap: 7px; }
-      .habilidades-bar { gap: 7px; }
-      .habilidad-card { min-width: 90px; font-size: 0.96rem; }
-      .social-btns { gap: 7px; flex-wrap: wrap; }
-      .social-btn { font-size: 0.97rem; padding: 7px 10px; }
-    }
-    .social-btns {
-      display: flex;
-      gap: 13px;
-      margin: 16px 0 9px 0;
-      flex-wrap: wrap;
-    }
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 17px;
-      border-radius: 8px;
-      font-size: 1.08rem;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      background: #061a07;
-      color: #39ff14;
-      border: 2px solid #27ff27;
-      box-shadow: 0 2px 10px #27ff2715;
-      transition: all 0.14s;
-      outline: none;
-    }
-    .social-btn:hover {
-      background: #27ff27;
-      color: #111d13;
-      border-color: #39ff14;
-      scale: 1.08;
-      box-shadow: 0 2px 14px #27ff27cc;
-      text-decoration: none;
-    }
+    /* Cards y contenido igual... */
+    .card { background: var(--color-card); border: 2px solid var(--color-card-border); border-radius: 13px; box-shadow: 0 2px 16px #27ff271a; margin-bottom: 22px; padding: 17px 18px 14px 18px; position: relative; overflow: hidden;}
+    .card-title { color: var(--color-card-title); font-weight: bold; font-size: 1.23rem; margin-bottom: 13px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px #27ff2799;}
+    .card-profile { display: flex; flex-direction: row; gap: 19px; align-items: flex-start; flex-wrap: wrap;}
+    .foto-perfil { width: 105px; height: 105px; border-radius: 17px; border: 2.5px solid #39ff14; object-fit: cover; box-shadow: 0 0 22px #1aff8a70; margin-right: 2px; background: #000; transition: box-shadow 0.22s;}
+    .foto-perfil:hover { box-shadow: 0 0 35px #39ff14b8;}
+    .card-profile-info { flex: 1; display: flex; flex-direction: column; gap: 7px;}
+    .badge-profile { display: inline-block; background: #1aff8a30; color: #1aff8a; font-size: 0.99rem; border-radius: 7px; padding: 2px 11px; margin-bottom: 7px; font-weight: bold; letter-spacing: 1px;}
+    .desc-highlight { color: #39ff14; font-weight: bold; text-shadow: 0 0 6px #39ff1470;}
+    .proyectos-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 13px;}
+    .proyecto-card { background: #121f14; border: 2px solid #8f39ff; border-radius: 8px; padding: 11px 13px 9px 13px; min-width: 210px; max-width: 270px; flex: 1 1 220px; color: #ccbbff; box-shadow: 0 0 11px #8f39ff38; margin-bottom: 7px; position: relative;}
+    .proyecto-card .proyecto-title { color: #d689ff; font-weight: bold; font-size: 1.09rem; margin-bottom: 7px; letter-spacing: 0.7px;}
+    .proyecto-card .proyecto-desc { font-size: 0.99rem; color: #a5ffda; margin-bottom: 3px; margin-top: 2px;}
+    .proyecto-badge { position: absolute; top: 8px; right: 13px; font-size: 1.19em; color: #8f39ff;}
+    .habilidades-bar { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 11px; margin-bottom: 5px;}
+    .habilidad-card { background: var(--color-hability); border: 2px solid var(--color-hability-border); border-radius: 10px; padding: 8px 15px 7px 15px; min-width: 110px; text-align: center; flex: 1 1 110px; color: var(--color-hability-title); box-shadow: 0 1px 6px #27ff2722; margin-bottom: 4px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; font-size: 1.02rem;}
+    .habilidad-card:hover { box-shadow: 0 0 14px #1aff8acc;}
+    .habilidad-icon { font-size: 1.5em; margin-bottom: 4px; color: var(--color-hability-icon); filter: drop-shadow(0 0 4px #1aff8a55);}
+    .habilidad-title { font-weight: bold; color: var(--color-hability-title); font-size: 1.05em; margin-bottom: 2px;}
+    .habilidad-desc { color: var(--color-hability-desc); font-size: 0.96em; opacity: 0.85;}
+    /* Social buttons igual... */
+    .social-btns { display: flex; gap: 13px; margin: 16px 0 9px 0; flex-wrap: wrap;}
+    .social-btn { display: flex; align-items: center; gap: 7px; padding: 8px 17px; border-radius: 8px; font-size: 1.08rem; font-weight: bold; text-decoration: none; border: none; cursor: pointer; background: #061a07; color: #39ff14; border: 2px solid #27ff27; box-shadow: 0 2px 10px #27ff2715; transition: all 0.14s; outline: none;}
+    .social-btn:hover { background: #27ff27; color: #111d13; border-color: #39ff14; scale: 1.08; box-shadow: 0 2px 14px #27ff27cc; text-decoration: none;}
     .social-btn.discord { color: #5865f2; border-color: #5865f2; }
     .social-btn.discord:hover { background: #5865f2; color: #fff; border-color: #27ff27; }
     .social-btn.youtube { color: #ff3c3c; border-color: #ff3c3c; }
     .social-btn.youtube:hover { background: #ff3c3c; color: #fff; border-color: #27ff27; }
     .social-btn.gmail { color: #d44638; border-color: #d44638; }
     .social-btn.gmail:hover { background: #d44638; color: #fff; border-color: #27ff27; }
-    .icon-social {
-      font-size: 1.3em;
-      vertical-align: middle;
-      margin-right: 1px;
-      display: inline-flex;
+    .icon-social { font-size: 1.3em; vertical-align: middle; margin-right: 1px; display: inline-flex; align-items: center; margin-bottom: 1px;}
+    main:after { content: ""; display: block; height: 50vh; width: 100%; background: linear-gradient(180deg, #0e1e13 80%, #111d13 120%);}
+    footer { margin-top: 35px; text-align: center; font-size: 1rem; color: #27ff27cc; letter-spacing: 0.7px; text-shadow: 0 0 3px #27ff2722;}
+
+    /* --- FIX: Terminal centrada y adaptada a móvil --- */
+    #terminalOverlay, #iaOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,15,0,0.92);
+      z-index: 4000;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 1px;
+      animation: fadeIn 0.3s;
     }
-    main:after {
-      content: "";
-      display: block;
-      height: 50vh;
-      width: 100%;
-      background: linear-gradient(180deg, #0e1e13 80%, #111d13 120%);
+    .terminal {
+      width: 96vw;
+      max-width: 540px;
+      height: 310px;
+      background: #062108;
+      border: 2px solid #27ff27;
+      border-radius: 10px;
+      box-shadow: 0 0 14px #27ff2777;
+      padding: 13px 13px 8px 13px;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.01rem;
+      animation: terminalOpen 0.3s;
+      margin: 0 auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Centrado siempre */
     }
-    footer {
-      margin-top: 35px;
-      text-align: center;
+    @media (max-width: 700px) {
+      .terminal { width: 97vw; min-width: 0; max-width: 99vw; height: 80vh; }
+    }
+    .terminal-header {
+      color: #27ff27;
+      font-weight: bold;
+      font-size: 1.09rem;
+      padding-bottom: 6px;
+      letter-spacing: 1px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2px;
+    }
+    .terminal-close {
+      color: #27ff27;
+      background: transparent;
+      border: none;
+      font-size: 1.23rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.15s;
+      padding: 0 3px;
+    }
+    .terminal-close:hover { color: #ff3939;}
+    .terminal-body {
+      background: #061a07;
+      flex: 1;
+      border-radius: 7px;
+      padding: 9px 10px;
+      overflow-y: auto;
+      color: #aaffaa;
+      font-size: 1.03rem;
+      margin-bottom: 5px;
+      box-shadow: 0 0 5px #27ff2733 inset;
+      min-height: 80px;
+      max-height: 200px;
+    }
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 1rem;
-      color: #27ff27cc;
-      letter-spacing: 0.7px;
-      text-shadow: 0 0 3px #27ff2722;
     }
+    .prompt {
+      color: #39ff14;
+      font-weight: bold;
+      letter-spacing: 0.9px;
+      text-shadow: 0 0 1.5px #39ff14;
+      font-size: 1.09rem;
+    }
+    .terminal input[type="text"] {
+      background: #0b280e;
+      color: #aaffaa;
+      border: none;
+      padding: 5px 9px;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 68%;
+      outline: none;
+      font-family: inherit;
+      box-shadow: 0 0 4px #27ff271a;
+    }
+    .terminal input[type="text"]:focus {
+      background: #112f16;
+      color: #fff;
+    }
+    .terminal-cmd { color: #39ff14; }
+    .terminal-res {
+      color: #aaffaa;
+      margin-left: 19px;
+      margin-bottom: 4px;
+      font-size: 1.02rem;
+      white-space: pre-line;
+    }
+    .terminal-hint { color: #1aff8a; font-size: 0.95rem; margin: 7px 0 0 8px; opacity: 0.7; font-style: italic; letter-spacing: 0.3px;}
+    .terminal-blink { animation: blink 1s steps(2, start) infinite;}
+    @keyframes blink { to {visibility: hidden;} }
+    /* --- FIN FIX TERMINAL --- */
   </style>
 </head>
 <body>
@@ -584,7 +478,6 @@
       <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
     </div>
   </div>
-  <!-- IA Modal (dice IA, pero es respuestas predefinidas) -->
   <div id="iaOverlay">
     <div class="terminal">
       <div class="terminal-header">
@@ -609,7 +502,6 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
-    // --- Pantalla de carga animada
     window.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
         const loader = document.getElementById('loaderPk');
@@ -618,10 +510,6 @@
       }, 1600);
     });
 
-    function mostrarSeccion(id) {
-      document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
-      document.getElementById(id).classList.add("activa");
-    }
     const comandos = {
       ayuda: {
         desc: 'Lista los comandos disponibles.',
@@ -753,7 +641,6 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       }
     });
 
-    // --- IA CHAT BOT RESPUESTAS HARDCODEADAS ---
     function abrirIA() {
       document.getElementById("iaOverlay").style.display = "flex";
       setTimeout(() => document.getElementById("iaInput").focus(), 180);
