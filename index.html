@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Pk - Developer</title>
+  <title>Soy El Pk</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sidebar-width: 240px;
+      --sidebar-width: 205px;
       --color-accent: #39ff14;
       --color-card: #0e1e13;
       --color-card-border: #27ff27;
@@ -96,10 +96,10 @@
       position: relative;
       z-index: 1001;
     }
-    /* --- FIX: Sidebar alineada con el texto (centrada visualmente) --- */
+    /* Sidebar alineada con el texto (centrada visualmente) */
     .sidebar {
       position: fixed;
-      top: 44px; /* <--- así se alinea con el texto principal */
+      top: 44px;
       left: 10px;
       max-height: calc(100vh - 44px);
       overflow-y: auto;
@@ -109,28 +109,27 @@
       box-shadow: none;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       align-items: flex-start;
     }
     main {
-      margin-left: calc(var(--sidebar-width) + 40px);
-      padding: 35px 15px 30px 15px;
+      margin-left: calc(var(--sidebar-width) + 35px);
+      padding: 32px 10px 25px 10px;
       max-width: 900px;
-      min-height: 80vh;
+      min-height: 75vh;
       margin-top: 0;
       display: flex;
       flex-direction: column;
       gap: 0px;
-      min-height: calc(100vh - 50px);
+      min-height: 0;
     }
-    /* --- FIN FIX --- */
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
       border: 2px solid #27ff27;
       color: #77ff77;
-      padding: 13px 30px;
-      border-radius: 13px;
-      font-size: 1.18rem;
+      padding: 8px 18px;
+      border-radius: 11px;
+      font-size: 1.01rem;
       font-family: inherit;
       font-weight: bold;
       cursor: pointer;
@@ -139,7 +138,7 @@
       outline: none;
       letter-spacing: 1px;
       text-align: left;
-      min-width: 180px;
+      min-width: 125px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -156,15 +155,15 @@
       background: linear-gradient(90deg, #5865f2 60%, #27ff27 250%);
       color: #fff;
       border: 2px solid #5865f2;
-      font-size: 1.16rem;
-      border-radius: 13px;
-      padding: 13px 30px;
-      min-width: 180px;
+      font-size: 1.01rem;
+      border-radius: 11px;
+      padding: 8px 18px;
+      min-width: 125px;
       text-align: center;
       justify-content: center;
       text-decoration: none;
       margin-top: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -174,10 +173,9 @@
       border-color: #27ff27;
     }
     .invite-bot-icon {
-      font-size: 1.25rem;
+      font-size: 1.14rem;
       margin-right: 3px;
     }
-    /* Cards y contenido igual... */
     .card { background: var(--color-card); border: 2px solid var(--color-card-border); border-radius: 13px; box-shadow: 0 2px 16px #27ff271a; margin-bottom: 22px; padding: 17px 18px 14px 18px; position: relative; overflow: hidden;}
     .card-title { color: var(--color-card-title); font-weight: bold; font-size: 1.23rem; margin-bottom: 13px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px #27ff2799;}
     .card-profile { display: flex; flex-direction: row; gap: 19px; align-items: flex-start; flex-wrap: wrap;}
@@ -187,19 +185,18 @@
     .badge-profile { display: inline-block; background: #1aff8a30; color: #1aff8a; font-size: 0.99rem; border-radius: 7px; padding: 2px 11px; margin-bottom: 7px; font-weight: bold; letter-spacing: 1px;}
     .desc-highlight { color: #39ff14; font-weight: bold; text-shadow: 0 0 6px #39ff1470;}
     .proyectos-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 13px;}
-    .proyecto-card { background: #121f14; border: 2px solid #8f39ff; border-radius: 8px; padding: 11px 13px 9px 13px; min-width: 210px; max-width: 270px; flex: 1 1 220px; color: #ccbbff; box-shadow: 0 0 11px #8f39ff38; margin-bottom: 7px; position: relative;}
-    .proyecto-card .proyecto-title { color: #d689ff; font-weight: bold; font-size: 1.09rem; margin-bottom: 7px; letter-spacing: 0.7px;}
-    .proyecto-card .proyecto-desc { font-size: 0.99rem; color: #a5ffda; margin-bottom: 3px; margin-top: 2px;}
-    .proyecto-badge { position: absolute; top: 8px; right: 13px; font-size: 1.19em; color: #8f39ff;}
-    .habilidades-bar { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 11px; margin-bottom: 5px;}
-    .habilidad-card { background: var(--color-hability); border: 2px solid var(--color-hability-border); border-radius: 10px; padding: 8px 15px 7px 15px; min-width: 110px; text-align: center; flex: 1 1 110px; color: var(--color-hability-title); box-shadow: 0 1px 6px #27ff2722; margin-bottom: 4px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; font-size: 1.02rem;}
+    .proyecto-card { background: #121f14; border: 2px solid #8f39ff; border-radius: 8px; padding: 11px 13px 9px 13px; min-width: 180px; max-width: 250px; flex: 1 1 180px; color: #ccbbff; box-shadow: 0 0 11px #8f39ff38; margin-bottom: 7px; position: relative;}
+    .proyecto-card .proyecto-title { color: #d689ff; font-weight: bold; font-size: 1.01rem; margin-bottom: 7px; letter-spacing: 0.7px;}
+    .proyecto-card .proyecto-desc { font-size: 0.93rem; color: #a5ffda; margin-bottom: 3px; margin-top: 2px;}
+    .proyecto-badge { position: absolute; top: 8px; right: 13px; font-size: 1.09em; color: #8f39ff;}
+    .habilidades-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 11px; margin-bottom: 5px;}
+    .habilidad-card { background: var(--color-hability); border: 2px solid var(--color-hability-border); border-radius: 10px; padding: 7px 10px 5px 10px; min-width: 88px; text-align: center; flex: 1 1 88px; color: var(--color-hability-title); box-shadow: 0 1px 6px #27ff2722; margin-bottom: 4px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; font-size: 0.97rem;}
     .habilidad-card:hover { box-shadow: 0 0 14px #1aff8acc;}
-    .habilidad-icon { font-size: 1.5em; margin-bottom: 4px; color: var(--color-hability-icon); filter: drop-shadow(0 0 4px #1aff8a55);}
-    .habilidad-title { font-weight: bold; color: var(--color-hability-title); font-size: 1.05em; margin-bottom: 2px;}
-    .habilidad-desc { color: var(--color-hability-desc); font-size: 0.96em; opacity: 0.85;}
-    /* Social buttons igual... */
-    .social-btns { display: flex; gap: 13px; margin: 16px 0 9px 0; flex-wrap: wrap;}
-    .social-btn { display: flex; align-items: center; gap: 7px; padding: 8px 17px; border-radius: 8px; font-size: 1.08rem; font-weight: bold; text-decoration: none; border: none; cursor: pointer; background: #061a07; color: #39ff14; border: 2px solid #27ff27; box-shadow: 0 2px 10px #27ff2715; transition: all 0.14s; outline: none;}
+    .habilidad-icon { font-size: 1.14em; margin-bottom: 4px; color: var(--color-hability-icon); filter: drop-shadow(0 0 4px #1aff8a55);}
+    .habilidad-title { font-weight: bold; color: var(--color-hability-title); font-size: 1em; margin-bottom: 2px;}
+    .habilidad-desc { color: var(--color-hability-desc); font-size: 0.91em; opacity: 0.85;}
+    .social-btns { display: flex; gap: 8px; margin: 16px 0 9px 0; flex-wrap: wrap;}
+    .social-btn { display: flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 8px; font-size: 0.97rem; font-weight: bold; text-decoration: none; border: none; cursor: pointer; background: #061a07; color: #39ff14; border: 2px solid #27ff27; box-shadow: 0 2px 10px #27ff2715; transition: all 0.14s; outline: none;}
     .social-btn:hover { background: #27ff27; color: #111d13; border-color: #39ff14; scale: 1.08; box-shadow: 0 2px 14px #27ff27cc; text-decoration: none;}
     .social-btn.discord { color: #5865f2; border-color: #5865f2; }
     .social-btn.discord:hover { background: #5865f2; color: #fff; border-color: #27ff27; }
@@ -207,11 +204,11 @@
     .social-btn.youtube:hover { background: #ff3c3c; color: #fff; border-color: #27ff27; }
     .social-btn.gmail { color: #d44638; border-color: #d44638; }
     .social-btn.gmail:hover { background: #d44638; color: #fff; border-color: #27ff27; }
-    .icon-social { font-size: 1.3em; vertical-align: middle; margin-right: 1px; display: inline-flex; align-items: center; margin-bottom: 1px;}
-    main:after { content: ""; display: block; height: 50vh; width: 100%; background: linear-gradient(180deg, #0e1e13 80%, #111d13 120%);}
-    footer { margin-top: 35px; text-align: center; font-size: 1rem; color: #27ff27cc; letter-spacing: 0.7px; text-shadow: 0 0 3px #27ff2722;}
+    .icon-social { font-size: 1.12em; vertical-align: middle; margin-right: 1px; display: inline-flex; align-items: center; margin-bottom: 1px;}
+    main:after { display: none !important; }
+    footer { margin-top: 22px; text-align: center; font-size: 1rem; color: #27ff27cc; letter-spacing: 0.7px; text-shadow: 0 0 3px #27ff2722;}
 
-    /* --- FIX: Terminal centrada y adaptada a móvil --- */
+    /* Terminal centrada y adaptada a móvil */
     #terminalOverlay, #iaOverlay {
       display: none;
       position: fixed;
@@ -224,8 +221,8 @@
     }
     .terminal {
       width: 96vw;
-      max-width: 540px;
-      height: 310px;
+      max-width: 500px;
+      height: 270px;
       background: #062108;
       border: 2px solid #27ff27;
       border-radius: 10px;
@@ -241,10 +238,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      /* Centrado siempre */
     }
     @media (max-width: 700px) {
-      .terminal { width: 97vw; min-width: 0; max-width: 99vw; height: 80vh; }
+      .terminal { width: 99vw; min-width: 0; max-width: 99vw; height: 60vh; min-height: 210px;}
+      .sidebar { position: static; width: 100vw; max-width: 100vw; left: 0!important; margin-left: 0;}
+      main { margin-left: 0; padding: 13px 2px 8px 2px; }
     }
     .terminal-header {
       color: #27ff27;
@@ -277,7 +275,7 @@
       margin-bottom: 5px;
       box-shadow: 0 0 5px #27ff2733 inset;
       min-height: 80px;
-      max-height: 200px;
+      max-height: 160px;
     }
     .terminal-input-line {
       display: flex;
@@ -319,7 +317,6 @@
     .terminal-hint { color: #1aff8a; font-size: 0.95rem; margin: 7px 0 0 8px; opacity: 0.7; font-style: italic; letter-spacing: 0.3px;}
     .terminal-blink { animation: blink 1s steps(2, start) infinite;}
     @keyframes blink { to {visibility: hidden;} }
-    /* --- FIN FIX TERMINAL --- */
   </style>
 </head>
 <body>
