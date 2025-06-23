@@ -15,7 +15,6 @@
       padding: 0;
       min-height: 100vh;
     }
-    /* Pantalla de carga */
     #loaderPk {
       position: fixed;
       z-index: 9999;
@@ -74,7 +73,6 @@
       user-select: none;
       box-shadow: 0 2px 8px #39ff1480;
     }
-    /* Sidebar sticky y main con margen para evitar superposición */
     .sidebar {
       position: sticky;
       top: 20px;
@@ -118,7 +116,7 @@
       gap: 10px;
       box-sizing: border-box;
     }
-    .sidebar button:hover, .invite-bot-btn:hover, #addFriendBtn:hover {
+    .sidebar button:hover, .invite-bot-btn:hover {
       background: #27ff27;
       color: #111d13;
       scale: 1.05;
@@ -149,129 +147,6 @@
       font-size: 1.25rem;
       margin-right: 3px;
     }
-    /* Amigos box */
-    .amigos-box {
-      background: #08340a;
-      border: 2px solid #27ff27;
-      border-radius: 11px;
-      color: #39ff14;
-      margin-top: 8px;
-      margin-bottom: 10px;
-      padding: 10px 15px 9px 15px;
-      font-size: 1.10rem;
-      box-shadow: 0 2px 8px #27ff271a;
-      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-    }
-    .amigos-title {
-      font-weight: bold;
-      font-size: 1.18rem;
-      margin-bottom: 7px;
-      letter-spacing: 1.2px;
-      text-shadow: 0 0 4px #39ff1470;
-      color: #1aff8a;
-      padding-bottom: 4px;
-    }
-    .amigos-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 10px 0;
-      font-size: 1.07rem;
-      color: #77ff77;
-      min-height: 28px;
-    }
-    .amigos-list li {
-      margin-bottom: 3px;
-      padding: 3px 0 2px 0;
-      border-left: 3px solid #27ff27;
-      padding-left: 7px;
-      background: #111d1355;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-    #addFriendBtn {
-      width: 100%;
-      background: #061a07;
-      border: 2px solid #1aff8a;
-      color: #1aff8a;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 1.08rem;
-      font-weight: bold;
-      padding: 8px 0;
-      margin: 4px 0 0 0;
-      cursor: pointer;
-      box-shadow: 0 2px 9px #27ff2710;
-      transition: all 0.15s;
-    }
-    #addFriendBtn:active { background: #1aff8a22; }
-    /* Modal agregar amigo */
-    #modalAddFriend {
-      display: none;
-      position: fixed;
-      z-index: 7000;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,15,0,0.93);
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.3s;
-    }
-    .modal-content-friend {
-      background: #062108;
-      border: 2px solid #27ff27;
-      border-radius: 12px;
-      box-shadow: 0 0 24px #39ff1480;
-      padding: 28px 32px 22px 32px;
-      max-width: 310px;
-      min-width: 230px;
-      color: #77ff77;
-      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-      font-size: 1.08rem;
-      text-align: center;
-      position: relative;
-    }
-    .modal-content-friend input[type="password"],
-    .modal-content-friend input[type="text"] {
-      background: #0b280e;
-      color: #aaffaa;
-      border: 1px solid #27ff27;
-      border-radius: 6px;
-      padding: 7px 10px;
-      font-size: 1.08rem;
-      margin-bottom: 14px;
-      width: 85%;
-      outline: none;
-      font-family: inherit;
-      box-shadow: 0 0 4px #27ff271a;
-      text-align: center;
-      margin-top: 7px;
-    }
-    .modal-content-friend button {
-      background: #27ff27;
-      color: #111d13;
-      border: none;
-      border-radius: 6px;
-      padding: 7px 20px;
-      font-size: 1.1rem;
-      font-family: inherit;
-      font-weight: bold;
-      margin: 1px 6px 0 6px;
-      cursor: pointer;
-      transition: background 0.16s;
-      margin-bottom: 0;
-    }
-    .modal-content-friend button:hover { background: #1aff8a; }
-    .close-friend-modal {
-      position: absolute;
-      top: 9px;
-      right: 16px;
-      color: #27ff27;
-      background: none;
-      border: none;
-      font-size: 1.16rem;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .close-friend-modal:hover { color: #ff3939; }
     h1 {
       color: #27ff27;
       font-size: 2.1rem;
@@ -480,30 +355,7 @@
     <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
       <span class="invite-bot-icon">🤖</span> Invitar mi bot
     </a>
-    <!-- Amigos Box -->
-    <div class="amigos-box">
-      <div class="amigos-title">Amigos</div>
-      <ul class="amigos-list" id="friendsList"></ul>
-      <button id="addFriendBtn" onclick="abrirModalAgregarAmigo()">Add</button>
-    </div>
   </nav>
-  <!-- Modal Agregar Amigo -->
-  <div id="modalAddFriend">
-    <div class="modal-content-friend" id="modalFriendStep1">
-      <button class="close-friend-modal" onclick="cerrarModalAgregarAmigo()" title="Cerrar">&times;</button>
-      <div style="margin-bottom:13px;font-weight:bold;">Introduce la clave secreta:</div>
-      <input type="password" id="claveFriend" placeholder="Clave secreta" autocomplete="off" />
-      <br>
-      <button onclick="checkClaveFriend()">Acceder</button>
-    </div>
-    <div class="modal-content-friend" id="modalFriendStep2" style="display:none;">
-      <button class="close-friend-modal" onclick="cerrarModalAgregarAmigo()" title="Cerrar">&times;</button>
-      <div style="margin-bottom:13px;font-weight:bold;">Nombre del amigo:</div>
-      <input type="text" id="nombreAmigo" placeholder="Ej: Juanito" maxlength="24" autocomplete="off" />
-      <br>
-      <button onclick="agregarAmigo()">Agregar</button>
-    </div>
-  </div>
   <main>
     <header>
       <h1>Soy El Pk <span style="font-size:1.3rem;">👾</span></h1>
@@ -601,67 +453,6 @@
         setTimeout(() => loader.style.display = 'none', 700);
       }, 1600);
     });
-
-    // Amigos: clave y lógica
-    const FRIEND_SECRET_KEY = "PK2025!"; // <- Solo tú la sabes
-
-    function getAmigos() {
-      try {
-        return JSON.parse(localStorage.getItem("amigos_pk") || "[]");
-      } catch { return []; }
-    }
-    function setAmigos(arr) {
-      localStorage.setItem("amigos_pk", JSON.stringify(arr.slice(0, 30)));
-    }
-    function renderAmigos() {
-      const lista = document.getElementById("friendsList");
-      const amigos = getAmigos();
-      lista.innerHTML = '';
-      if (amigos.length === 0)
-        lista.innerHTML = "<li style='color:#888;font-size:1rem;'>Sin amigos aún.</li>";
-      else
-        amigos.forEach(a => {
-          const li = document.createElement("li");
-          li.textContent = a;
-          lista.appendChild(li);
-        });
-    }
-    renderAmigos();
-
-    function abrirModalAgregarAmigo() {
-      document.getElementById("modalAddFriend").style.display = "flex";
-      document.getElementById("modalFriendStep1").style.display = "";
-      document.getElementById("modalFriendStep2").style.display = "none";
-      document.getElementById("claveFriend").value = "";
-      document.getElementById("nombreAmigo").value = "";
-      setTimeout(() => document.getElementById("claveFriend").focus(), 150);
-    }
-    function cerrarModalAgregarAmigo() {
-      document.getElementById("modalAddFriend").style.display = "none";
-      document.getElementById("claveFriend").value = "";
-      document.getElementById("nombreAmigo").value = "";
-    }
-    function checkClaveFriend() {
-      const clave = document.getElementById("claveFriend").value;
-      if (clave === FRIEND_SECRET_KEY) {
-        document.getElementById("modalFriendStep1").style.display = "none";
-        document.getElementById("modalFriendStep2").style.display = "";
-        setTimeout(() => document.getElementById("nombreAmigo").focus(), 130);
-      } else {
-        alert("Clave incorrecta.");
-        document.getElementById("claveFriend").value = "";
-      }
-    }
-    function agregarAmigo() {
-      const nombre = document.getElementById("nombreAmigo").value.trim();
-      if (!nombre) return alert("Escribe un nombre para tu amigo.");
-      let amigos = getAmigos();
-      if (amigos.includes(nombre)) { alert("Ese amigo ya está en la lista."); return; }
-      amigos.push(nombre);
-      setAmigos(amigos);
-      renderAmigos();
-      cerrarModalAgregarAmigo();
-    }
 
     // Secciones
     function mostrarSeccion(id) {
@@ -859,13 +650,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         return saludos[Math.floor(Math.random()*saludos.length)];
       }
       // ... resto de la función responderBot igual ...
-      // (por espacio, igual al anterior que ya tienes)
-      // Puedes copiar la función completa de responderBot de la versión de la IA anterior
-      // para mantener todo el sistema de respuestas predefinidas
-      // (no se repite aquí por espacio, pero no hay cambios)
-      // ...
-      // (Pon aquí el mismo responderBot largo que ya tienes)
-      // ...
+      // Usa tu última versión de responderBot aquí para mantener las respuestas.
       return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver todo lo que sé responder. ¡Pruébame con saludos, preguntas, chistes, retos, datos random y más!";
     }
 
