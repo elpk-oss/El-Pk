@@ -143,7 +143,6 @@
       color: #aaffaa;
       text-shadow: 0 0 8px #27ff2799;
     }
-    /* Terminal overlay */
     #terminalOverlay, #iaOverlay {
       display: none;
       position: fixed;
@@ -366,7 +365,7 @@
           <input type="text" id="iaInput" autocomplete="off" />
         </div>
       </form>
-      <div class="terminal-hint">¡Prueba preguntarme lo que quieras! (Demo sin IA real)</div>
+      <div class="terminal-hint">¡Prueba preguntarme lo que quieras! (IA real, segura)</div>
     </div>
   </div>
   <footer>
@@ -515,7 +514,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       }
     });
 
-    // IA Chat
+    // IA Chat seguro: llama al backend, no expone tu API KEY
     function abrirIA() {
       document.getElementById("iaOverlay").style.display = "flex";
       setTimeout(() => document.getElementById("iaInput").focus(), 180);
@@ -531,11 +530,24 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       if (!msg) return false;
       mostrarEnIA(`<span class="prompt">Tú:</span> <span class="terminal-cmd">${msg}</span>`);
       input.value = "";
-      // Demo IA: responde con el texto al revés
-      setTimeout(() => {
-        mostrarEnIA(`<div class="terminal-res">🤖 (Demo): "${msg.split('').reverse().join('')}"</div>`);
+      // Llama al backend seguro
+      fetch("http://localhost:3000/api/ia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: msg })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.respuesta){
+          mostrarEnIA(`<div class="terminal-res">🤖 ${data.respuesta}</div>`);
+        }else{
+          mostrarEnIA(`<div class="terminal-res">❌ Error: ${data.error || "Sin respuesta de la IA"}</div>`);
+        }
         scrollIA();
-      }, 700);
+      }).catch(err => {
+        mostrarEnIA(`<div class="terminal-res">❌ Error: ${err.message}</div>`);
+        scrollIA();
+      });
       scrollIA();
       return false;
     }
