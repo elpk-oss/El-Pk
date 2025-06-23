@@ -26,7 +26,7 @@
       user-select: none;
       box-shadow: 0 2px 8px #39ff1480;
     }
-    aside {
+    .sidebar {
       position: fixed;
       top: 55px;
       left: 10px;
@@ -34,12 +34,15 @@
       flex-direction: column;
       gap: 12px;
       z-index: 1000;
+      height: calc(100vh - 70px);
+      /* Centra verticalmente los botones si hay suficiente espacio */
+      justify-content: flex-start;
     }
-    aside button, .invite-bot-btn {
+    .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
       border: 1.7px solid #27ff27;
       color: #77ff77;
-      padding: 8px 18px;
+      padding: 9px 16px;
       border-radius: 9px;
       font-size: 1.07rem;
       font-family: inherit;
@@ -55,7 +58,7 @@
       align-items: center;
       gap: 7px;
     }
-    aside button:hover, .invite-bot-btn:hover {
+    .sidebar button:hover, .invite-bot-btn:hover {
       background: #27ff27;
       color: #111d13;
       scale: 1.04;
@@ -67,13 +70,13 @@
       border: 1.7px solid #5865f2;
       font-size: 1.05rem;
       border-radius: 9px;
-      padding: 8px 18px;
-      margin-top: 4px;
-      margin-bottom: 10px;
+      padding: 9px 16px;
       min-width: 155px;
       text-align: center;
       justify-content: center;
       text-decoration: none;
+      margin-top: 2px;
+      margin-bottom: 7px;
     }
     .invite-bot-btn:hover {
       background: linear-gradient(90deg, #27ff27 60%, #5865f2 250%);
@@ -86,7 +89,7 @@
     }
     main {
       padding: 25px;
-      margin-left: 140px;
+      margin-left: 185px; /* Ajustado para dejar margen según el ancho de la sidebar */
       max-width: 900px;
       min-height: 70vh;
     }
@@ -259,16 +262,16 @@
       letter-spacing: 0.7px;
       text-shadow: 0 0 3px #27ff2722;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       main { margin-left: 7px; padding: 9px; }
-      aside { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; }
+      .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto;}
       #terminalOverlay .terminal { max-width: 97vw; }
     }
   </style>
 </head>
 <body>
   <div id="bienvenida">Bienvenido a la terminal de El Pk <span style="color:#1aff8a;">(hecho con amor y código)</span></div>
-  <aside>
+  <nav class="sidebar">
     <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
     <button onclick="mostrarSeccion('contacto')">Contacto</button>
@@ -276,7 +279,7 @@
     <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
       <span class="invite-bot-icon">🤖</span> Invitar mi bot
     </a>
-  </aside>
+  </nav>
   <main>
     <header>
       <h1>Soy El Pk <span style="font-size:1.3rem;">👾</span></h1>
