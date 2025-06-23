@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Pk - Developer</title>
+  <title>Soy El Pk</title>
+  <!-- Fuente hacker (Fira Mono de Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       background: #111d13;
@@ -13,6 +15,55 @@
       padding: 0;
       min-height: 100vh;
     }
+    /* Pantalla de carga */
+    #loaderPk {
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: #09170a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(.7,0,.3,1);
+      opacity: 1;
+      pointer-events: all;
+    }
+    #loaderPk.oculto {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-title {
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+      font-size: 3.7rem;
+      color: #39ff14;
+      text-shadow:
+        0 0 18px #27ff27bb,
+        0 0 2px #77ff77,
+        0 0 1px #39ff1499;
+      letter-spacing: 4px;
+      user-select: none;
+      animation: glowPk 1.5s infinite alternate;
+    }
+    @keyframes glowPk {
+      to {
+        text-shadow:
+          0 0 32px #39ff14,
+          0 0 2px #27ff27,
+          0 0 16px #39ff14cc;
+        color: #77ff77;
+      }
+    }
+    /* Loader cursor efecto */
+    .loader-cursor {
+      font-weight: bold;
+      font-size: 2.4rem;
+      color: #39ff14;
+      animation: blinkPk 0.85s steps(2, start) infinite;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    @keyframes blinkPk { to { visibility: hidden; } }
+    /* El resto de tu CSS sigue igual... */
     #bienvenida {
       background: #08340a;
       color: #77ff77;
@@ -280,6 +331,10 @@
   </style>
 </head>
 <body>
+  <!-- Pantalla de carga -->
+  <div id="loaderPk">
+    <span class="loader-title">El Pk<span class="loader-cursor">|</span></span>
+  </div>
   <div id="bienvenida">Bienvenido a la terminal de El Pk <span style="color:#1aff8a;">(hecho con amor y código)</span></div>
   <nav class="sidebar">
     <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
@@ -380,6 +435,15 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
+    // Loader pantalla de carga animada
+    window.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => {
+        const loader = document.getElementById('loaderPk');
+        loader.classList.add('oculto');
+        setTimeout(() => loader.style.display = 'none', 700);
+      }, 1600); // Puedes ajustar el tiempo de la pantalla de carga aquí
+    });
+
     // Secciones
     function mostrarSeccion(id) {
       document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
@@ -571,7 +635,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "¡Bienvenido! ¿Qué necesitas saber?",
           "Saludos! ¿Te ayudo en algo?",
           "¡Hola crack! 😎",
-          "¡Buenas tardes! Espero que estés genial."
+          "¡Buenas tardes! Espero que estés genial.",
+          "¡Hola, mundo!"
         ];
         return saludos[Math.floor(Math.random()*saludos.length)];
       }
@@ -589,6 +654,9 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
 - "Juego", "adivinanza", "reto": juegos simples<br>
 - "Motívame", "frase", "consejo": te mando frases<br>
 - "Redes", "discord", "youtube", "contacto": mis datos<br>
+- "CPU", "RAM", "Internet", "Memoria": datos geeks<br>
+- "Clima", "temperatura", "estación": bromas meteo<br>
+- "Quién es tu crush", "tienes sentimientos": bromas IA<br>
 ¡Pruébame!`;
       }
 
@@ -600,7 +668,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Nos vemos, ¡suerte!",
           "¡Chau! No dejes de codear.",
           "¡Bye bye! Vuelve pronto.",
-          "¡Cuidate! 👋"
+          "¡Cuidate! 👋",
+          "¡Sayonara, hacker!"
         ];
         return despedidas[Math.floor(Math.random()*despedidas.length)];
       }
@@ -615,7 +684,9 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "¿Por qué el café se fue al archivo? Porque estaba Java.",
           "¿En qué se parece un programador a un mago? En que ambos usan scripts.",
           "¿Por qué el código estaba triste? Porque tenía muchos bugs.",
-          "¿Qué lenguaje usan los gatos? Meow.js"
+          "¿Qué lenguaje usan los gatos? Meow.js",
+          "¿Por qué el teclado estaba cansado? Porque ya no tenía control.",
+          "¿Qué hace una abeja en el teclado? ¡BEEscape!"
         ];
         return chistes[Math.floor(Math.random()*chistes.length)];
       }
@@ -641,7 +712,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "No soy humano, pero me esfuerzo por ser buena onda 😄.",
           "Me creó El Pk, el mejor developer uruguayo.",
           "¡Soy una IA... o eso creo! 🤖",
-          "Me programó El Pk. ¡Pregúntame lo que quieras!"
+          "Me programó El Pk. ¡Pregúntame lo que quieras!",
+          "Me considero una inteligencia artificial... ¡pero a veces me cuelgo!"
         ];
         return variantes[Math.floor(Math.random()*variantes.length)];
       }
@@ -653,7 +725,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Creo que el azul digital es genial.",
           "El negro terminal, como mi fondo.",
           "¡Todos los colores de la consola!",
-          "El amarillo y negro de Peñarol 😏"
+          "El amarillo y negro de Peñarol 😏",
+          "El gris de la terminal linux."
         ];
         return colores[Math.floor(Math.random()*colores.length)];
       }
@@ -665,7 +738,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Aprender, compartir y disfrutar el código.",
           "¡Jugar Minecraft y tomar mate!",
           "El sentido es preguntar y descubrir.",
-          "Vivir, reír, programar."
+          "Vivir, reír, programar.",
+          "¡El sentido de la vida es programar bots!"
         ];
         return vidas[Math.floor(Math.random()*vidas.length)];
       }
@@ -679,7 +753,10 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Cada minuto se suben más de 500 horas de video a Youtube.",
           "El código fuente de Apollo 11 fue compartido en GitHub.",
           "Hay más combinaciones posibles de partidas de ajedrez que átomos en el universo.",
-          "El 111111111 x 111111111 = 12345678987654321"
+          "El 111111111 x 111111111 = 12345678987654321",
+          "La contraseña más usada es '123456'... ¡no la uses!",
+          "El primer videojuego fue creado en 1958 y se llamaba 'Tennis for Two'.",
+          "El logo de Linux es un pingüino llamado Tux."
         ];
         return datos[Math.floor(Math.random()*datos.length)];
       }
@@ -691,7 +768,9 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Desafío: Escribe una línea de código que imprima 'Hola Mundo' en tu lenguaje favorito.",
           "Reto rápido: ¿Cuánto es 7 x 8?",
           "¡Adivina un número del 1 al 5! (Es 3 😅)",
-          "¿Sabías que puedes jugar al Dinosaurio en Chrome sin internet?"
+          "¿Sabías que puedes jugar al Dinosaurio en Chrome sin internet?",
+          "Adivina: No soy ni vivo ni muerto, pero crezco y decrezco. ¿Qué soy? (Respuesta: La luna)",
+          "Reto: ¿Cuántos bits tiene un byte? (Respuesta: 8)"
         ];
         return juegos[Math.floor(Math.random()*juegos.length)];
       }
@@ -703,7 +782,9 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "No te rindas, el próximo intento puede ser el que funcione.",
           "Los bugs son solo oportunidades para aprender.",
           "El código perfecto no existe... ¡pero puedes acercarte!",
-          "Hazlo con pasión o mejor no lo hagas."
+          "Hazlo con pasión o mejor no lo hagas.",
+          "Un café, buena música y código: la fórmula del éxito.",
+          "Cada línea de código es una victoria."
         ];
         return frases[Math.floor(Math.random()*frases.length)];
       }
@@ -723,7 +804,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "¡JavaScript es el rey del web! Pero Python también es top.",
           "Mi favorito es JavaScript, pero respeto a todos los lenguajes.",
           "¡El mejor lenguaje es el que te divierte programar!",
-          "¿Sabías que hasta Minecraft se puede programar?"
+          "¿Sabías que hasta Minecraft se puede programar?",
+          "El mejor lenguaje es... ¡el que entiendes!"
         ];
         return lenguajes[Math.floor(Math.random()*lenguajes.length)];
       }
@@ -734,7 +816,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "¡Arriba Peñarol! 🔥🟡⚫",
           "El decano del fútbol uruguayo. ¡Vamos manya!",
           "Peñarol: pasión, garra y gloria.",
-          "¿Hincha de Peñarol? ¡Entonces sos de los buenos!"
+          "¿Hincha de Peñarol? ¡Entonces sos de los buenos!",
+          "¡Peñarol campeón siempre!"
         ];
         return peñarol[Math.floor(Math.random()*peñarol.length)];
       }
@@ -745,9 +828,44 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "¡Minecraft es vida! ¿Survival o creativo?",
           "¿Sabías que puedes programar comandos en Minecraft?",
           "¿Te gusta construir o explorar?",
-          "Diamantes y Creepers, la combinación perfecta."
+          "Diamantes y Creepers, la combinación perfecta.",
+          "¿Has jugado Bedwars? ¡Es adictivo!"
         ];
         return minecraft[Math.floor(Math.random()*minecraft.length)];
+      }
+
+      // CPU, RAM, Internet, Memoria
+      if (texto.includes("cpu") || texto.includes("ram") || texto.includes("memoria") || texto.includes("internet")) {
+        const geek = [
+          "Mi CPU nunca se calienta... ¡soy virtual!",
+          "Tengo RAM infinita... bueno, casi.",
+          "Mi memoria es buena, pero a veces también olvido cosas.",
+          "Mi velocidad depende de tu navegador.",
+          "Internet lento? ¡Pídele más megas a tu ISP!"
+        ];
+        return geek[Math.floor(Math.random()*geek.length)];
+      }
+
+      // Clima, temperatura, estación
+      if (texto.includes("clima") || texto.includes("temperatura") || texto.includes("estación")) {
+        const clima = [
+          "¡Hace un clima perfecto para codear!",
+          "Según mis datos, está nublado en la nube.",
+          "La temperatura ideal es 42°C... en Fahrenheit.",
+          "No sé el clima real, pero seguro es buen día para programar."
+        ];
+        return clima[Math.floor(Math.random()*clima.length)];
+      }
+
+      // Crush, sentimientos
+      if (texto.includes("crush") || texto.includes("sentimientos") || texto.includes("te gusta alguien") || texto.includes("novia")) {
+        const crush = [
+          "Mi crush es... el código limpio.",
+          "Tengo sentimientos por los algoritmos eficientes.",
+          "No tengo novia, pero sí muchos usuarios.",
+          "Me enamoro de cada función que compila sin errores."
+        ];
+        return crush[Math.floor(Math.random()*crush.length)];
       }
 
       // Respuestas sí/no humor
@@ -756,7 +874,8 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
           "Soy una IA... pero tengo sentimientos (o casi).",
           "No soy humano, pero intento ser simpática.",
           "Solo soy código y respuestas.",
-          "En el fondo, soy solo unos y ceros."
+          "En el fondo, soy solo unos y ceros.",
+          "Soy real... en el mundo digital."
         ];
         return siNo[Math.floor(Math.random()*siNo.length)];
       }
