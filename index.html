@@ -7,6 +7,9 @@
   <!-- Fuente hacker (Fira Mono de Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --sidebar-width: 240px;
+    }
     body {
       background: #111d13;
       color: #77ff77;
@@ -72,16 +75,20 @@
       text-shadow: 0 0 6px #39ff1470;
       user-select: none;
       box-shadow: 0 2px 8px #39ff1480;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1001;
     }
+    /* Sidebar sticky y main con margen para evitar superposición */
     .sidebar {
       position: sticky;
-      top: 20px;
+      top: 0;
       left: 0;
       margin-left: 10px;
-      max-height: 90vh;
+      max-height: calc(100vh - 0px);
       overflow-y: auto;
       z-index: 1000;
-      width: 240px;
+      width: var(--sidebar-width);
       background: none;
       box-shadow: none;
       display: flex;
@@ -89,10 +96,11 @@
       gap: 16px;
     }
     main {
-      margin-left: 270px;
+      margin-left: calc(var(--sidebar-width) + 30px);
       padding: 25px;
       max-width: 900px;
       min-height: 70vh;
+      margin-top: 0;
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
@@ -146,6 +154,53 @@
     .invite-bot-icon {
       font-size: 1.25rem;
       margin-right: 3px;
+    }
+    /* Redes sociales botones */
+    .social-btns {
+      display: flex;
+      gap: 13px;
+      margin: 16px 0 9px 0;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 17px;
+      border-radius: 8px;
+      font-size: 1.08rem;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      background: #061a07;
+      color: #39ff14;
+      border: 2px solid #27ff27;
+      box-shadow: 0 2px 10px #27ff2715;
+      transition: all 0.14s;
+      outline: none;
+    }
+    .social-btn:hover {
+      background: #27ff27;
+      color: #111d13;
+      border-color: #39ff14;
+      scale: 1.08;
+      box-shadow: 0 2px 14px #27ff27cc;
+      text-decoration: none;
+    }
+    .social-btn.discord { color: #5865f2; border-color: #5865f2; }
+    .social-btn.discord:hover { background: #5865f2; color: #fff; border-color: #27ff27; }
+    .social-btn.youtube { color: #ff3c3c; border-color: #ff3c3c; }
+    .social-btn.youtube:hover { background: #ff3c3c; color: #fff; border-color: #27ff27; }
+    .social-btn.gmail { color: #d44638; border-color: #d44638; }
+    .social-btn.gmail:hover { background: #d44638; color: #fff; border-color: #27ff27; }
+    .icon-social {
+      font-size: 1.3em;
+      vertical-align: middle;
+      margin-right: 1px;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1px;
     }
     h1 {
       color: #27ff27;
@@ -320,16 +375,46 @@
       text-shadow: 0 0 3px #27ff2722;
     }
     @media (max-width: 900px) {
-      main { margin-left: 7px; padding: 9px; }
+      :root {
+        --sidebar-width: 100vw;
+      }
+      main { margin-left: 0; padding: 9px; }
       .sidebar {
         position: static;
         flex-direction: row;
         gap: 7px;
         margin-bottom: 15px;
         height: auto;
-        width: 100%;
+        width: 100vw;
+        max-width: 100vw;
         max-height: unset;
         background: none;
+        overflow-x: auto;
+        overflow-y: visible;
+      }
+      .sidebar button, .invite-bot-btn {
+        min-width: 110px;
+        font-size: 1rem;
+        padding: 10px 12px;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    @media (max-width: 650px) {
+      main { padding: 6px; }
+      h1 { font-size: 1.35rem; }
+      .sidebar { gap: 5px; }
+      .sidebar button, .invite-bot-btn {
+        font-size: 0.97rem;
+        padding: 9px 7px;
+      }
+      .social-btns {
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .social-btn {
+        font-size: 0.97rem;
+        padding: 7px 10px;
       }
     }
     /* Chat IA estilo */
@@ -339,6 +424,10 @@
     .iaChatMsg.bot { text-align:left; color:#aaffaa; }
     .iaChatMsg strong { color:#39ff14;}
   </style>
+  <!-- Iconos SVG para los botones sociales -->
+  <script>
+    // Esto es solo para que los SVG estén listos en el DOM
+  </script>
 </head>
 <body>
   <!-- Pantalla de carga -->
@@ -373,8 +462,30 @@
         <li>Experiencia: +4 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
         <li>Servidor propio de Discord: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
         <li>Amante de <span style="color:#39ff14;">Minecraft</span>, la programación y los retos técnicos</li>
-        <li>Contacto directo: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
+      <div class="social-btns">
+        <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord">
+          <span class="icon-social">
+            <!-- Discord SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.3a.114.114 0 0 0-.121.056c-.533.96-1.126 2.225-1.548 3.222a17.978 17.978 0 0 0-5.018 0A12.28 12.28 0 0 0 8.2 3.356a.115.115 0 0 0-.12-.056A19.736 19.736 0 0 0 3.683 4.369a.105.105 0 0 0-.047.043C.533 9.043-.32 13.579.099 18.057a.116.116 0 0 0 .045.082c2.052 1.507 4.042 2.422 5.992 3.029a.116.116 0 0 0 .127-.042c.462-.63.874-1.293 1.226-1.996a.112.112 0 0 0-.065-.16 12.048 12.048 0 0 1-1.743-.83.115.115 0 0 1-.011-.194c.117-.088.234-.18.347-.274a.114.114 0 0 1 .12-.012c3.68 1.676 7.648 1.676 11.297 0a.115.115 0 0 1 .122.009c.113.094.23.186.347.274a.115.115 0 0 1-.01.194 12.248 12.248 0 0 1-1.744.83.112.112 0 0 0-.064.161c.36.703.773 1.366 1.226 1.996a.116.116 0 0 0 .127.042c1.95-.607 3.94-1.522 5.992-3.029a.115.115 0 0 0 .045-.082c.5-5.177-.838-9.673-3.636-13.645a.104.104 0 0 0-.045-.043ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.938 2.419-2.157 2.419Z"></path></svg>
+          </span>
+          Discord
+        </a>
+        <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
+          <span class="icon-social">
+            <!-- YouTube SVG -->
+            <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
+          </span>
+          YouTube
+        </a>
+        <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail">
+          <span class="icon-social">
+            <!-- Gmail SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.1 0 2-.89 2-2V6c0-1.11-.9-2-2-2zm0 2v.01L12 13.09 4 6.01V6h16zm0 12H4v-9.41l7.29 6.7c.38.35.95.35 1.32 0L20 8.59V18z"></path></svg>
+          </span>
+          Gmail
+        </a>
+      </div>
     </section>
     <section id="proyectos" class="seccion">
       <h2>📂 Proyectos</h2>
@@ -394,10 +505,29 @@
     <section id="contacto" class="seccion">
       <h2>📬 Contacto</h2>
       <ul>
-        <li>Discord: <code>@el_pk1</code></li>
+        <li>
+          <div class="social-btns" style="margin:0;">
+            <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord">
+              <span class="icon-social">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.3a.114.114 0 0 0-.121.056c-.533.96-1.126 2.225-1.548 3.222a17.978 17.978 0 0 0-5.018 0A12.28 12.28 0 0 0 8.2 3.356a.115.115 0 0 0-.12-.056A19.736 19.736 0 0 0 3.683 4.369a.105.105 0 0 0-.047.043C.533 9.043-.32 13.579.099 18.057a.116.116 0 0 0 .045.082c2.052 1.507 4.042 2.422 5.992 3.029a.116.116 0 0 0 .127-.042c.462-.63.874-1.293 1.226-1.996a.112.112 0 0 0-.065-.16 12.048 12.048 0 0 1-1.743-.83.115.115 0 0 1-.011-.194c.117-.088.234-.18.347-.274a.114.114 0 0 1 .12-.012c3.68 1.676 7.648 1.676 11.297 0a.115.115 0 0 1 .122.009c.113.094.23.186.347.274a.115.115 0 0 1-.01.194 12.248 12.248 0 0 1-1.744.83.112.112 0 0 0-.064.161c.36.703.773 1.366 1.226 1.996a.116.116 0 0 0 .127.042c1.95-.607 3.94-1.522 5.992-3.029a.115.115 0 0 0 .045-.082c.5-5.177-.838-9.673-3.636-13.645a.104.104 0 0 0-.045-.043ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.938 2.419-2.157 2.419Z"></path></svg>
+              </span>
+              Discord
+            </a>
+            <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
+              <span class="icon-social">
+                <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
+              </span>
+              YouTube
+            </a>
+            <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail">
+              <span class="icon-social">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.1 0 2-.89 2-2V6c0-1.11-.9-2-2-2zm0 2v.01L12 13.09 4 6.01V6h16zm0 12H4v-9.41l7.29 6.7c.38.35.95.35 1.32 0L20 8.59V18z"></path></svg>
+              </span>
+              Gmail
+            </a>
+          </div>
+        </li>
         <li>Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
-        <li>YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a></li>
-        <li>Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
     </section>
   </main>
@@ -495,11 +625,27 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       redes: {
         desc: 'Redes sociales y contacto.',
         run: () => `
-<b>Redes y contacto:</b>
-- Discord: <code>@el_pk1</code>
+<div class="social-btns">
+  <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord">
+    <span class="icon-social">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.3a.114.114 0 0 0-.121.056c-.533.96-1.126 2.225-1.548 3.222a17.978 17.978 0 0 0-5.018 0A12.28 12.28 0 0 0 8.2 3.356a.115.115 0 0 0-.12-.056A19.736 19.736 0 0 0 3.683 4.369a.105.105 0 0 0-.047.043C.533 9.043-.32 13.579.099 18.057a.116.116 0 0 0 .045.082c2.052 1.507 4.042 2.422 5.992 3.029a.116.116 0 0 0 .127-.042c.462-.63.874-1.293 1.226-1.996a.112.112 0 0 0-.065-.16 12.048 12.048 0 0 1-1.743-.83.115.115 0 0 1-.011-.194c.117-.088.234-.18.347-.274a.114.114 0 0 1 .12-.012c3.68 1.676 7.648 1.676 11.297 0a.115.115 0 0 1 .122.009c.113.094.23.186.347.274a.115.115 0 0 1-.01.194 12.248 12.248 0 0 1-1.744.83.112.112 0 0 0-.064.161c.36.703.773 1.366 1.226 1.996a.116.116 0 0 0 .127.042c1.95-.607 3.94-1.522 5.992-3.029a.115.115 0 0 0 .045-.082c.5-5.177-.838-9.673-3.636-13.645a.104.104 0 0 0-.045-.043ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.938 2.419-2.157 2.419Z"></path></svg>
+    </span>
+    Discord
+  </a>
+  <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
+    <span class="icon-social">
+      <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
+    </span>
+    YouTube
+  </a>
+  <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail">
+    <span class="icon-social">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.1 0 2-.89 2-2V6c0-1.11-.9-2-2-2zm0 2v.01L12 13.09 4 6.01V6h16zm0 12H4v-9.41l7.29 6.7c.38.35.95.35 1.32 0L20 8.59V18z"></path></svg>
+    </span>
+    Gmail
+  </a>
+</div>
 - Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
-- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a>
-- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         `
       },
       limpiar: {
