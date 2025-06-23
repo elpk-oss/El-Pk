@@ -133,31 +133,6 @@
       font-size: 1.11rem;
       box-shadow: 0 1px 4px #27ff271a;
     }
-    .status-badge {
-      display: inline-block;
-      margin-left: 13px;
-      padding: 5px 15px;
-      border-radius: 16px;
-      font-size: 1rem;
-      color: #fff;
-      font-weight: bold;
-      background: #888;
-      box-shadow: 0 0 6px #0004;
-      letter-spacing: 0.7px;
-      vertical-align: middle;
-      border: none;
-      outline: none;
-      pointer-events: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .status-badge.online {
-      background: #27ff27;
-      color: #111d13;
-    }
-    .status-badge.offline {
-      background: #555;
-      color: #eee;
-    }
     a {
       color: #39ff14;
       text-decoration: underline;
@@ -331,7 +306,6 @@
       <ul>
         <li>
           <b>KaBot</b>
-          <span id="kabot-status" class="status-badge">Comprobando...</span>
           – Bot para Discord con juegos, utilidades, comandos de administración y sistemas personalizados.
         </li>
         <li>
@@ -375,32 +349,6 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
-    // Estado de KaBot automático
-    function actualizarKabotStatus() {
-fetch('https://kabot--tahiel.repl.co/status', {cache:"no-store"})
-        .then(r => r.json())
-        .then(data => {
-          const badge = document.getElementById('kabot-status');
-          if(data.online) {
-            badge.textContent = 'Online';
-            badge.classList.remove('offline');
-            badge.classList.add('online');
-          } else {
-            badge.textContent = 'Offline';
-            badge.classList.remove('online');
-            badge.classList.add('offline');
-          }
-        })
-        .catch(()=>{
-          const badge = document.getElementById('kabot-status');
-          badge.textContent = 'Offline';
-          badge.classList.remove('online');
-          badge.classList.add('offline');
-        });
-    }
-    actualizarKabotStatus();
-    setInterval(actualizarKabotStatus, 60000);
-
     // Secciones
     function mostrarSeccion(id) {
       document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
