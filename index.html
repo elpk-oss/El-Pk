@@ -144,7 +144,7 @@
       text-shadow: 0 0 8px #27ff2799;
     }
     /* Terminal overlay */
-    #terminalOverlay {
+    #terminalOverlay, #iaOverlay {
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -153,6 +153,10 @@
       justify-content: center;
       align-items: center;
       animation: fadeIn 0.3s;
+    }
+    #iaOverlay {
+      z-index: 5000;
+      background: rgba(15,20,0,0.92);
     }
     @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
     .terminal {
@@ -266,7 +270,7 @@
     @media (max-width: 900px) {
       main { margin-left: 7px; padding: 9px; }
       .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
-      #terminalOverlay .terminal { max-width: 97vw; }
+      #terminalOverlay .terminal, #iaOverlay .terminal { max-width: 97vw; }
     }
   </style>
 </head>
@@ -277,6 +281,7 @@
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
     <button onclick="mostrarSeccion('contacto')">Contacto</button>
     <button onclick="abrirTerminal()">Terminal</button>
+    <button onclick="abrirIA()">IA 🤖</button>
     <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
       <span class="invite-bot-icon">🤖</span> Invitar mi bot
     </a>
@@ -295,7 +300,7 @@
         <li>Nombre: <b>El Pk</b></li>
         <li>Nacionalidad: <b>Uruguay</b></li>
         <li>Especialidad: Bots de Discord, utilidades web, miniprogramas y sitios para gamers</li>
-        <li>Experiencia: +2 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
+        <li>Experiencia: +4 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
         <li>Servidor propio de Discord: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
         <li>Amante de <span style="color:#39ff14;">Minecraft</span>, la programación y los retos técnicos</li>
         <li>Contacto directo: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
@@ -343,6 +348,25 @@
         </div>
       </form>
       <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
+    </div>
+  </div>
+  <!-- IA Modal -->
+  <div id="iaOverlay">
+    <div class="terminal">
+      <div class="terminal-header">
+        <span>Chat con IA</span>
+        <button class="terminal-close" onclick="cerrarIA()" title="Cerrar">×</button>
+      </div>
+      <div class="terminal-body" id="iaBody">
+        <div class="terminal-res">Hola 👋, ¡soy la IA de El Pk! ¿En qué puedo ayudarte?</div>
+      </div>
+      <form onsubmit="return enviarMensajeIA(event)">
+        <div class="terminal-input-line">
+          <span class="prompt">Tú:</span>
+          <input type="text" id="iaInput" autocomplete="off" />
+        </div>
+      </form>
+      <div class="terminal-hint">¡Prueba preguntarme lo que quieras! (Demo sin IA real)</div>
     </div>
   </div>
   <footer>
@@ -490,6 +514,41 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         }
       }
     });
+
+    // IA Chat
+    function abrirIA() {
+      document.getElementById("iaOverlay").style.display = "flex";
+      setTimeout(() => document.getElementById("iaInput").focus(), 180);
+    }
+    function cerrarIA() {
+      document.getElementById("iaOverlay").style.display = "none";
+      document.getElementById("iaInput").value = "";
+    }
+    function enviarMensajeIA(e) {
+      e.preventDefault();
+      const input = document.getElementById("iaInput");
+      const msg = input.value.trim();
+      if (!msg) return false;
+      mostrarEnIA(`<span class="prompt">Tú:</span> <span class="terminal-cmd">${msg}</span>`);
+      input.value = "";
+      // Demo IA: responde con el texto al revés
+      setTimeout(() => {
+        mostrarEnIA(`<div class="terminal-res">🤖 (Demo): "${msg.split('').reverse().join('')}"</div>`);
+        scrollIA();
+      }, 700);
+      scrollIA();
+      return false;
+    }
+    function mostrarEnIA(html) {
+      const body = document.getElementById("iaBody");
+      body.insertAdjacentHTML("beforeend", `<div>${html}</div>`);
+    }
+    function scrollIA() {
+      const body = document.getElementById("iaBody");
+      body.scrollTop = body.scrollHeight;
+    }
+
+    // Animación bienvenida
     const textoBienvenida = "Bienvenido a la terminal de El Pk 💻";
     let index = 0;
     const div = document.getElementById("bienvenida");
