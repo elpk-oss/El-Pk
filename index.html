@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soy El Pk</title>
+  <!-- Fuente hacker (Fira Mono de Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -14,6 +15,7 @@
       padding: 0;
       min-height: 100vh;
     }
+    /* Pantalla de carga */
     #loaderPk {
       position: fixed;
       z-index: 9999;
@@ -51,6 +53,7 @@
         color: #77ff77;
       }
     }
+    /* Loader cursor efecto */
     .loader-cursor {
       font-weight: bold;
       font-size: 2.4rem;
@@ -60,6 +63,7 @@
       vertical-align: middle;
     }
     @keyframes blinkPk { to { visibility: hidden; } }
+    /* El resto de tu CSS sigue igual... */
     #bienvenida {
       background: #08340a;
       color: #77ff77;
@@ -73,25 +77,14 @@
       box-shadow: 0 2px 8px #39ff1480;
     }
     .sidebar {
-      position: sticky;
-      top: 20px;
-      left: 0;
-      margin-left: 10px;
-      max-height: 90vh;
-      overflow-y: auto;
-      z-index: 1000;
-      width: 240px;
-      background: none;
-      box-shadow: none;
+      position: fixed;
+      top: 55px;
+      left: 10px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-    }
-    main {
-      margin-left: 270px;
-      padding: 25px;
-      max-width: 900px;
-      min-height: 70vh;
+      z-index: 1000;
+      width: 240px;
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
@@ -146,29 +139,18 @@
       font-size: 1.25rem;
       margin-right: 3px;
     }
+    main {
+      padding: 25px;
+      margin-left: 260px;
+      max-width: 900px;
+      min-height: 70vh;
+    }
     h1 {
       color: #27ff27;
       font-size: 2.1rem;
       margin-bottom: 17px;
       text-shadow: 0 0 10px #27ff2777;
       letter-spacing: 1.5px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .foto-perfil {
-      width: 70px;
-      height: 70px;
-      border-radius: 14px;
-      border: 2.5px solid #39ff14;
-      object-fit: cover;
-      box-shadow: 0 0 13px #1aff8a70;
-      margin-left: 10px;
-      background: #000;
-      transition: box-shadow 0.22s;
-    }
-    .foto-perfil:hover {
-      box-shadow: 0 0 30px #39ff14b8;
     }
     h2 {
       color: #39ff14;
@@ -337,17 +319,8 @@
     }
     @media (max-width: 900px) {
       main { margin-left: 7px; padding: 9px; }
-      .sidebar {
-        position: static;
-        flex-direction: row;
-        gap: 7px;
-        margin-bottom: 15px;
-        height: auto;
-        width: 100%;
-        max-height: unset;
-        background: none;
-      }
-      h1 {flex-direction: column;}
+      .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
+      #terminalOverlay .terminal, #iaOverlay .terminal { max-width: 97vw; }
     }
     /* Chat IA estilo */
     #iaChatMsgList { margin:0; padding:0; list-style:none; }
@@ -375,10 +348,7 @@
   </nav>
   <main>
     <header>
-      <h1>
-        Soy El Pk <span style="font-size:1.3rem;">👾</span>
-        <img src="https://raw.githubusercontent.com/elpk-oss/pk-web-assets/main/profile-whatsapp.jpg" alt="Foto de perfil" class="foto-perfil" />
-      </h1>
+      <h1>Soy El Pk <span style="font-size:1.3rem;">👾</span></h1>
       <p>
         Desarrollador uruguayo. Apasionado por los bots de Discord, el desarrollo web y los proyectos creativos.<br>
         Me encanta experimentar con <span style="color:#1aff8a;">HTML</span>, <span style="color:#1aff8a;">CSS</span>, <span style="color:#1aff8a;">JavaScript</span> y hacer cosas útiles para la comunidad gamer y techie.
@@ -390,7 +360,7 @@
         <li>Nombre: <b>El Pk</b></li>
         <li>Nacionalidad: <b>Uruguay</b></li>
         <li>Especialidad: Bots de Discord, utilidades web, miniprogramas y sitios para gamers</li>
-        <li>Experiencia: <b>+2 años</b> en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
+        <li>Experiencia: +4 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
         <li>Servidor propio de Discord: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
         <li>Amante de <span style="color:#39ff14;">Minecraft</span>, la programación y los retos técnicos</li>
         <li>Contacto directo: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
@@ -414,10 +384,10 @@
     <section id="contacto" class="seccion">
       <h2>📬 Contacto</h2>
       <ul>
-        <li>Discord: <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x1F5E3;</span>Perfil</a></li>
+        <li>Discord: <code>@el_pk1</code></li>
         <li>Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
-        <li>YouTube: <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x1F4FA;</span>@ElPk</a></li>
-        <li>Email: <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x2709;&#xFE0F;</span>medicenelpk@gmail.com</a></li>
+        <li>YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a></li>
+        <li>Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
     </section>
   </main>
@@ -465,13 +435,13 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
-    // --- Pantalla de carga animada
+    // Loader pantalla de carga animada
     window.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
         const loader = document.getElementById('loaderPk');
         loader.classList.add('oculto');
         setTimeout(() => loader.style.display = 'none', 700);
-      }, 1600);
+      }, 1600); // Puedes ajustar el tiempo de la pantalla de carga aquí
     });
 
     // Secciones
@@ -499,7 +469,7 @@
         desc: 'Información sobre El Pk.',
         run: () => `
 <b>El Pk</b> - Desarrollador uruguayo apasionado por bots de Discord, utilidades web y proyectos gamer.
-Skills: JS/Node.js, HTML, CSS. Experiencia: +2 años.
+Skills: JS/Node.js, HTML, CSS. Experiencia: +4 años.
 Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         `
       },
@@ -516,7 +486,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         desc: 'Redes sociales y contacto.',
         run: () => `
 <b>Redes y contacto:</b>
-- Discord: <a href="https://discord.com/users/1352424608862572597" target="_blank">@el_pk1</a>
+- Discord: <code>@el_pk1</code>
 - Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
 - YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a>
 - Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
@@ -650,9 +620,13 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       const body = document.getElementById("iaBody");
       body.scrollTop = body.scrollHeight;
     }
+
+    // RESPUESTAS IA
     function responderBot(msg) {
       const texto = msg.trim().toLowerCase();
-      if (["hola","buenas","hello","hey","holi","qué tal","que tal","saludos","buen día","buenas tardes","buenas noches"].includes(texto)) {
+
+      // Saludos y variante
+      if (["hola", "buenas", "hello", "hey", "holi", "qué tal", "que tal", "saludos", "buen día", "buenas tardes", "buenas noches"].includes(texto)) {
         const saludos = [
           "¡Hola! ¿Cómo te va?",
           "¡Buenas! ¿En qué puedo ayudarte?",
@@ -666,8 +640,250 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         ];
         return saludos[Math.floor(Math.random()*saludos.length)];
       }
+
+      // Ayuda y comandos
+      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer", "menu", "opciones", "lista"].includes(texto)) {
+        return `<b>Puedo responder:</b><br>
+- "Hola", "Buenas", "Hey", etc.: saludo<br>
+- "Chiste": te cuento un chiste<br>
+- "Hora" o "Fecha": te digo la hora/fecha<br>
+- "¿Quién eres?", "¿Eres real?", "¿Eres humano?", "¿Quién te creó?": info sobre mí<br>
+- "Color favorito", "Sentido de la vida", "Dato random", "Curiosidad": respuestas random<br>
+- "Adiós", "Chao", "Bye": me despido<br>
+- "¿Cuál es el mejor lenguaje?", "¿Minecraft?", "¿Peñarol?": respuestas divertidas<br>
+- "Juego", "adivinanza", "reto": juegos simples<br>
+- "Motívame", "frase", "consejo": te mando frases<br>
+- "Redes", "discord", "youtube", "contacto": mis datos<br>
+- "CPU", "RAM", "Internet", "Memoria": datos geeks<br>
+- "Clima", "temperatura", "estación": bromas meteo<br>
+- "Quién es tu crush", "tienes sentimientos": bromas IA<br>
+¡Pruébame!`;
+      }
+
+      // Despedidas
+      if (["adiós", "adios", "bye", "nos vemos", "hasta luego", "chau", "chao", "me voy"].includes(texto)) {
+        const despedidas = [
+          "¡Adiós! Que tengas un gran día.",
+          "¡Hasta la próxima!",
+          "Nos vemos, ¡suerte!",
+          "¡Chau! No dejes de codear.",
+          "¡Bye bye! Vuelve pronto.",
+          "¡Cuidate! 👋",
+          "¡Sayonara, hacker!"
+        ];
+        return despedidas[Math.floor(Math.random()*despedidas.length)];
+      }
+
+      // Chistes
+      if (texto.includes("chiste") || texto.includes("cuentame un chiste") || texto.includes("cuéntame un chiste")) {
+        const chistes = [
+          "¿Por qué los programadores confunden Halloween y Navidad? Porque OCT 31 == DEC 25.",
+          "¿Qué le dice un bit a otro? Nos vemos en el bus.",
+          "¿Por qué la computadora fue al médico? Porque tenía un virus.",
+          "¿Cómo se llama un pez que hace código? ¡Un pez-coder!",
+          "¿Por qué el café se fue al archivo? Porque estaba Java.",
+          "¿En qué se parece un programador a un mago? En que ambos usan scripts.",
+          "¿Por qué el código estaba triste? Porque tenía muchos bugs.",
+          "¿Qué lenguaje usan los gatos? Meow.js",
+          "¿Por qué el teclado estaba cansado? Porque ya no tenía control.",
+          "¿Qué hace una abeja en el teclado? ¡BEEscape!"
+        ];
+        return chistes[Math.floor(Math.random()*chistes.length)];
+      }
+
+      // Hora y fecha
+      if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día") || texto.includes("que hora es") || texto.includes("qué hora es")) {
+        const ahora = new Date();
+        return `Ahora es ${ahora.toLocaleTimeString()} del día ${ahora.toLocaleDateString()}.`;
+      }
+
+      // Quién eres, identidad, creador, IA
+      if (
+        texto.includes("quién eres") || texto.includes("quien eres") ||
+        texto.includes("tu nombre") || texto.includes("eres real") ||
+        texto.includes("eres humano") || texto.includes("qué eres") ||
+        texto.includes("que eres") || texto.includes("quién te creó") ||
+        texto.includes("quien te creo") || texto.includes("te creó") ||
+        texto.includes("te creo") || texto.includes("eres una ia") ||
+        texto.includes("eres bot")
+      ) {
+        const variantes = [
+          "Soy la IA de El Pk, programada para responderte y hacerte sonreír.",
+          "No soy humano, pero me esfuerzo por ser buena onda 😄.",
+          "Me creó El Pk, el mejor developer uruguayo.",
+          "¡Soy una IA... o eso creo! 🤖",
+          "Me programó El Pk. ¡Pregúntame lo que quieras!",
+          "Me considero una inteligencia artificial... ¡pero a veces me cuelgo!"
+        ];
+        return variantes[Math.floor(Math.random()*variantes.length)];
+      }
+
+      // Color favorito
+      if (texto.includes("color favorito") || texto.includes("color que te gusta")) {
+        const colores = [
+          "¡Me gusta el verde PK, obvio!",
+          "Creo que el azul digital es genial.",
+          "El negro terminal, como mi fondo.",
+          "¡Todos los colores de la consola!",
+          "El amarillo y negro de Peñarol 😏",
+          "El gris de la terminal linux."
+        ];
+        return colores[Math.floor(Math.random()*colores.length)];
+      }
+
+      // Sentido vida
+      if (texto.includes("sentido de la vida") || texto.includes("significado de la vida")) {
+        const vidas = [
+          "42. ¡Obvio! (Referencia geek)",
+          "Aprender, compartir y disfrutar el código.",
+          "¡Jugar Minecraft y tomar mate!",
+          "El sentido es preguntar y descubrir.",
+          "Vivir, reír, programar.",
+          "¡El sentido de la vida es programar bots!"
+        ];
+        return vidas[Math.floor(Math.random()*vidas.length)];
+      }
+
+      // Dato random o curiosidad
+      if (texto.includes("dato random") || texto.includes("curiosidad") || texto.includes("sorprendeme")) {
+        const datos = [
+          "¿Sabías que el primer bug informático fue una polilla?",
+          "La palabra 'robot' viene del checo 'robota', que significa 'trabajo forzado'.",
+          "El primer emoji fue creado en 1999 en Japón.",
+          "Cada minuto se suben más de 500 horas de video a Youtube.",
+          "El código fuente de Apollo 11 fue compartido en GitHub.",
+          "Hay más combinaciones posibles de partidas de ajedrez que átomos en el universo.",
+          "El 111111111 x 111111111 = 12345678987654321",
+          "La contraseña más usada es '123456'... ¡no la uses!",
+          "El primer videojuego fue creado en 1958 y se llamaba 'Tennis for Two'.",
+          "El logo de Linux es un pingüino llamado Tux."
+        ];
+        return datos[Math.floor(Math.random()*datos.length)];
+      }
+
+      // Juegos
+      if (texto.includes("juego") || texto.includes("adivinanza") || texto.includes("reto")) {
+        const juegos = [
+          "Adivina: ¿Qué es algo que cuanto más le quitas, más grande se vuelve? (Respuesta: El agujero)",
+          "Desafío: Escribe una línea de código que imprima 'Hola Mundo' en tu lenguaje favorito.",
+          "Reto rápido: ¿Cuánto es 7 x 8?",
+          "¡Adivina un número del 1 al 5! (Es 3 😅)",
+          "¿Sabías que puedes jugar al Dinosaurio en Chrome sin internet?",
+          "Adivina: No soy ni vivo ni muerto, pero crezco y decrezco. ¿Qué soy? (Respuesta: La luna)",
+          "Reto: ¿Cuántos bits tiene un byte? (Respuesta: 8)"
+        ];
+        return juegos[Math.floor(Math.random()*juegos.length)];
+      }
+
+      // Frases, motivaciones
+      if (texto.includes("motívame") || texto.includes("motivame") || texto.includes("frase") || texto.includes("consejo") || texto.includes("motiva")) {
+        const frases = [
+          "El mejor momento para comenzar era ayer. El segundo mejor, es ahora.",
+          "No te rindas, el próximo intento puede ser el que funcione.",
+          "Los bugs son solo oportunidades para aprender.",
+          "El código perfecto no existe... ¡pero puedes acercarte!",
+          "Hazlo con pasión o mejor no lo hagas.",
+          "Un café, buena música y código: la fórmula del éxito.",
+          "Cada línea de código es una victoria."
+        ];
+        return frases[Math.floor(Math.random()*frases.length)];
+      }
+
+      // Redes sociales, contacto, discord, youtube
+      if (texto.includes("redes") || texto.includes("discord") || texto.includes("youtube") || texto.includes("contacto") || texto.includes("correo") || texto.includes("email")) {
+        return `Aquí tienes mis redes:<br>
+- Discord: <code>@el_pk1</code> <br>
+- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a><br>
+- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a><br>
+- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>`;
+      }
+
+      // Lenguajes de programación
+      if (texto.includes("mejor lenguaje") || texto.includes("lenguaje favorito") || texto.includes("programar en")) {
+        const lenguajes = [
+          "¡JavaScript es el rey del web! Pero Python también es top.",
+          "Mi favorito es JavaScript, pero respeto a todos los lenguajes.",
+          "¡El mejor lenguaje es el que te divierte programar!",
+          "¿Sabías que hasta Minecraft se puede programar?",
+          "El mejor lenguaje es... ¡el que entiendes!"
+        ];
+        return lenguajes[Math.floor(Math.random()*lenguajes.length)];
+      }
+
+      // Peñarol y fútbol
+      if (texto.includes("peñarol") || texto.includes("fútbol") || texto.includes("futbol")) {
+        const peñarol = [
+          "¡Arriba Peñarol! 🔥🟡⚫",
+          "El decano del fútbol uruguayo. ¡Vamos manya!",
+          "Peñarol: pasión, garra y gloria.",
+          "¿Hincha de Peñarol? ¡Entonces sos de los buenos!",
+          "¡Peñarol campeón siempre!"
+        ];
+        return peñarol[Math.floor(Math.random()*peñarol.length)];
+      }
+
+      // Minecraft
+      if (texto.includes("minecraft")) {
+        const minecraft = [
+          "¡Minecraft es vida! ¿Survival o creativo?",
+          "¿Sabías que puedes programar comandos en Minecraft?",
+          "¿Te gusta construir o explorar?",
+          "Diamantes y Creepers, la combinación perfecta.",
+          "¿Has jugado Bedwars? ¡Es adictivo!"
+        ];
+        return minecraft[Math.floor(Math.random()*minecraft.length)];
+      }
+
+      // CPU, RAM, Internet, Memoria
+      if (texto.includes("cpu") || texto.includes("ram") || texto.includes("memoria") || texto.includes("internet")) {
+        const geek = [
+          "Mi CPU nunca se calienta... ¡soy virtual!",
+          "Tengo RAM infinita... bueno, casi.",
+          "Mi memoria es buena, pero a veces también olvido cosas.",
+          "Mi velocidad depende de tu navegador.",
+          "Internet lento? ¡Pídele más megas a tu ISP!"
+        ];
+        return geek[Math.floor(Math.random()*geek.length)];
+      }
+
+      // Clima, temperatura, estación
+      if (texto.includes("clima") || texto.includes("temperatura") || texto.includes("estación")) {
+        const clima = [
+          "¡Hace un clima perfecto para codear!",
+          "Según mis datos, está nublado en la nube.",
+          "La temperatura ideal es 42°C... en Fahrenheit.",
+          "No sé el clima real, pero seguro es buen día para programar."
+        ];
+        return clima[Math.floor(Math.random()*clima.length)];
+      }
+
+      // Crush, sentimientos
+      if (texto.includes("crush") || texto.includes("sentimientos") || texto.includes("te gusta alguien") || texto.includes("novia")) {
+        const crush = [
+          "Mi crush es... el código limpio.",
+          "Tengo sentimientos por los algoritmos eficientes.",
+          "No tengo novia, pero sí muchos usuarios.",
+          "Me enamoro de cada función que compila sin errores."
+        ];
+        return crush[Math.floor(Math.random()*crush.length)];
+      }
+
+      // Respuestas sí/no humor
+      if (texto.startsWith("eres real") || texto.startsWith("eres una ia") || texto.startsWith("eres humano")) {
+        const siNo = [
+          "Soy una IA... pero tengo sentimientos (o casi).",
+          "No soy humano, pero intento ser simpática.",
+          "Solo soy código y respuestas.",
+          "En el fondo, soy solo unos y ceros.",
+          "Soy real... en el mundo digital."
+        ];
+        return siNo[Math.floor(Math.random()*siNo.length)];
+      }
+
+      // Respuesta por defecto
       return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver todo lo que sé responder. ¡Pruébame con saludos, preguntas, chistes, retos, datos random y más!";
     }
+
     // Animación bienvenida
     const textoBienvenida = "Bienvenido a la terminal de El Pk 💻";
     let index = 0;
