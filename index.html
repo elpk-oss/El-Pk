@@ -12,7 +12,6 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      transition: background 0.4s;
     }
     #bienvenida {
       background: #08340a;
@@ -34,13 +33,13 @@
       flex-direction: column;
       gap: 16px;
       z-index: 1000;
-      width: 240px; /* Fijar ancho para los botones y reservar espacio en main */
+      width: 240px;
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
       border: 2px solid #27ff27;
       color: #77ff77;
-      padding: 13px 25px;
+      padding: 13px 30px;
       border-radius: 13px;
       font-size: 1.18rem;
       font-family: inherit;
@@ -70,7 +69,7 @@
       border: 2px solid #5865f2;
       font-size: 1.16rem;
       border-radius: 13px;
-      padding: 13px 27px;
+      padding: 13px 30px;
       min-width: 180px;
       text-align: center;
       justify-content: center;
@@ -91,10 +90,9 @@
     }
     main {
       padding: 25px;
-      margin-left: 260px; /* Igual o mayor que el ancho de la sidebar + gap */
+      margin-left: 260px;
       max-width: 900px;
       min-height: 70vh;
-      transition: margin-left 0.2s;
     }
     h1 {
       color: #27ff27;
@@ -134,6 +132,31 @@
       border-radius: 7px;
       font-size: 1.11rem;
       box-shadow: 0 1px 4px #27ff271a;
+    }
+    .status-badge {
+      display: inline-block;
+      margin-left: 13px;
+      padding: 5px 15px;
+      border-radius: 16px;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: bold;
+      background: #888;
+      box-shadow: 0 0 6px #0004;
+      letter-spacing: 0.7px;
+      vertical-align: middle;
+      border: none;
+      outline: none;
+      pointer-events: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .status-badge.online {
+      background: #27ff27;
+      color: #111d13;
+    }
+    .status-badge.offline {
+      background: #555;
+      color: #eee;
     }
     a {
       color: #39ff14;
@@ -297,7 +320,7 @@
         <li>Nombre: <b>El Pk</b></li>
         <li>Nacionalidad: <b>Uruguay</b></li>
         <li>Especialidad: Bots de Discord, utilidades web, miniprogramas y sitios para gamers</li>
-        <li>Experiencia: +2 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
+        <li>Experiencia: +4 años en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
         <li>Servidor propio de Discord: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
         <li>Amante de <span style="color:#39ff14;">Minecraft</span>, la programación y los retos técnicos</li>
         <li>Contacto directo: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
@@ -307,7 +330,9 @@
       <h2>📂 Proyectos</h2>
       <ul>
         <li>
-          <b>KaBot</b> – Bot para Discord con juegos, utilidades, comandos de administración y sistemas personalizados.
+          <b>KaBot</b>
+          <span id="kabot-status" class="status-badge">Comprobando...</span>
+          – Bot para Discord con juegos, utilidades, comandos de administración y sistemas personalizados.
         </li>
         <li>
           <b>Páginas Web</b> – Landings, paneles de control y sistemas para comunidades gamer.
@@ -350,12 +375,37 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
+    // Estado de KaBot automático
+    function actualizarKabotStatus() {
+      fetch('https://TUDOMINIO/status', {cache:"no-store"})
+        .then(r => r.json())
+        .then(data => {
+          const badge = document.getElementById('kabot-status');
+          if(data.online) {
+            badge.textContent = 'Online';
+            badge.classList.remove('offline');
+            badge.classList.add('online');
+          } else {
+            badge.textContent = 'Offline';
+            badge.classList.remove('online');
+            badge.classList.add('offline');
+          }
+        })
+        .catch(()=>{
+          const badge = document.getElementById('kabot-status');
+          badge.textContent = 'Offline';
+          badge.classList.remove('online');
+          badge.classList.add('offline');
+        });
+    }
+    actualizarKabotStatus();
+    setInterval(actualizarKabotStatus, 60000);
+
     // Secciones
     function mostrarSeccion(id) {
       document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
       document.getElementById(id).classList.add("activa");
     }
-
     // Terminal
     const comandos = {
       ayuda: {
@@ -430,9 +480,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         }
       }
     };
-
     let historial = [], historialIndex = 0;
-
     function abrirTerminal() {
       document.getElementById("terminalOverlay").style.display = "flex";
       setTimeout(() => document.getElementById("terminalInput").focus(), 180);
@@ -441,17 +489,14 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       document.getElementById("terminalOverlay").style.display = "none";
       document.getElementById("terminalInput").value = "";
     }
-
     function enviarComando(e) {
       e.preventDefault();
       const input = document.getElementById("terminalInput");
       let cmd = input.value.trim();
       if(cmd === '') return false;
-
       mostrarEnTerminal(`<span class="prompt">$</span> <span class="terminal-cmd">${cmd}</span>`);
       historial.push(cmd); historialIndex = historial.length;
       input.value = "";
-
       const base = cmd.split(" ")[0].toLowerCase();
       if (comandos[base]) {
         let res = comandos[base].run();
