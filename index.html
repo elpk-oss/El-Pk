@@ -6,25 +6,6 @@
   <title>Soy El Pk</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --sidebar-width: 205px;
-      --color-accent: #39ff14;
-      --color-card: #0e1e13;
-      --color-card-border: #27ff27;
-      --color-card-title: #1aff8a;
-      --color-section-bg: #111d13;
-      --color-section-border: #27ff27;
-      --color-hability: #111d13;
-      --color-hability-border: #1aff8a;
-      --color-hability-icon: #1aff8a;
-      --color-hability-title: #77ff77;
-      --color-hability-desc: #7edb7e;
-    }
-    html, body {
-      scroll-padding-top: 0;
-      scroll-behavior: smooth;
-      height: 100%;
-    }
     body {
       background: #111d13;
       color: #77ff77;
@@ -32,8 +13,6 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      height: 100%;
-      overflow-x: hidden;
     }
     #loaderPk {
       position: fixed;
@@ -92,44 +71,35 @@
       text-shadow: 0 0 6px #39ff1470;
       user-select: none;
       box-shadow: 0 2px 8px #39ff1480;
-      margin-bottom: 0;
-      position: relative;
-      z-index: 1001;
     }
-    /* Sidebar alineada con el texto (centrada visualmente) */
     .sidebar {
-      position: fixed;
-      top: 44px;
-      left: 10px;
-      max-height: calc(100vh - 44px);
+      position: sticky;
+      top: 20px;
+      left: 0;
+      margin-left: 10px;
+      max-height: 90vh;
       overflow-y: auto;
       z-index: 1000;
-      width: var(--sidebar-width);
+      width: 240px;
       background: none;
       box-shadow: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
+      gap: 16px;
     }
     main {
-      margin-left: calc(var(--sidebar-width) + 35px);
-      padding: 32px 10px 25px 10px;
+      margin-left: 270px;
+      padding: 25px;
       max-width: 900px;
-      min-height: 75vh;
-      margin-top: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      min-height: 0;
+      min-height: 70vh;
     }
     .sidebar button, .invite-bot-btn {
       background: linear-gradient(90deg, #061a07 80%, #27ff27 300%);
       border: 2px solid #27ff27;
       color: #77ff77;
-      padding: 8px 18px;
-      border-radius: 11px;
-      font-size: 1.01rem;
+      padding: 13px 30px;
+      border-radius: 13px;
+      font-size: 1.18rem;
       font-family: inherit;
       font-weight: bold;
       cursor: pointer;
@@ -138,7 +108,7 @@
       outline: none;
       letter-spacing: 1px;
       text-align: left;
-      min-width: 125px;
+      min-width: 180px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -155,15 +125,15 @@
       background: linear-gradient(90deg, #5865f2 60%, #27ff27 250%);
       color: #fff;
       border: 2px solid #5865f2;
-      font-size: 1.01rem;
-      border-radius: 11px;
-      padding: 8px 18px;
-      min-width: 125px;
+      font-size: 1.16rem;
+      border-radius: 13px;
+      padding: 13px 30px;
+      min-width: 180px;
       text-align: center;
       justify-content: center;
       text-decoration: none;
       margin-top: 2px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -173,42 +143,75 @@
       border-color: #27ff27;
     }
     .invite-bot-icon {
-      font-size: 1.14rem;
+      font-size: 1.25rem;
       margin-right: 3px;
     }
-    .card { background: var(--color-card); border: 2px solid var(--color-card-border); border-radius: 13px; box-shadow: 0 2px 16px #27ff271a; margin-bottom: 22px; padding: 17px 18px 14px 18px; position: relative; overflow: hidden;}
-    .card-title { color: var(--color-card-title); font-weight: bold; font-size: 1.23rem; margin-bottom: 13px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px #27ff2799;}
-    .card-profile { display: flex; flex-direction: row; gap: 19px; align-items: flex-start; flex-wrap: wrap;}
-    .foto-perfil { width: 105px; height: 105px; border-radius: 17px; border: 2.5px solid #39ff14; object-fit: cover; box-shadow: 0 0 22px #1aff8a70; margin-right: 2px; background: #000; transition: box-shadow 0.22s;}
-    .foto-perfil:hover { box-shadow: 0 0 35px #39ff14b8;}
-    .card-profile-info { flex: 1; display: flex; flex-direction: column; gap: 7px;}
-    .badge-profile { display: inline-block; background: #1aff8a30; color: #1aff8a; font-size: 0.99rem; border-radius: 7px; padding: 2px 11px; margin-bottom: 7px; font-weight: bold; letter-spacing: 1px;}
-    .desc-highlight { color: #39ff14; font-weight: bold; text-shadow: 0 0 6px #39ff1470;}
-    .proyectos-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 13px;}
-    .proyecto-card { background: #121f14; border: 2px solid #8f39ff; border-radius: 8px; padding: 11px 13px 9px 13px; min-width: 180px; max-width: 250px; flex: 1 1 180px; color: #ccbbff; box-shadow: 0 0 11px #8f39ff38; margin-bottom: 7px; position: relative;}
-    .proyecto-card .proyecto-title { color: #d689ff; font-weight: bold; font-size: 1.01rem; margin-bottom: 7px; letter-spacing: 0.7px;}
-    .proyecto-card .proyecto-desc { font-size: 0.93rem; color: #a5ffda; margin-bottom: 3px; margin-top: 2px;}
-    .proyecto-badge { position: absolute; top: 8px; right: 13px; font-size: 1.09em; color: #8f39ff;}
-    .habilidades-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 11px; margin-bottom: 5px;}
-    .habilidad-card { background: var(--color-hability); border: 2px solid var(--color-hability-border); border-radius: 10px; padding: 7px 10px 5px 10px; min-width: 88px; text-align: center; flex: 1 1 88px; color: var(--color-hability-title); box-shadow: 0 1px 6px #27ff2722; margin-bottom: 4px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; font-size: 0.97rem;}
-    .habilidad-card:hover { box-shadow: 0 0 14px #1aff8acc;}
-    .habilidad-icon { font-size: 1.14em; margin-bottom: 4px; color: var(--color-hability-icon); filter: drop-shadow(0 0 4px #1aff8a55);}
-    .habilidad-title { font-weight: bold; color: var(--color-hability-title); font-size: 1em; margin-bottom: 2px;}
-    .habilidad-desc { color: var(--color-hability-desc); font-size: 0.91em; opacity: 0.85;}
-    .social-btns { display: flex; gap: 8px; margin: 16px 0 9px 0; flex-wrap: wrap;}
-    .social-btn { display: flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 8px; font-size: 0.97rem; font-weight: bold; text-decoration: none; border: none; cursor: pointer; background: #061a07; color: #39ff14; border: 2px solid #27ff27; box-shadow: 0 2px 10px #27ff2715; transition: all 0.14s; outline: none;}
-    .social-btn:hover { background: #27ff27; color: #111d13; border-color: #39ff14; scale: 1.08; box-shadow: 0 2px 14px #27ff27cc; text-decoration: none;}
-    .social-btn.discord { color: #5865f2; border-color: #5865f2; }
-    .social-btn.discord:hover { background: #5865f2; color: #fff; border-color: #27ff27; }
-    .social-btn.youtube { color: #ff3c3c; border-color: #ff3c3c; }
-    .social-btn.youtube:hover { background: #ff3c3c; color: #fff; border-color: #27ff27; }
-    .social-btn.gmail { color: #d44638; border-color: #d44638; }
-    .social-btn.gmail:hover { background: #d44638; color: #fff; border-color: #27ff27; }
-    .icon-social { font-size: 1.12em; vertical-align: middle; margin-right: 1px; display: inline-flex; align-items: center; margin-bottom: 1px;}
-    main:after { display: none !important; }
-    footer { margin-top: 22px; text-align: center; font-size: 1rem; color: #27ff27cc; letter-spacing: 0.7px; text-shadow: 0 0 3px #27ff2722;}
-
-    /* Terminal centrada y adaptada a móvil */
+    h1 {
+      color: #27ff27;
+      font-size: 2.1rem;
+      margin-bottom: 17px;
+      text-shadow: 0 0 10px #27ff2777;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .foto-perfil {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      border: 2.5px solid #39ff14;
+      object-fit: cover;
+      box-shadow: 0 0 13px #1aff8a70;
+      margin-left: 10px;
+      background: #000;
+      transition: box-shadow 0.22s;
+    }
+    .foto-perfil:hover {
+      box-shadow: 0 0 30px #39ff14b8;
+    }
+    h2 {
+      color: #39ff14;
+      margin-top: 0;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #39ff1477;
+      font-size: 1.18rem;
+      margin-bottom: 8px;
+    }
+    .seccion {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      margin-top: 15px;
+    }
+    .seccion.activa {
+      display: block;
+      opacity: 1;
+      animation: fadeInHack 0.3s;
+    }
+    @keyframes fadeInHack {
+      from { opacity: 0; filter: blur(7px);}
+      to { opacity: 1; filter: blur(0);}
+    }
+    ul li {
+      background: #111d13;
+      border-left: 3px solid #27ff27;
+      padding: 11px;
+      margin: 9px 0;
+      border-radius: 7px;
+      font-size: 1.11rem;
+      box-shadow: 0 1px 4px #27ff271a;
+    }
+    a {
+      color: #39ff14;
+      text-decoration: underline;
+      transition: color 0.2s;
+      font-size: 1.07rem;
+    }
+    a:hover {
+      color: #aaffaa;
+      text-shadow: 0 0 8px #27ff2799;
+    }
     #terminalOverlay, #iaOverlay {
       display: none;
       position: fixed;
@@ -219,10 +222,15 @@
       align-items: center;
       animation: fadeIn 0.3s;
     }
+    #iaOverlay {
+      z-index: 5000;
+      background: rgba(15,20,0,0.92);
+    }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
     .terminal {
-      width: 96vw;
-      max-width: 500px;
-      height: 270px;
+      width: 97vw;
+      max-width: 560px;
+      height: 310px;
       background: #062108;
       border: 2px solid #27ff27;
       border-radius: 10px;
@@ -232,17 +240,10 @@
       flex-direction: column;
       font-size: 1.01rem;
       animation: terminalOpen 0.3s;
-      margin: 0 auto;
-      position: relative;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
-    @media (max-width: 700px) {
-      .terminal { width: 99vw; min-width: 0; max-width: 99vw; height: 60vh; min-height: 210px;}
-      .sidebar { position: static; width: 100vw; max-width: 100vw; left: 0!important; margin-left: 0;}
-      main { margin-left: 0; padding: 13px 2px 8px 2px; }
+    @keyframes terminalOpen {
+      from {transform: scale(0.97) translateY(25px);}
+      to {transform: scale(1) translateY(0);}
     }
     .terminal-header {
       color: #27ff27;
@@ -274,8 +275,6 @@
       font-size: 1.03rem;
       margin-bottom: 5px;
       box-shadow: 0 0 5px #27ff2733 inset;
-      min-height: 80px;
-      max-height: 160px;
     }
     .terminal-input-line {
       display: flex;
@@ -306,7 +305,9 @@
       background: #112f16;
       color: #fff;
     }
-    .terminal-cmd { color: #39ff14; }
+    .terminal-cmd {
+      color: #39ff14;
+    }
     .terminal-res {
       color: #aaffaa;
       margin-left: 19px;
@@ -314,9 +315,46 @@
       font-size: 1.02rem;
       white-space: pre-line;
     }
-    .terminal-hint { color: #1aff8a; font-size: 0.95rem; margin: 7px 0 0 8px; opacity: 0.7; font-style: italic; letter-spacing: 0.3px;}
-    .terminal-blink { animation: blink 1s steps(2, start) infinite;}
+    .terminal-hint {
+      color: #1aff8a;
+      font-size: 0.95rem;
+      margin: 7px 0 0 8px;
+      opacity: 0.7;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+    .terminal-blink {
+      animation: blink 1s steps(2, start) infinite;
+    }
     @keyframes blink { to {visibility: hidden;} }
+    footer {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 1rem;
+      color: #27ff27cc;
+      letter-spacing: 0.7px;
+      text-shadow: 0 0 3px #27ff2722;
+    }
+    @media (max-width: 900px) {
+      main { margin-left: 7px; padding: 9px; }
+      .sidebar {
+        position: static;
+        flex-direction: row;
+        gap: 7px;
+        margin-bottom: 15px;
+        height: auto;
+        width: 100%;
+        max-height: unset;
+        background: none;
+      }
+      h1 {flex-direction: column;}
+    }
+    /* Chat IA estilo */
+    #iaChatMsgList { margin:0; padding:0; list-style:none; }
+    .iaChatMsg { margin-bottom:10px; }
+    .iaChatMsg.user { text-align:right; color:#1aff8a; }
+    .iaChatMsg.bot { text-align:left; color:#aaffaa; }
+    .iaChatMsg strong { color:#39ff14;}
   </style>
 </head>
 <body>
@@ -326,10 +364,9 @@
   </div>
   <div id="bienvenida">Bienvenido a la terminal de El Pk <span style="color:#1aff8a;">(hecho con amor y código)</span></div>
   <nav class="sidebar">
-    <button onclick="document.getElementById('cardPerfil').scrollIntoView({behavior:'smooth',block:'center'})">Sobre Mí</button>
-    <button onclick="document.getElementById('cardProyectos').scrollIntoView({behavior:'smooth',block:'center'})">Proyectos</button>
-    <button onclick="document.getElementById('cardHabilidades').scrollIntoView({behavior:'smooth',block:'center'})">Habilidades</button>
-    <button onclick="document.getElementById('cardContacto').scrollIntoView({behavior:'smooth',block:'center'})">Contacto</button>
+    <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
+    <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
+    <button onclick="mostrarSeccion('contacto')">Contacto</button>
     <button onclick="abrirTerminal()">Terminal</button>
     <button onclick="abrirIA()">IA 🤖</button>
     <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
@@ -337,123 +374,51 @@
     </a>
   </nav>
   <main>
-    <!-- Perfil Card -->
-    <section class="card" id="cardPerfil">
-      <div class="card-title"> <span>🧑‍💻</span> Quién soy </div>
-      <div class="card-profile">
+    <header>
+      <h1>
+        Soy El Pk <span style="font-size:1.3rem;">👾</span>
         <img src="https://raw.githubusercontent.com/elpk-oss/pk-web-assets/main/profile-whatsapp.jpg" alt="Foto de perfil" class="foto-perfil" />
-        <div class="card-profile-info">
-          <span class="badge-profile">El Pk</span>
-          <div><span class="desc-highlight">Desarrollador & Bot Creator</span></div>
-          <div>
-            Uruguayo apasionado por los bots de Discord, sitios útiles y proyectos creativos.<br>
-            Me especializo en <span class="desc-highlight">JavaScript/Node.js</span>, desarrollo web y automatizaciones para comunidades.<br>
-            <span class="desc-highlight">+4 años de experiencia</span> creando soluciones para gamers y techies.<br>
-            <br>
-            <span style="color:#aaffaa">Amante de <b>Minecraft</b>, la programación, los retos técnicos y la comunidad.</span>
-          </div>
-        </div>
-      </div>
-      <div class="social-btns" style="margin-top:16px;">
-        <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord">
-          <span class="icon-social">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.3a.114.114 0 0 0-.121.056c-.533.96-1.126 2.225-1.548 3.222a17.978 17.978 0 0 0-5.018 0A12.28 12.28 0 0 0 8.2 3.356a.115.115 0 0 0-.12-.056A19.736 19.736 0 0 0 3.683 4.369a.105.105 0 0 0-.047.043C.533 9.043-.32 13.579.099 18.057a.116.116 0 0 0 .045.082c2.052 1.507 4.042 2.422 5.992 3.029a.116.116 0 0 0 .127-.042c.462-.63.874-1.293 1.226-1.996a.112.112 0 0 0-.065-.16 12.048 12.048 0 0 1-1.743-.83.115.115 0 0 1-.011-.194c.117-.088.234-.18.347-.274a.114.114 0 0 1 .12-.012c3.68 1.676 7.648 1.676 11.297 0a.115.115 0 0 1 .122.009c.113.094.23.186.347.274a.115.115 0 0 1-.01.194 12.248 12.248 0 0 1-1.744.83.112.112 0 0 0-.064.161c.36.703.773 1.366 1.226 1.996a.116.116 0 0 0 .127.042c1.95-.607 3.94-1.522 5.992-3.029a.115.115 0 0 0 .045-.082c.5-5.177-.838-9.673-3.636-13.645a.104.104 0 0 0-.045-.043ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.938 2.419-2.157 2.419Z"></path></svg>
-          </span>
-          Discord
-        </a>
-        <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
-          <span class="icon-social">
-            <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
-          </span>
-          YouTube
-        </a>
-        <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail">
-          <span class="icon-social">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.1 0 2-.89 2-2V6c0-1.11-.9-2-2-2zm0 2v.01L12 13.09 4 6.01V6h16zm0 12H4v-9.41l7.29 6.7c.38.35.95.35 1.32 0L20 8.59V18z"></path></svg>
-          </span>
-          Gmail
-        </a>
-      </div>
+      </h1>
+      <p>
+        Desarrollador uruguayo. Apasionado por los bots de Discord, el desarrollo web y los proyectos creativos.<br>
+        Me encanta experimentar con <span style="color:#1aff8a;">HTML</span>, <span style="color:#1aff8a;">CSS</span>, <span style="color:#1aff8a;">JavaScript</span> y hacer cosas útiles para la comunidad gamer y techie.
+      </p>
+    </header>
+    <section id="sobreMi" class="seccion activa">
+      <h2>🧑‍💻 Sobre Mí</h2>
+      <ul>
+        <li>Nombre: <b>El Pk</b></li>
+        <li>Nacionalidad: <b>Uruguay</b></li>
+        <li>Especialidad: Bots de Discord, utilidades web, miniprogramas y sitios para gamers</li>
+        <li>Experiencia: <b>+2 años</b> en desarrollo web y bots (JS/Node.js, HTML, CSS)</li>
+        <li>Servidor propio de Discord: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
+        <li>Amante de <span style="color:#39ff14;">Minecraft</span>, la programación y los retos técnicos</li>
+        <li>Contacto directo: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
+      </ul>
     </section>
-    <section class="card" id="cardProyectos">
-      <div class="card-title"><span>📦</span> Proyectos</div>
-      <div class="proyectos-grid">
-        <div class="proyecto-card">
-          <div class="proyecto-title">KaBot <span class="proyecto-badge">✨</span></div>
-          <div class="proyecto-desc">Bot de Discord con juegos, utilidades, comandos de administración y sistemas personalizados.</div>
-        </div>
-        <div class="proyecto-card">
-          <div class="proyecto-title">AFKPlatform</div>
-          <div class="proyecto-desc">Plataforma para gestión de comunidades y utilidades gamer. Administra miembros, canales y automatiza tareas.</div>
-        </div>
-        <div class="proyecto-card">
-          <div class="proyecto-title">Pk Web Essentials</div>
-          <div class="proyecto-desc">Librería y utilidades web creadas para ayudar a otros developers en proyectos rápidos.</div>
-        </div>
-        <div class="proyecto-card">
-          <div class="proyecto-title">Experimentos</div>
-          <div class="proyecto-desc">Minijuegos, sistemas de verificación, bots de música y más.</div>
-        </div>
-      </div>
+    <section id="proyectos" class="seccion">
+      <h2>📂 Proyectos</h2>
+      <ul>
+        <li>
+          <b>KaBot</b>
+          – Bot para Discord con juegos, utilidades, comandos de administración y sistemas personalizados.
+        </li>
+        <li>
+          <b>Páginas Web</b> – Landings, paneles de control y sistemas para comunidades gamer.
+        </li>
+        <li>
+          <b>Experimentos</b> – Bots de música, sistemas de verificación, minijuegos y más.
+        </li>
+      </ul>
     </section>
-    <section class="card" id="cardHabilidades">
-      <div class="card-title"><span>🛠️</span> Habilidades</div>
-      <div class="habilidades-bar">
-        <div class="habilidad-card">
-          <span class="habilidad-icon">💻</span>
-          <span class="habilidad-title">JavaScript</span>
-          <span class="habilidad-desc">Frontend & Backend</span>
-        </div>
-        <div class="habilidad-card">
-          <span class="habilidad-icon">🌐</span>
-          <span class="habilidad-title">HTML/CSS</span>
-          <span class="habilidad-desc">Web Design</span>
-        </div>
-        <div class="habilidad-card">
-          <span class="habilidad-icon">🤖</span>
-          <span class="habilidad-title">Bots Discord</span>
-          <span class="habilidad-desc">Node.js, Moderación, Juegos</span>
-        </div>
-        <div class="habilidad-card">
-          <span class="habilidad-icon">⚡</span>
-          <span class="habilidad-title">Automatización</span>
-          <span class="habilidad-desc">Integraciones, Webhooks</span>
-        </div>
-        <div class="habilidad-card">
-          <span class="habilidad-icon">🛡️</span>
-          <span class="habilidad-title">Sistemas & Linux</span>
-          <span class="habilidad-desc">CLI, Hosting</span>
-        </div>
-      </div>
-    </section>
-    <section class="card" id="cardContacto">
-      <div class="card-title"><span>📬</span> Contacto</div>
-      <div style="margin-bottom:12px;">
-        ¿Quieres una web, un bot para tu comunidad, o tienes dudas? ¡Contáctame en Discord, YouTube o Gmail!
-      </div>
-      <div class="social-btns">
-        <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord">
-          <span class="icon-social">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.3a.114.114 0 0 0-.121.056c-.533.96-1.126 2.225-1.548 3.222a17.978 17.978 0 0 0-5.018 0A12.28 12.28 0 0 0 8.2 3.356a.115.115 0 0 0-.12-.056A19.736 19.736 0 0 0 3.683 4.369a.105.105 0 0 0-.047.043C.533 9.043-.32 13.579.099 18.057a.116.116 0 0 0 .045.082c2.052 1.507 4.042 2.422 5.992 3.029a.116.116 0 0 0 .127-.042c.462-.63.874-1.293 1.226-1.996a.112.112 0 0 0-.065-.16 12.048 12.048 0 0 1-1.743-.83.115.115 0 0 1-.011-.194c.117-.088.234-.18.347-.274a.114.114 0 0 1 .12-.012c3.68 1.676 7.648 1.676 11.297 0a.115.115 0 0 1 .122.009c.113.094.23.186.347.274a.115.115 0 0 1-.01.194 12.248 12.248 0 0 1-1.744.83.112.112 0 0 0-.064.161c.36.703.773 1.366 1.226 1.996a.116.116 0 0 0 .127.042c1.95-.607 3.94-1.522 5.992-3.029a.115.115 0 0 0 .045-.082c.5-5.177-.838-9.673-3.636-13.645a.104.104 0 0 0-.045-.043ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.219 0 2.177 1.104 2.157 2.418 0 1.334-.938 2.419-2.157 2.419Z"></path></svg>
-          </span>
-          Discord
-        </a>
-        <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
-          <span class="icon-social">
-            <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
-          </span>
-          YouTube
-        </a>
-        <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail">
-          <span class="icon-social">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.1 0 2-.89 2-2V6c0-1.11-.9-2-2-2zm0 2v.01L12 13.09 4 6.01V6h16zm0 12H4v-9.41l7.29 6.7c.38.35.95.35 1.32 0L20 8.59V18z"></path></svg>
-          </span>
-          Gmail
-        </a>
-      </div>
-      <div style="margin-top:10px;">
-        Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
-      </div>
+    <section id="contacto" class="seccion">
+      <h2>📬 Contacto</h2>
+      <ul>
+        <li>Discord: <a class="social-btn discord" href="https://discord.com/users/1352424608862572597" target="_blank" title="Ir a Discord" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x1F5E3;</span>Perfil</a></li>
+        <li>Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
+        <li>YouTube: <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x1F4FA;</span>@ElPk</a></li>
+        <li>Email: <a class="social-btn gmail" href="mailto:medicenelpk@gmail.com" target="_blank" title="Enviar Gmail" style="display:inline-flex;align-items:center;padding:4px 12px 4px 8px;"><span style="display:inline-block;font-size:1.2em;margin-right:6px;">&#x2709;&#xFE0F;</span>medicenelpk@gmail.com</a></li>
+      </ul>
     </section>
   </main>
   <!-- Terminal Modal -->
@@ -475,6 +440,7 @@
       <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
     </div>
   </div>
+  <!-- IA Modal (dice IA, pero es respuestas predefinidas) -->
   <div id="iaOverlay">
     <div class="terminal">
       <div class="terminal-header">
@@ -499,6 +465,7 @@
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
   <script>
+    // --- Pantalla de carga animada
     window.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
         const loader = document.getElementById('loaderPk');
@@ -507,6 +474,12 @@
       }, 1600);
     });
 
+    // Secciones
+    function mostrarSeccion(id) {
+      document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
+      document.getElementById(id).classList.add("activa");
+    }
+    // Terminal
     const comandos = {
       ayuda: {
         desc: 'Lista los comandos disponibles.',
@@ -526,7 +499,7 @@
         desc: 'Información sobre El Pk.',
         run: () => `
 <b>El Pk</b> - Desarrollador uruguayo apasionado por bots de Discord, utilidades web y proyectos gamer.
-Skills: JS/Node.js, HTML, CSS. Experiencia: +4 años.
+Skills: JS/Node.js, HTML, CSS. Experiencia: +2 años.
 Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
         `
       },
@@ -541,8 +514,13 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       },
       redes: {
         desc: 'Redes sociales y contacto.',
-        run: () => document.querySelector('.card-profile .social-btns').outerHTML +
-          '<br>- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>'
+        run: () => `
+<b>Redes y contacto:</b>
+- Discord: <a href="https://discord.com/users/1352424608862572597" target="_blank">@el_pk1</a>
+- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
+- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a>
+- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
+        `
       },
       limpiar: {
         desc: 'Limpia la terminal.',
@@ -638,6 +616,7 @@ Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
       }
     });
 
+    // --- IA CHAT BOT RESPUESTAS HARDCODEADAS ---
     function abrirIA() {
       document.getElementById("iaOverlay").style.display = "flex";
       setTimeout(() => document.getElementById("iaInput").focus(), 180);
