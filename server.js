@@ -32,6 +32,26 @@ const chistes = [
   "¿Cómo se llama un pez que hace código? ¡Un pez-coder!",
   "¿Sabes cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
   "¿Por qué la computadora fue al médico? Porque tenía un virus."
+"¿Qué hace una abeja en el gimnasio? ¡Zum-ba!"
+"¿Qué le dice un semáforo a otro? No me mires, que me pongo verde."
+"¿Cuál es el colmo de un electricista? No tener corriente con su mujer."
+"¿Qué hace una vaca en un tejado? ¡NADA! Es una vaca 'des-techada'."
+"¿Qué le dice un pez a otro pez? Nada."
+"¿Cuál es el último mono? El monarca."
+"¿Por qué los pájaros no usan Facebook? ¡Porque ya tienen Twitter!"
+"¿Qué le dice un plátano a otro plátano? Estoy plátano de ti."
+"¿Qué hace una taza en el gimnasio? ¡Ejercita los músculos del asa!"
+"¿Qué hace una impresora para relajarse? ¡Imprime yoga!"
+"¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro."
+"¿Qué le dice un jardinero a otro jardinero? Nos vemos cuando podamos."
+"¿Qué hace un perro con un taladro? ¡Taladrando huesitos!"
+"¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana."
+"¿Cuál es el café más peligroso? El ex-preso."
+"¿Qué hace un ladrillo en un árbol? ¡Esperando a que la gravedad haga su trabajo!"
+"¿Qué hace un pollo cuando llueve? ¡'Kikiricaja' de cartón!"
+"¿Qué le dice una escoba a otra escoba? ¡Estoy barrida de risa!"
+"¿Qué le dice un cero a un ocho? ¡Qué cinturón más apretado llevas!"
+"¿Cuál es el deporte más silencioso? El paracaidismo, porque solo se escucha el viento."
 ];
 
 const ayuda = `
