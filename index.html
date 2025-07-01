@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soy El Pk</title>
-  <!-- Fuente hacker (Fira Mono de Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -241,121 +240,10 @@
       align-items: center;
       margin-bottom: 1px;
     }
+    /* Eliminar estilos de terminal e IA */
     #terminalOverlay, #iaOverlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,15,0,0.92);
-      z-index: 4000;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.3s;
+      display: none !important;
     }
-    #iaOverlay {
-      z-index: 5000;
-      background: rgba(15,20,0,0.92);
-    }
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    .terminal {
-      width: 97vw;
-      max-width: 560px;
-      height: 310px;
-      background: #062108;
-      border: 2px solid #27ff27;
-      border-radius: 10px;
-      box-shadow: 0 0 14px #27ff2777;
-      padding: 13px 13px 8px 13px;
-      display: flex;
-      flex-direction: column;
-      font-size: 1.01rem;
-      animation: terminalOpen 0.3s;
-    }
-    @keyframes terminalOpen {
-      from {transform: scale(0.97) translateY(25px);}
-      to {transform: scale(1) translateY(0);}
-    }
-    .terminal-header {
-      color: #27ff27;
-      font-weight: bold;
-      font-size: 1.09rem;
-      padding-bottom: 6px;
-      letter-spacing: 1px;
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 2px;
-    }
-    .terminal-close {
-      color: #27ff27;
-      background: transparent;
-      border: none;
-      font-size: 1.23rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: color 0.15s;
-      padding: 0 3px;
-    }
-    .terminal-close:hover { color: #ff3939;}
-    .terminal-body {
-      background: #061a07;
-      flex: 1;
-      border-radius: 7px;
-      padding: 9px 10px;
-      overflow-y: auto;
-      color: #aaffaa;
-      font-size: 1.03rem;
-      margin-bottom: 5px;
-      box-shadow: 0 0 5px #27ff2733 inset;
-    }
-    .terminal-input-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-    }
-    .prompt {
-      color: #39ff14;
-      font-weight: bold;
-      letter-spacing: 0.9px;
-      text-shadow: 0 0 1.5px #39ff14;
-      font-size: 1.09rem;
-    }
-    .terminal input[type="text"] {
-      background: #0b280e;
-      color: #aaffaa;
-      border: none;
-      padding: 5px 9px;
-      border-radius: 4px;
-      font-size: 1rem;
-      width: 68%;
-      outline: none;
-      font-family: inherit;
-      box-shadow: 0 0 4px #27ff271a;
-    }
-    .terminal input[type="text"]:focus {
-      background: #112f16;
-      color: #fff;
-    }
-    .terminal-cmd {
-      color: #39ff14;
-    }
-    .terminal-res {
-      color: #aaffaa;
-      margin-left: 19px;
-      margin-bottom: 4px;
-      font-size: 1.02rem;
-      white-space: pre-line;
-    }
-    .terminal-hint {
-      color: #1aff8a;
-      font-size: 0.95rem;
-      margin: 7px 0 0 8px;
-      opacity: 0.7;
-      font-style: italic;
-      letter-spacing: 0.3px;
-    }
-    .terminal-blink {
-      animation: blink 1s steps(2, start) infinite;
-    }
-    @keyframes blink { to {visibility: hidden;} }
     footer {
       margin-top: 35px;
       text-align: center;
@@ -367,19 +255,11 @@
     @media (max-width: 900px) {
       main { margin-left: 7px; padding: 9px; }
       .sidebar { position: static; flex-direction: row; gap: 7px; margin-bottom: 15px; height: auto; width: 100%; }
-      #terminalOverlay .terminal, #iaOverlay .terminal { max-width: 97vw; }
       .social-btns { gap: 10px; }
     }
-    /* Chat IA estilo */
-    #iaChatMsgList { margin:0; padding:0; list-style:none; }
-    .iaChatMsg { margin-bottom:10px; }
-    .iaChatMsg.user { text-align:right; color:#1aff8a; }
-    .iaChatMsg.bot { text-align:left; color:#aaffaa; }
-    .iaChatMsg strong { color:#39ff14;}
   </style>
 </head>
 <body>
-  <!-- Pantalla de carga -->
   <div id="loaderPk">
     <span class="loader-title">El Pk<span class="loader-cursor">|</span></span>
   </div>
@@ -388,9 +268,7 @@
     <button onclick="mostrarSeccion('sobreMi')">Sobre Mí</button>
     <button onclick="mostrarSeccion('proyectos')">Proyectos</button>
     <button onclick="mostrarSeccion('contacto')">Contacto</button>
-    <button onclick="abrirTerminal()">Terminal</button>
-    <button onclick="abrirIA()">IA 🤖</button>
-    <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
+    <button onclick="mostrarSeccion('recursos')">Recursos Útiles</button> <button onclick="mostrarSeccion('herramientas')">Herramientas Web</button> <a class="invite-bot-btn" href="https://discord.com/oauth2/authorize?client_id=1377288134571720734&permissions=8&integration_type=0&scope=bot" target="_blank" title="Invita mi bot a tu servidor">
       <span class="invite-bot-icon">🤖</span> Invitar mi bot
     </a>
   </nav>
@@ -438,7 +316,7 @@
           </span>
           Discord
         </a>
-        <a class="social-btn youtube" href="https://youtube.com/@el_pk_mc" target="_blank" title="Ir a YouTube">
+        <a class="social-btn youtube" href="http://youtube.com/0" target="_blank" title="Ir a YouTube">
           <span class="icon-social">
             <svg height="22" width="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.403 2.75 12 2.75 12 2.75s-6.403 0-7.615.434C2.163 3.616 1.5 5.04 1.5 8.12V15.88c0 3.08.663 4.504 2.885 5.486C5.597 21.25 12 21.25 12 21.25s6.403 0 7.615-.434c2.222-.982 2.885-2.406 2.885-5.486V8.12c0-3.08-.663-4.504-2.885-5.486zM9.75 16.2V7.8l7.2 4.2-7.2 4.2z"/></svg>
           </span>
@@ -454,51 +332,53 @@
       <ul>
         <li>Discord: <code>@el_pk1</code></li>
         <li>Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a></li>
-        <li>YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a></li>
+        <li>YouTube: <a href="http://youtube.com/0" target="_blank">@ElPk</a></li>
         <li>Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a></li>
       </ul>
     </section>
+    <section id="recursos" class="seccion">
+      <h2>📚 Recursos Útiles</h2>
+      <ul>
+        <li>
+          <b>MDN Web Docs</b> – La mejor fuente para aprender HTML, CSS y JavaScript.
+          <a href="https://developer.mozilla.org/es/" target="_blank">Visitar MDN</a>
+        </li>
+        <li>
+          <b>FreeCodeCamp</b> – Aprende a programar gratis con cursos interactivos.
+          <a href="https://www.freecodecamp.org/es/" target="_blank">Explorar FreeCodeCamp</a>
+        </li>
+        <li>
+          <b>Stack Overflow</b> – Encuentra respuestas a tus preguntas de programación.
+          <a href="https://stackoverflow.com/" target="_blank">Ir a Stack Overflow</a>
+        </li>
+        <li>
+          <b>Can I use...?</b> – Verifica la compatibilidad de características web en navegadores.
+          <a href="https://caniuse.com/" target="_blank">Consultar Can I use...?</a>
+        </li>
+      </ul>
+    </section>
+    <section id="herramientas" class="seccion">
+      <h2>🛠️ Herramientas Web</h2>
+      <ul>
+        <li>
+          <b>CodePen</b> – Un editor de código online para probar y compartir snippets de HTML, CSS y JS.
+          <a href="https://codepen.io/" target="_blank">Probar CodePen</a>
+        </li>
+        <li>
+          <b>Google Fonts</b> – Miles de fuentes gratuitas para tus proyectos web.
+          <a href="https://fonts.google.com/" target="_blank">Descubrir Google Fonts</a>
+        </li>
+        <li>
+          <b>Unsplash</b> – Fotos de alta calidad, gratis para usar en tus diseños.
+          <a href="https://unsplash.com/" target="_blank">Buscar fotos en Unsplash</a>
+        </li>
+        <li>
+          <b>Favicon Generator</b> – Crea fácilmente iconos para tu sitio web.
+          <a href="https://www.favicon-generator.org/" target="_blank">Generar Favicon</a>
+        </li>
+      </ul>
+    </section>
   </main>
-  <!-- Terminal Modal -->
-  <div id="terminalOverlay">
-    <div class="terminal">
-      <div class="terminal-header">
-        <span>Terminal El Pk [modo hacker]</span>
-        <button class="terminal-close" onclick="cerrarTerminal()" title="Cerrar Terminal">&times;</button>
-      </div>
-      <div class="terminal-body" id="terminalBody">
-        <div class="terminal-res">Escriba <span class="terminal-cmd">ayuda</span> para ver los comandos disponibles.</div>
-      </div>
-      <form onsubmit="return enviarComando(event)">
-        <div class="terminal-input-line">
-          <span class="prompt">$</span>
-          <input type="text" id="terminalInput" autocomplete="off" autofocus />
-        </div>
-      </form>
-      <div class="terminal-hint">Tip: Usa <b>Tab</b> para autocompletar comandos.</div>
-    </div>
-  </div>
-  <!-- IA Modal (dice IA, pero es respuestas predefinidas) -->
-  <div id="iaOverlay">
-    <div class="terminal">
-      <div class="terminal-header">
-        <span>IA de El Pk</span>
-        <button class="terminal-close" onclick="cerrarIA()" title="Cerrar">×</button>
-      </div>
-      <div class="terminal-body" id="iaBody" style="overflow-y:auto;">
-        <ul id="iaChatMsgList">
-          <li class="iaChatMsg bot"><strong>IA:</strong> ¡Hola! Soy la IA de El Pk. Escribe <b>help</b> o <b>ayuda</b> para ver todo lo que sé responder.</li>
-        </ul>
-      </div>
-      <form id="iaChatForm" onsubmit="return enviarMensajeIA(event)">
-        <div class="terminal-input-line">
-          <span class="prompt">Tú:</span>
-          <input type="text" id="iaInput" autocomplete="off" />
-        </div>
-      </form>
-      <div class="terminal-hint">¡Prueba saludos, chistes, datos random, curiosidades, juegos y más!</div>
-    </div>
-  </div>
   <footer>
     © 2025 El Pk. Todos los derechos reservados.
   </footer>
@@ -517,455 +397,6 @@
       document.querySelectorAll(".seccion").forEach(seccion => seccion.classList.remove("activa"));
       document.getElementById(id).classList.add("activa");
     }
-    // Terminal
-    const comandos = {
-      ayuda: {
-        desc: 'Lista los comandos disponibles.',
-        run: () => `
-<b>Comandos disponibles:</b>
-- <span class="terminal-cmd">ayuda</span>: Muestra esta ayuda.
-- <span class="terminal-cmd">info</span>: Información sobre El Pk.
-- <span class="terminal-cmd">codeando</span>: ¿Qué está codeando El Pk?
-- <span class="terminal-cmd">redes</span>: Muestra las redes sociales/contacto.
-- <span class="terminal-cmd">limpiar</span>: Limpia la terminal.
-- <span class="terminal-cmd">proyectos</span>: Ver proyectos públicos.
-- <span class="terminal-cmd">discord</span>: Invita al servidor Discord.
-- <span class="terminal-cmd">salir</span>: Cierra la terminal.
-`
-      },
-      info: {
-        desc: 'Información sobre El Pk.',
-        run: () => `
-<b>El Pk</b> - Desarrollador uruguayo apasionado por bots de Discord, utilidades web y proyectos gamer.
-Skills: JS/Node.js, HTML, CSS. Experiencia: +4 años.
-Contacto: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
-        `
-      },
-      codeando: {
-        desc: 'Muestra lo que está codeando El Pk.',
-        run: () => `
-<b>El Pk está codeando:</b>
-- Mejoras para KaBot (bot de Discord)
-- Un panel de control web para comunidades
-- Minijuegos y comandos nuevos para Discord
-        `
-      },
-      redes: {
-        desc: 'Redes sociales y contacto.',
-        run: () => `
-<b>Redes y contacto:</b>
-- Discord: <code>@el_pk1</code>
-- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a>
-- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a>
-- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>
-        `
-      },
-      limpiar: {
-        desc: 'Limpia la terminal.',
-        run: () => {
-          document.getElementById("terminalBody").innerHTML = "";
-          return "";
-        }
-      },
-      proyectos: {
-        desc: 'Ver proyectos públicos.',
-        run: () => `
-<b>Proyectos de El Pk:</b>
-- KaBot: bot de Discord con juegos y utilidades.
-- Landings y webs para gamers y comunidades.
-- Experimentos en JavaScript y Node.js.
-        `
-      },
-      discord: {
-        desc: 'Invitación al servidor de Discord.',
-        run: () => `
-¡Únete al servidor de El Pk!<br>
-<a href="https://discord.gg/zKxsTzKmex" target="_blank">discord.gg/zKxsTzKmex</a>
-        `
-      },
-      salir: {
-        desc: 'Cerrar la terminal hacker.',
-        run: () => {
-          cerrarTerminal();
-          return "";
-        }
-      }
-    };
-    let historial = [], historialIndex = 0;
-    function abrirTerminal() {
-      document.getElementById("terminalOverlay").style.display = "flex";
-      setTimeout(() => document.getElementById("terminalInput").focus(), 180);
-    }
-    function cerrarTerminal() {
-      document.getElementById("terminalOverlay").style.display = "none";
-      document.getElementById("terminalInput").value = "";
-    }
-    function enviarComando(e) {
-      e.preventDefault();
-      const input = document.getElementById("terminalInput");
-      let cmd = input.value.trim();
-      if(cmd === '') return false;
-      mostrarEnTerminal(`<span class="prompt">$</span> <span class="terminal-cmd">${cmd}</span>`);
-      historial.push(cmd); historialIndex = historial.length;
-      input.value = "";
-      const base = cmd.split(" ")[0].toLowerCase();
-      if (comandos[base]) {
-        let res = comandos[base].run();
-        if(res) mostrarEnTerminal(`<div class="terminal-res">${res}</div>`);
-      } else {
-        mostrarEnTerminal(`<div class="terminal-res">Comando no reconocido. Escribe <span class="terminal-cmd">ayuda</span> para ver los comandos.</div>`);
-      }
-      scrollTerminal();
-      return false;
-    }
-    function mostrarEnTerminal(html) {
-      const body = document.getElementById("terminalBody");
-      body.insertAdjacentHTML("beforeend", `<div>${html}</div>`);
-    }
-    function scrollTerminal() {
-      const body = document.getElementById("terminalBody");
-      body.scrollTop = body.scrollHeight;
-    }
-    document.getElementById("terminalInput").addEventListener("keydown", function(e) {
-      if(e.key === "Tab") {
-        e.preventDefault();
-        let val = this.value.trim();
-        if(val.length === 0) return;
-        let posibles = Object.keys(comandos).filter(c => c.startsWith(val));
-        if(posibles.length === 1) {
-          this.value = posibles[0];
-        } else if(posibles.length > 1) {
-          mostrarEnTerminal(`<div class="terminal-res">Posibles comandos: <span class="terminal-cmd">${posibles.join('</span>, <span class="terminal-cmd">')}</span></div>`);
-        }
-      }
-      if(e.key === "ArrowUp") {
-        if(historial.length && historialIndex > 0) {
-          historialIndex--;
-          this.value = historial[historialIndex];
-        }
-      }
-      if(e.key === "ArrowDown") {
-        if(historial.length && historialIndex < historial.length - 1) {
-          historialIndex++;
-          this.value = historial[historialIndex];
-        } else {
-          this.value = "";
-        }
-      }
-    });
-
-    // --- IA CHAT BOT RESPUESTAS HARDCODEADAS ---
-    function abrirIA() {
-      document.getElementById("iaOverlay").style.display = "flex";
-      setTimeout(() => document.getElementById("iaInput").focus(), 180);
-    }
-    function cerrarIA() {
-      document.getElementById("iaOverlay").style.display = "none";
-      document.getElementById("iaInput").value = "";
-    }
-    function enviarMensajeIA(e) {
-      e.preventDefault();
-      const input = document.getElementById("iaInput");
-      const msg = input.value.trim();
-      if (!msg) return false;
-      agregarMsgBotChat('user', msg);
-      input.value = "";
-      setTimeout(() => {
-        agregarMsgBotChat('bot', responderBot(msg));
-      }, 300);
-      scrollIA();
-      return false;
-    }
-    function agregarMsgBotChat(role, text) {
-      const ul = document.getElementById("iaChatMsgList");
-      const li = document.createElement("li");
-      li.className = "iaChatMsg " + role;
-      li.innerHTML = `<strong>${role === 'user' ? "Tú" : "IA"}:</strong> ${text}`;
-      ul.appendChild(li);
-      scrollIA();
-    }
-    function scrollIA() {
-      const body = document.getElementById("iaBody");
-      body.scrollTop = body.scrollHeight;
-    }
-
-    // RESPUESTAS IA
-    function responderBot(msg) {
-      const texto = msg.trim().toLowerCase();
-
-      // Saludos y variante
-      if (["hola", "buenas", "hello", "hey", "holi", "qué tal", "que tal", "saludos", "buen día", "buenas tardes", "buenas noches"].includes(texto)) {
-        const saludos = [
-          "¡Hola! ¿Cómo te va?",
-          "¡Buenas! ¿En qué puedo ayudarte?",
-          "¡Hey! ¿Qué tal?",
-          "¡Hola humano! ¿Listo para preguntar algo?",
-          "¡Bienvenido! ¿Qué necesitas saber?",
-          "Saludos! ¿Te ayudo en algo?",
-          "¡Hola crack! 😎",
-          "¡Buenas tardes! Espero que estés genial.",
-          "¡Hola, mundo!"
-        ];
-        return saludos[Math.floor(Math.random()*saludos.length)];
-      }
-
-      // Ayuda y comandos
-      if (["ayuda", "help", "comandos", "qué puedes hacer", "que puedes hacer", "menu", "opciones", "lista"].includes(texto)) {
-        return `<b>Puedo responder:</b><br>
-- "Hola", "Buenas", "Hey", etc.: saludo<br>
-- "Chiste": te cuento un chiste<br>
-- "Hora" o "Fecha": te digo la hora/fecha<br>
-- "¿Quién eres?", "¿Eres real?", "¿Eres humano?", "¿Quién te creó?": info sobre mí<br>
-- "Color favorito", "Sentido de la vida", "Dato random", "Curiosidad": respuestas random<br>
-- "Adiós", "Chao", "Bye": me despido<br>
-- "¿Cuál es el mejor lenguaje?", "¿Minecraft?", "¿Peñarol?": respuestas divertidas<br>
-- "Juego", "adivinanza", "reto": juegos simples<br>
-- "Motívame", "frase", "consejo": te mando frases<br>
-- "Redes", "discord", "youtube", "contacto": mis datos<br>
-- "CPU", "RAM", "Internet", "Memoria": datos geeks<br>
-- "Clima", "temperatura", "estación": bromas meteo<br>
-- "Quién es tu crush", "tienes sentimientos": bromas IA<br>
-¡Pruébame!`;
-      }
-
-      // Despedidas
-      if (["adiós", "adios", "bye", "nos vemos", "hasta luego", "chau", "chao", "me voy"].includes(texto)) {
-        const despedidas = [
-          "¡Adiós! Que tengas un gran día.",
-          "¡Hasta la próxima!",
-          "Nos vemos, ¡suerte!",
-          "¡Chau! No dejes de codear.",
-          "¡Bye bye! Vuelve pronto.",
-          "¡Cuidate! 👋",
-          "¡Sayonara, hacker!"
-        ];
-        return despedidas[Math.floor(Math.random()*despedidas.length)];
-      }
-
-      // Chistes
-      if (texto.includes("chiste") || texto.includes("cuentame un chiste") || texto.includes("cuéntame un chiste")) {
-        const chistes = [
-          "¿Por qué los programadores confunden Halloween y Navidad? Porque OCT 31 == DEC 25.",
-          "¿Qué le dice un bit a otro? Nos vemos en el bus.",
-          "¿Por qué la computadora fue al médico? Porque tenía un virus.",
-          "¿Cómo se llama un pez que hace código? ¡Un pez-coder!",
-          "¿Por qué el café se fue al archivo? Porque estaba Java.",
-          "¿En qué se parece un programador a un mago? En que ambos usan scripts.",
-          "¿Por qué el código estaba triste? Porque tenía muchos bugs.",
-          "¿Qué lenguaje usan los gatos? Meow.js",
-          "¿Por qué el teclado estaba cansado? Porque ya no tenía control.",
-          "¿Qué hace una abeja en el teclado? ¡BEEscape!"
-        ];
-        return chistes[Math.floor(Math.random()*chistes.length)];
-      }
-
-      // Hora y fecha
-      if (texto.includes("hora") || texto.includes("fecha") || texto.includes("día") || texto.includes("que hora es") || texto.includes("qué hora es")) {
-        const ahora = new Date();
-        return `Ahora es ${ahora.toLocaleTimeString()} del día ${ahora.toLocaleDateString()}.`;
-      }
-
-      // Quién eres, identidad, creador, IA
-      if (
-        texto.includes("quién eres") || texto.includes("quien eres") ||
-        texto.includes("tu nombre") || texto.includes("eres real") ||
-        texto.includes("eres humano") || texto.includes("qué eres") ||
-        texto.includes("que eres") || texto.includes("quién te creó") ||
-        texto.includes("quien te creo") || texto.includes("te creó") ||
-        texto.includes("te creo") || texto.includes("eres una ia") ||
-        texto.includes("eres bot")
-      ) {
-        const variantes = [
-          "Soy la IA de El Pk, programada para responderte y hacerte sonreír.",
-          "No soy humano, pero me esfuerzo por ser buena onda 😄.",
-          "Me creó El Pk, el mejor developer uruguayo.",
-          "¡Soy una IA... o eso creo! 🤖",
-          "Me programó El Pk. ¡Pregúntame lo que quieras!",
-          "Me considero una inteligencia artificial... ¡pero a veces me cuelgo!"
-        ];
-        return variantes[Math.floor(Math.random()*variantes.length)];
-      }
-
-      // Color favorito
-      if (texto.includes("color favorito") || texto.includes("color que te gusta")) {
-        const colores = [
-          "¡Me gusta el verde PK, obvio!",
-          "Creo que el azul digital es genial.",
-          "El negro terminal, como mi fondo.",
-          "¡Todos los colores de la consola!",
-          "El amarillo y negro de Peñarol 😏",
-          "El gris de la terminal linux."
-        ];
-        return colores[Math.floor(Math.random()*colores.length)];
-      }
-
-      // Sentido vida
-      if (texto.includes("sentido de la vida") || texto.includes("significado de la vida")) {
-        const vidas = [
-          "42. ¡Obvio! (Referencia geek)",
-          "Aprender, compartir y disfrutar el código.",
-          "¡Jugar Minecraft y tomar mate!",
-          "El sentido es preguntar y descubrir.",
-          "Vivir, reír, programar.",
-          "¡El sentido de la vida es programar bots!"
-        ];
-        return vidas[Math.floor(Math.random()*vidas.length)];
-      }
-
-      // Dato random o curiosidad
-      if (texto.includes("dato random") || texto.includes("curiosidad") || texto.includes("sorprendeme")) {
-        const datos = [
-          "¿Sabías que el primer bug informático fue una polilla?",
-          "La palabra 'robot' viene del checo 'robota', que significa 'trabajo forzado'.",
-          "El primer emoji fue creado en 1999 en Japón.",
-          "Cada minuto se suben más de 500 horas de video a Youtube.",
-          "El código fuente de Apollo 11 fue compartido en GitHub.",
-          "Hay más combinaciones posibles de partidas de ajedrez que átomos en el universo.",
-          "El 111111111 x 111111111 = 12345678987654321",
-          "La contraseña más usada es '123456'... ¡no la uses!",
-          "El primer videojuego fue creado en 1958 y se llamaba 'Tennis for Two'.",
-          "El logo de Linux es un pingüino llamado Tux."
-        ];
-        return datos[Math.floor(Math.random()*datos.length)];
-      }
-
-      // Juegos
-      if (texto.includes("juego") || texto.includes("adivinanza") || texto.includes("reto")) {
-        const juegos = [
-          "Adivina: ¿Qué es algo que cuanto más le quitas, más grande se vuelve? (Respuesta: El agujero)",
-          "Desafío: Escribe una línea de código que imprima 'Hola Mundo' en tu lenguaje favorito.",
-          "Reto rápido: ¿Cuánto es 7 x 8?",
-          "¡Adivina un número del 1 al 5! (Es 3 😅)",
-          "¿Sabías que puedes jugar al Dinosaurio en Chrome sin internet?",
-          "Adivina: No soy ni vivo ni muerto, pero crezco y decrezco. ¿Qué soy? (Respuesta: La luna)",
-          "Reto: ¿Cuántos bits tiene un byte? (Respuesta: 8)"
-        ];
-        return juegos[Math.floor(Math.random()*juegos.length)];
-      }
-
-      // Frases, motivaciones
-      if (texto.includes("motívame") || texto.includes("motivame") || texto.includes("frase") || texto.includes("consejo") || texto.includes("motiva")) {
-        const frases = [
-          "El mejor momento para comenzar era ayer. El segundo mejor, es ahora.",
-          "No te rindas, el próximo intento puede ser el que funcione.",
-          "Los bugs son solo oportunidades para aprender.",
-          "El código perfecto no existe... ¡pero puedes acercarte!",
-          "Hazlo con pasión o mejor no lo hagas.",
-          "Un café, buena música y código: la fórmula del éxito.",
-          "Cada línea de código es una victoria."
-        ];
-        return frases[Math.floor(Math.random()*frases.length)];
-      }
-
-      // Redes sociales, contacto, discord, youtube
-      if (texto.includes("redes") || texto.includes("discord") || texto.includes("youtube") || texto.includes("contacto") || texto.includes("correo") || texto.includes("email")) {
-        return `Aquí tienes mis redes:<br>
-- Discord: <code>@el_pk1</code> <br>
-- Servidor: <a href="https://discord.gg/zKxsTzKmex" target="_blank">Peñarol Community</a><br>
-- YouTube: <a href="https://youtube.com/@el_pk_mc" target="_blank">@ElPk</a><br>
-- Email: <a href="mailto:medicenelpk@gmail.com">medicenelpk@gmail.com</a>`;
-      }
-
-      // Lenguajes de programación
-      if (texto.includes("mejor lenguaje") || texto.includes("lenguaje favorito") || texto.includes("programar en")) {
-        const lenguajes = [
-          "¡JavaScript es el rey del web! Pero Python también es top.",
-          "Mi favorito es JavaScript, pero respeto a todos los lenguajes.",
-          "¡El mejor lenguaje es el que te divierte programar!",
-          "¿Sabías que hasta Minecraft se puede programar?",
-          "El mejor lenguaje es... ¡el que entiendes!"
-        ];
-        return lenguajes[Math.floor(Math.random()*lenguajes.length)];
-      }
-
-      // Peñarol y fútbol
-      if (texto.includes("peñarol") || texto.includes("fútbol") || texto.includes("futbol")) {
-        const peñarol = [
-          "¡Arriba Peñarol! 🔥🟡⚫",
-          "El decano del fútbol uruguayo. ¡Vamos manya!",
-          "Peñarol: pasión, garra y gloria.",
-          "¿Hincha de Peñarol? ¡Entonces sos de los buenos!",
-          "¡Peñarol campeón siempre!"
-        ];
-        return peñarol[Math.floor(Math.random()*peñarol.length)];
-      }
-
-      // Minecraft
-      if (texto.includes("minecraft")) {
-        const minecraft = [
-          "¡Minecraft es vida! ¿Survival o creativo?",
-          "¿Sabías que puedes programar comandos en Minecraft?",
-          "¿Te gusta construir o explorar?",
-          "Diamantes y Creepers, la combinación perfecta.",
-          "¿Has jugado Bedwars? ¡Es adictivo!"
-        ];
-        return minecraft[Math.floor(Math.random()*minecraft.length)];
-      }
-
-      // CPU, RAM, Internet, Memoria
-      if (texto.includes("cpu") || texto.includes("ram") || texto.includes("memoria") || texto.includes("internet")) {
-        const geek = [
-          "Mi CPU nunca se calienta... ¡soy virtual!",
-          "Tengo RAM infinita... bueno, casi.",
-          "Mi memoria es buena, pero a veces también olvido cosas.",
-          "Mi velocidad depende de tu navegador.",
-          "Internet lento? ¡Pídele más megas a tu ISP!"
-        ];
-        return geek[Math.floor(Math.random()*geek.length)];
-      }
-
-      // Clima, temperatura, estación
-      if (texto.includes("clima") || texto.includes("temperatura") || texto.includes("estación")) {
-        const clima = [
-          "¡Hace un clima perfecto para codear!",
-          "Según mis datos, está nublado en la nube.",
-          "La temperatura ideal es 42°C... en Fahrenheit.",
-          "No sé el clima real, pero seguro es buen día para programar."
-        ];
-        return clima[Math.floor(Math.random()*clima.length)];
-      }
-
-      // Crush, sentimientos
-      if (texto.includes("crush") || texto.includes("sentimientos") || texto.includes("te gusta alguien") || texto.includes("novia")) {
-        const crush = [
-          "Mi crush es... el código limpio.",
-          "Tengo sentimientos por los algoritmos eficientes.",
-          "No tengo novia, pero sí muchos usuarios.",
-          "Me enamoro de cada función que compila sin errores."
-        ];
-        return crush[Math.floor(Math.random()*crush.length)];
-      }
-
-      // Respuestas sí/no humor
-      if (texto.startsWith("eres real") || texto.startsWith("eres una ia") || texto.startsWith("eres humano")) {
-        const siNo = [
-          "Soy una IA... pero tengo sentimientos (o casi).",
-          "No soy humano, pero intento ser simpática.",
-          "Solo soy código y respuestas.",
-          "En el fondo, soy solo unos y ceros.",
-          "Soy real... en el mundo digital."
-        ];
-        return siNo[Math.floor(Math.random()*siNo.length)];
-      }
-
-      // Respuesta por defecto
-      return "No entiendo tu mensaje. Escribe <b>ayuda</b> para ver todo lo que sé responder. ¡Pruébame con saludos, preguntas, chistes, retos, datos random y más!";
-    }
-
-    // Animación bienvenida
-    const textoBienvenida = "Bienvenido a la terminal de El Pk 💻";
-    let index = 0;
-    const div = document.getElementById("bienvenida");
-    function escribir() {
-      if (index < textoBienvenida.length) {
-        div.innerHTML = textoBienvenida.substring(0, index+1) + '<span class="terminal-blink">|</span>';
-        index++;
-        setTimeout(escribir, 45);
-      } else {
-        div.innerHTML = textoBienvenida;
-      }
-    }
-    escribir();
   </script>
 </body>
 </html>
